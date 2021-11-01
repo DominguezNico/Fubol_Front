@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from "axios"
+
 
 class ClubComponent extends React.Component{
 
@@ -11,8 +11,25 @@ class ClubComponent extends React.Component{
 
 /*C:\Users\Flore\TP_APIS\TP_APIS_FRONT\frontend>*/
    async  componentDidMount(){
-     await   axios.get('http://localhost:8080/obtenerClubes')
-        .then((data) => this.setState({clubes: [data], isLoading: false}))
+     fetch('http://localhost:8080/obtenerClubes')
+        .then(async response => {
+          const data = await response.json();
+
+          if(!response.ok){
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          
+          this.setState({clubes: [data], isLoading: false})
+
+        })
+        .catch(error => {
+          this.setState({ errorMessage: error.toString()});
+          console.error('Hubo un error! ',error)
+        })
+          
+          
+          
 
     .catch((error) => {
       console.log(error)
@@ -29,25 +46,22 @@ class ClubComponent extends React.Component{
      getClubbyId = async (id) =>{
 
       fetch(`http://localhost:8080/getClub?idClub=${id}`)
-   .then(response => response.json())
-   .then(response => console.log('Probando fetch:', response))
-  .then(response => console.log('Success:', response.data))
-
-   .then(this.setState({club:response.data}));
+      .then(response => response.json())
+      .then(clubJSON => this.setState({club:clubJSON}));
 
        /*
      await axios.get(`http://localhost:8080/getClub?idClub=${id}`)
       .then(res =>   this.setState({club:res.data}))
   .catch((error) => {
-    console.log(error)})*/
+    console.log(error)})
 
-
+*/
     }
 
 
-    crearClub=async (id,nombre,direccion) =>{
+   /* crearClub=async (id,nombre,direccion) =>{
       await axios.post(`http://localhost:8080/addClub?idClub=${id}&nombreClub=${nombre}&DireccionClub=${direccion}`);
-    }
+    }*/
 
     render(){
 
@@ -60,7 +74,7 @@ class ClubComponent extends React.Component{
 
           console.log("CLubbbbbbbb")
           console.log(clubes[0].data)
-          //console.log(club.data)
+          console.log(club.data)
            
 
         return (
@@ -75,7 +89,7 @@ class ClubComponent extends React.Component{
                 </tr>
               </thead>
               <body>
-                {clubes[0].data.map((dato) =>
+                {clubes[0].map((dato) =>
                     <tr key={dato.idClub}>
                       <td>{dato.nombre}</td>
                       <td>{dato.direccion}</td>

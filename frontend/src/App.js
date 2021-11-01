@@ -8,7 +8,9 @@ import Login from './paginas/Login'
 import PageNotFound from './paginas/PageNotFound'
 
 import ClubComponent from "./componentes/ClubComponent";
-import axios from 'axios';
+
+
+
 function App() {
   return (
     <Router>
