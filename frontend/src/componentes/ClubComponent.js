@@ -28,18 +28,11 @@ class ClubComponent extends React.Component{
 
      getClubbyId = async (id) =>{
 
-      fetch(`http://localhost:8080/getClub?idClub=${id}`)
-   .then(response => response.json())
-   .then(response => console.log('Probando fetch:', response))
-  .then(response => console.log('Success:', response.data))
+    fetch(`http://localhost:8080/getClub?idClub=${id}`)
+    .then(response => response.json())
+   .then(clubJSON => this.setState({club:clubJSON}));
 
-   .then(this.setState({club:response.data}));
-
-       /*
-     await axios.get(`http://localhost:8080/getClub?idClub=${id}`)
-      .then(res =>   this.setState({club:res.data}))
-  .catch((error) => {
-    console.log(error)})*/
+      
 
 
     }
@@ -60,7 +53,7 @@ class ClubComponent extends React.Component{
 
           console.log("CLubbbbbbbb")
           console.log(clubes[0].data)
-          //console.log(club.data)
+          console.log("CLUB ",club.data)
            
 
         return (
