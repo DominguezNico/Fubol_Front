@@ -7,6 +7,8 @@ import Home from './paginas/Home'
 import Login from './paginas/Login'
 import PageNotFound from './paginas/PageNotFound'
 
+import ClubComponent from "./componentes/ClubComponent";
+import axios from 'axios';
 function App() {
   return (
     <Router>
@@ -18,15 +20,25 @@ function App() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/features">Features</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/ClubComponent">Clubes</Nav.Link>
           </Nav>
           </Container>
         </Navbar>
+        
         <Switch>
         <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route  exact path="/ClubComponent" component={ClubComponent} />
           <Route component={PageNotFound} />
+        
         </Switch>
+
+
+       
       </div>
+       
+
+
     </Router>
   );
 }
