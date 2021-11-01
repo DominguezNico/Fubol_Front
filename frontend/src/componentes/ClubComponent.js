@@ -85,7 +85,7 @@ class ClubComponent extends React.Component{
           <div>
             <h2> CLUB</h2>
 
-                {this.state.club.direccion}
+                {this.state.club.nombre}
 
           </div>
           </>
