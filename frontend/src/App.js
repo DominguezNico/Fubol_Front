@@ -14,33 +14,28 @@ import Admin from './componentes/Admin/inicioAdmin'
 import Representante from './componentes/Representante/inicioRepr'
 
 import ClubComponent from "./componentes/ClubComponent";
-import { useHistory } from "react-router-dom";/*
-const jugador= {
-  roles: ['jugador'],
-  rights: ['jugador']
-};
+import { useHistory } from "react-router-dom";
 
-const representante ={
-  roles: ['representante'],
-  rights: ['representante']
-}
 
-const admin = {
-  roles: ['admin'],
-  rights:['admin']
-};*/
 
-/*
-let history = useHistory();
-  function changePage() {
-  
-    this.props.history.push("/login");
-  }
-*/
 
 function App() {
   
   return (
+
+    {if (this.state.rol=="JUGADOR"){
+      <Admin />
+    }
+  }
+
+
+
+
+
+
+
+
+  
     <Router>
       <div className="App">
       
