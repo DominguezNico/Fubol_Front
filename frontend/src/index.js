@@ -7,14 +7,12 @@ import Login from './paginas/Login.js';
 import Jugador from './componentes/Jugador/inicioJugador.js'
 
 
+//const history = createBrowserHistory();
 
 
-const history = createBrowserHistory();
 
 ReactDOM.render(
-  <Router>
-    <Login />
-  </Router>,
+    <Login />,
   document.getElementById('root')
 );
 

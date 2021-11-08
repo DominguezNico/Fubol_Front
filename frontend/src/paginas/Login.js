@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import "../estilos/estiloLogin.css"
 import { BsKeyFill,BsFillPersonFill} from "react-icons/bs";
 import {BrowserRouter, Route, Switch,useHistory} from "react-router-dom";
+import {createBrowserHistory} from "history";
 
 import Admin from '../componentes/Admin/inicioAdmin'
 import Jugador from '../componentes/Jugador/inicioJugador.js'
@@ -25,9 +26,10 @@ function Login () {
 	
 	const [DNI, setDNI] = useState("");
 	const [password, setPassword] = useState("");
-	const [rol, setRol] = useState("");
+	const [rol, setRol] = useState("nada");
 	const [check, setCheck] = useState("");
-	const history=useHistory();
+	//const history=useHistory();
+	
 
 	//const openCheck = () => setCheck(0);
   	
@@ -48,7 +50,6 @@ function Login () {
 		await fetch(`http://localhost:8080/chequearUsuarioContraseña?doc=${DNI}&contra=${password}`)
 			.then(response => response.json())
 			.then(data => setCheck(data))
-		console.log(check )
 	
 		
 	};
@@ -62,8 +63,7 @@ function Login () {
 		await fetch(`http://localhost:8080/obtenerRolUsuario?doc=${DNI}`)
 			.then(response => response.json())
 			.then(data => setRol(data.rol));
-		console.log("ROL")
-		console.log(rol)
+
 
 		
 
@@ -76,17 +76,13 @@ const comprobarRol =() => {
 	
 	if(rol=="JUGADOR"){
 		//<Jugador/>
-		
-		history.push("/Jugadores");
+		console.log("Hola jugador")
+		//history.push("/Jugadores");
 		return(
-			<BrowserRouter>
-				<Switch>
-					<Route exact path="/Jugador" component={Jugador}/>
-				</Switch>
-			</BrowserRouter>
+			<Jugador/>
 		)
 	}else if(rol == "REPRESENTANTE"){
-		history.push("/Representante");
+		//history.push("/Representante");
 		return(
 			<BrowserRouter>
 				<Switch>
@@ -95,7 +91,7 @@ const comprobarRol =() => {
 			</BrowserRouter>
 		)
 	}else if(rol == "ADMIN"){
-		history.push("/Admin");
+		//history.push("/Admin");
 		return(
 			<BrowserRouter>
 				<Switch>
@@ -108,8 +104,9 @@ const comprobarRol =() => {
 }
 
 return(
-	
-  <div className="container">
+<>
+	{rol === "nada"?
+<div className="container">
 	<div className="d-flex justify-content-center h-100">
 		<div className="card">
 			<div className="card-header">
@@ -154,11 +151,19 @@ return(
 		</div>
 	</div>
 	
+
+
 </div>
+	
+	:<Jugador/>}
 
 
-
+</>
 )
 }
+/*
+else if (rol="JUGADOR"){
+	<Jugador/>
+} */
 
 export default Login;
