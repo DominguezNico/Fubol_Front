@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createBrowserHistory} from "history";
+import {BrowserRouter as Router, Route,Switch,Redirect} from "react-router-dom";
+
 import Login from './paginas/Login.js';
-import {BrowserRouter} from "react-router-dom";
+import Jugador from './componentes/Jugador/inicioJugador.js'
+
+
+
+
+const history = createBrowserHistory();
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router>
     <Login />
-  </BrowserRouter>,
+  </Router>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 
