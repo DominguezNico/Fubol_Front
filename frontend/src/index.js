@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Login from './paginas/Login.js'
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {createBrowserHistory} from "history";
+import {BrowserRouter as Router, Route,Switch,Redirect} from "react-router-dom";
+
+import Login from './paginas/Login.js';
+import Jugador from './componentes/Jugador/inicioJugador.js'
+
+
+//const history = createBrowserHistory();
+
+
 
 ReactDOM.render(
-  
-    <React.StrictMode>
-      <Login />
-    </React.StrictMode>,
-    document.getElementById('root')
-  
+    <Login />,
+  document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+

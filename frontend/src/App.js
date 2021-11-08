@@ -18,55 +18,12 @@ import { useHistory } from "react-router-dom";
 
 
 
-
 function App() {
   
   return (
-
-    {if (this.state.rol=="JUGADOR"){
-      <Admin />
-    }
-  }
-
-
-
-
-
-
-
-
-  
-    <Router>
-      <div className="App">
-      
-        <Navbar bg="dark" variant="dark">
-          <Container>
-          <Navbar.Brand href="/">TP_APIS</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/features">Features</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-          </Nav>
-          </Container>
-        </Navbar>
-        {/*<button type="button" onClick={changePage}>Go to a New Page!</button>*/}
-        <Switch>
-        
-          <Route exact path="/login" component={Login} />
-          <Route component={PageNotFound} />
-         {/* {hasRole(user,['jugador']) && <Route path='/jugador' component={Jugador}/>} 
-          {hasRole(user,['admin']) && <Route path='/admin' component={Admin}/>}
-          {hasRole(user,['representante']) && <Route path='/representante' component={Representante}/>}*/}
-          <Route exact path="/" component={Home} />
-        </Switch>
-
-
-       
-      </div>
-       
-
-
-    </Router>
+    <>
+    
+    </>
   );
 }
 
