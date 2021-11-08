@@ -10,7 +10,7 @@ function inicioJugador () {
   <nav className="navbar navbar-expand navbar-dark " id="navbar"> 
   </nav>
   <section className="PageNotFound">
-    <h3>PageNotFound, a donde me mandaste???</h3>
+    <h3>Soy el jugadorsito</h3>
   </section>
   </div>
   )

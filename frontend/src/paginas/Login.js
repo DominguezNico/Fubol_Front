@@ -12,26 +12,14 @@ import Representante from '../componentes/Representante/inicioRepr.js'
 
 
 function Login () {
-	/*
-    const state = {
-        isLoading: true,
-        rol:"",
-		dni:"",
-		doc:"",
-		contraseñaInput:"",
-		contraseña:"",
-		check:0
-      };*/
+
 	  
 	
 	const [DNI, setDNI] = useState("");
 	const [password, setPassword] = useState("");
 	const [rol, setRol] = useState("nada");
 	const [check, setCheck] = useState("");
-	//const history=useHistory();
-	
 
-	//const openCheck = () => setCheck(0);
   	
 	const handleDNIChange = (e) => {
     	setDNI(e.target.value);
@@ -103,10 +91,10 @@ const comprobarRol =() => {
 
 }
 
-return(
-<>
-	{rol === "nada"?
-<div className="container">
+
+if(rol ==="nada"){
+	return(
+		<div className="container">
 	<div className="d-flex justify-content-center h-100">
 		<div className="card">
 			<div className="card-header">
@@ -154,16 +142,16 @@ return(
 
 
 </div>
+	)
+} else if( rol==="JUGADOR"){
+	return(<Jugador/>)
 	
-	:<Jugador/>}
+} else if(rol === "ADMIN"){
+	return(<Admin/>)
+}else if (rol === "REPRESENTANTE")
+	return(<Representante/>)
 
-
-</>
-)
 }
-/*
-else if (rol="JUGADOR"){
-	<Jugador/>
-} */
+
 
 export default Login;
