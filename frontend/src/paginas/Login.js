@@ -58,39 +58,6 @@ function Login () {
 		
 	}
 
-useEffect(() => {  comprobarRol()  } , [rol] );
-
-const comprobarRol =() => {
-	
-	if(rol=="JUGADOR"){
-		//<Jugador/>
-		console.log("Hola jugador")
-		//history.push("/Jugadores");
-		return(
-			<Jugador/>
-		)
-	}else if(rol == "REPRESENTANTE"){
-		//history.push("/Representante");
-		return(
-			<BrowserRouter>
-				<Switch>
-					<Route exact path="/Representante" component={Representante}/>
-				</Switch>
-			</BrowserRouter>
-		)
-	}else if(rol == "ADMIN"){
-		//history.push("/Admin");
-		return(
-			<BrowserRouter>
-				<Switch>
-					<Route exact path="/Admin" component={Admin}/>
-				</Switch>
-			</BrowserRouter>
-		)
-	}
-
-}
-
 
 if(rol ==="nada"){
 	return(
