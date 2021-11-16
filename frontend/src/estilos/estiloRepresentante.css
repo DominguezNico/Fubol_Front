@@ -1,0 +1,45 @@
+.containerrr{
+    margin-top: 50px;
+    height: 150px;
+    align-items: center;
+}
+.containerrr2{
+    margin-top: 50px;
+    height: 200px;
+}
+.containerrr3{
+    margin-top: 50px;
+    height: 300px;
+}
+.card3{
+    height: 400px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+}
+.card{
+    height: 150px;
+    border-radius: 5%;
+}
+.card2{
+    height: 300px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+}
+.cardheader{
+    height:10px;
+}
+.cardbody{
+    height: 10px;
+}
+.boton{
+    background-color: #FFC312;
+    align-self: center;
+}
+
+h4{
+    color:#FFC312
+}
+
+p{
+    color:white;
+}

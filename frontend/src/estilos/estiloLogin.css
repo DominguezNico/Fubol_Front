@@ -72,13 +72,13 @@ font-family: 'Numans', sans-serif;
     
     .login_btn{
     color: black;
-    background-color: #FFC312;
+    background-color: black;
     width: 100px;
     }
     
     .login_btn:hover{
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: #FFC312;
     }
     
     .links{

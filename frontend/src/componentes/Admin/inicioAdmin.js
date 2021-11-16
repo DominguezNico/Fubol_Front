@@ -45,8 +45,6 @@ function inicioAdmin () {
       </Navbar.Collapse>
     </Container>
   </Navbar>
-  
-  
   )
 }
 

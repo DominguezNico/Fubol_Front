@@ -51,12 +51,39 @@ function Login () {
 		await fetch(`http://localhost:8080/obtenerRolUsuario?doc=${DNI}`)
 			.then(response => response.json())
 			.then(data => setRol(data.rol));
-
-
-		
-
-		
 	}
+
+useEffect(() => {  comprobarRol()  } , [rol] );
+
+		
+
+		
+const comprobarRol =() => {
+	
+	if(rol=="JUGADOR"){
+		//<Jugador/>
+		console.log("Hola jugador")
+		//history.push("/Jugadores");
+		return(
+			<Jugador/>
+		)
+	}else if(rol == "REPRESENTANTE"){
+		//history.push("/Representante");
+		return(
+			<Representante name="rol" />
+		)
+	}else if(rol == "ADMIN"){
+		//history.push("/Admin");
+		return(
+			<BrowserRouter>
+				<Switch>
+					<Route exact path="/Admin" component={Admin}/>
+				</Switch>
+			</BrowserRouter>
+		)
+	}
+
+}
 
 
 if(rol ==="nada"){
@@ -91,7 +118,7 @@ if(rol ==="nada"){
 						<input type="checkbox"/>Recordarme
 					</div>
 					<div className="form-group">
-						<input type="Button" value="Login" className="btn float-right login_btn" onClick={comprobarUsuario}/>
+						<input type="Button" value="Login" className="btn float-right login_btn " onClick={comprobarUsuario}/>
 					</div>
 				</form>
 			</div>
@@ -116,7 +143,7 @@ if(rol ==="nada"){
 } else if(rol === "ADMIN"){
 	return(<Admin/>)
 }else if (rol === "REPRESENTANTE")
-	return(<Representante/>)
+	return(<Representante name="rol" />)
 
 }
 
