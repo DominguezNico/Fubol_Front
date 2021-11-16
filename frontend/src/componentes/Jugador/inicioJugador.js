@@ -1,35 +1,50 @@
 import React from 'react'
-import Navbar from 'react-bootstrap/Navbar';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import {Nav,Navbar,Container,NavDropdown} from 'react-bootstrap'
+import { Switch, Route, Link ,BrowserRouter as Router} from "react-router-dom";
 
-
+import avance from './campeonatos/avance.js';
+import PageNotFound from '../../paginas/PageNotFound.js';
 
 
 function inicioJugador () {
   console.log("llegue")
   return(
-  <Navbar bg="light" expand="lg">
-  <Container>
-    <Navbar.Brand href="#home">Jugador</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-        <NavDropdown title="Campeonatos" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Consultar avance del club</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Ver tabla de posiciones</NavDropdown.Item>
-        </NavDropdown>
-        <NavDropdown title="Perfil" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Modificar datos personales</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Ver mis faltas</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Ver mis goles</NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
+    <Router>
+    <div>
+    <Navbar bg="light" expand="lg">
+    <Container>
+      <Navbar.Brand href="/home">Jugador</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto">
+          <NavDropdown title="Campeonatos" id="basic-nav-dropdown">
+            <NavDropdown.Item ><Link to={"/avance"} className="nav-link">Consultar avance del club</Link></NavDropdown.Item>
+            <NavDropdown.Item href="/tabla">Ver tabla de posiciones</NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown title="Perfil" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/modificarDatos">Modificar datos personales</NavDropdown.Item>
+            <NavDropdown.Item href="/verFaltas">Ver mis faltas</NavDropdown.Item>
+            <NavDropdown.Item href="/verGoles">Ver mis goles</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+    </Navbar>
+
+    <div className="container mt-3">
+    
+      <Switch>
+        <Route exact path="/avance" component={avance} />
+        <Route component={PageNotFound} />
+       {/* {hasRole(user,['jugador']) && <Route path='/jugador' component={Jugador}/>} 
+        {hasRole(user,['admin']) && <Route path='/admin' component={Admin}/>}
+        {hasRole(user,['representante']) && <Route path='/representante' component={Representante}/>}*/}
+      </Switch>
+    </div>
+
+    </div>
+    </Router>
   )
 }
 
