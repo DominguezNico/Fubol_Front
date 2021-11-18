@@ -5,7 +5,7 @@ function Avance (){
   return(
     <div>
   
-      <h3>Avance</h3>
+      <h3>Goles</h3>
     
     </div>
   ) 
