@@ -25,7 +25,7 @@ const handleidCampeonatoChange = (e) => {
 
 
   const inscribir =  async () => {
-    fetch(` localhost:8080/inscribirClubEnCampeonato?id=${id}&idCampeonato=${idCampeonato}`, {
+    fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${id}&idCampeonato=${idCampeonato}`, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
    
@@ -62,7 +62,7 @@ const handleidCampeonatoChange = (e) => {
 
 
               <div className="form-group">
-                <input type="Button" value="crearCamp" className="btn btn-primary col-lg-5 mx-1 mb-1" onClick={inscribir}/>
+                <input type="Button" value="INCRIBIR" className="btn btn-primary col-lg-5 mx-1 mb-1" onClick={inscribir}/>
               </div>
 
           </form>
