@@ -67,6 +67,9 @@ function Login () {
 
 useEffect(() => {  comprobarRol()  } , [rol] );
 
+		
+
+		
 const comprobarRol =() => {
 	
 	if(rol=="JUGADOR"){
