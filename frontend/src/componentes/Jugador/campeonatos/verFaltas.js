@@ -1,6 +1,8 @@
 import React from 'react';
 
-class Avance extends React.Component {
+import '../estilos.css'
+
+class VerFaltas extends React.Component {
 
   constructor(props){
     super(props)
@@ -36,7 +38,7 @@ render(){
               
                  <div className="card-body text-dark">
                     
-                    <h5 className="card-title center">{name}</h5>
+                    <h5 className="card-title center" id="colorTitulo">{name}</h5>
                     <p className="card-text-right">
                       <strong>Tipo: </strong>{falta.tipo}<br/>
                       <strong>Minuto: </strong>{falta.minuto}<br/>
@@ -58,4 +60,4 @@ render(){
 }
 
 
-  export default Avance;
+  export default VerFaltas;
