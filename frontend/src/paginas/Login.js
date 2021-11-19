@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../estilos/estiloLogin.css"
 import { BsKeyFill,BsFillPersonFill} from "react-icons/bs";
-import {BrowserRouter, Route, Switch,useHistory} from "react-router-dom";
-import {createBrowserHistory} from "history";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+
 
 import Admin from '../componentes/Admin/inicioAdmin'
 import Jugador from '../componentes/Jugador/inicioJugador.js'
@@ -19,6 +19,7 @@ function Login () {
 	const [password, setPassword] = useState("");
 	const [rol, setRol] = useState("nada");
 	const [check, setCheck] = useState("");
+	const [usuario,setUsuario]=useState('');
 
   	
 	const handleDNIChange = (e) => {
@@ -30,10 +31,6 @@ function Login () {
   	};
   	
 
-
-	
-
-
 	const comprobarUsuario = async () => {
 		await fetch(`http://localhost:8080/chequearUsuarioContraseña?doc=${DNI}&contra=${password}`)
 			.then(response => response.json())
@@ -44,6 +41,7 @@ function Login () {
 
 	useEffect(() => { if(check==1){
 						getRol()
+						getUsuario()
 					} } , [check])
 
 	const getRol = async () =>{
@@ -52,38 +50,12 @@ function Login () {
 			.then(response => response.json())
 			.then(data => setRol(data.rol));
 	}
-
-useEffect(() => {  comprobarRol()  } , [rol] );
-
-		
-
-		
-const comprobarRol =() => {
 	
-	if(rol=="JUGADOR"){
-		//<Jugador/>
-		console.log("Hola jugador")
-		//history.push("/Jugadores");
-		return(
-			<Jugador/>
-		)
-	}else if(rol == "REPRESENTANTE"){
-		//history.push("/Representante");
-		return(
-			<Representante name="rol" />
-		)
-	}else if(rol == "ADMIN"){
-		//history.push("/Admin");
-		return(
-			<BrowserRouter>
-				<Switch>
-					<Route exact path="/Admin" component={Admin}/>
-				</Switch>
-			</BrowserRouter>
-		)
+	const getUsuario = async () => {
+		await fetch(`http://localhost:8080/getObjetoDNI?dni=${DNI}`)
+			.then(response => response.json())
+			.then(data => setUsuario(data));
 	}
-
-}
 
 
 if(rol ==="nada"){
@@ -138,12 +110,12 @@ if(rol ==="nada"){
 </div>
 	)
 } else if( rol==="JUGADOR"){
-	return(<Jugador/>)
+	return(<Jugador usuario={usuario}/>)
 	
 } else if(rol === "ADMIN"){
-	return(<Admin/>)
+	return(<Admin />)
 }else if (rol === "REPRESENTANTE")
-	return(<Representante name="rol" />)
+	return(<Representante  usuario={usuario} />)
 
 }
 

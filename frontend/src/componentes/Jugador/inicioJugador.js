@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Nav,Navbar,Container,NavDropdown} from 'react-bootstrap'
 import { Switch, Route, Link ,BrowserRouter as Router} from "react-router-dom";
@@ -8,12 +8,13 @@ import avance from './campeonatos/avance.js';
 import PageNotFound from '../../paginas/PageNotFound.js';
 import tablaPosicones from './campeonatos/tablaPosiciones.js';
 import modificarDatos from './campeonatos/modificarDatosPersonales.js';
-import verGoles from './campeonatos/verGoles.js';
-import verFaltas from './campeonatos/verFaltas.js';
+import VerGoles from './campeonatos/verGoles.js';
+import VerFaltas from './campeonatos/verFaltas.js';
 
 
-function inicioJugador () {
-  console.log("llegue")
+function InicioJugador ({usuario}) {
+
+
   return(
     <Router>
     <div>
@@ -45,8 +46,12 @@ function inicioJugador () {
         <Route exact path="/avance" component={avance} />
         <Route exact path="/tablaPosiciones" component={tablaPosicones} />
         <Route exact path="/modificarDatos" component={modificarDatos} />
-        <Route exact path="/verFaltas" component={verFaltas} />
-        <Route exact path="/varGoles" component={verGoles} />
+        
+        <Route exact path="/verFaltas" render={(props) => (
+          <VerFaltas {...props} usuario={usuario}/>
+        )}/>
+
+        <Route exact path="/varGoles" component={VerGoles }  />
 
         <Route component={PageNotFound} />
        {/* {hasRole(user,['jugador']) && <Route path='/jugador' component={Jugador}/>} 
@@ -60,4 +65,4 @@ function inicioJugador () {
   )
 }
 
-export default inicioJugador
+export default InicioJugador

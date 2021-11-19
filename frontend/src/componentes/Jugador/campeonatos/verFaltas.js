@@ -4,28 +4,43 @@ import '../estilos.css'
 
 class VerFaltas extends React.Component {
 
-  constructor(props){
-    super(props)
-    this.state = { 
-      faltas:[]
+    state = { 
+      usuario:{...this.props.usuario},
+      faltas:[],
+      cargando: true 
      }
-}
+
   
 
   componentDidMount(){
-    fetch('http://localhost:8080/getFaltasJugador?idJugador=17')
+    fetch(`http://localhost:8080/getFaltasJugador?idJugador=${this.state.usuario.id}`)
     .then(response => response.json())
-    .then(data => this.setState({ faltas: data}) , console.log(this.faltas))
+    .then(data => this.setState({ faltas: data, cargando:false}) , console.log(this.faltas))
     .catch(error => {
       console.log('Hay un error en la llamada');
     });
   }
 
 render(){
+  console.log('es este')
+  console.log(this.state.usuario.id)
+  if(this.state.cargando){
+    return(
+
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Faltas</h1>
+        </header>
+        <div>
+          <p>...</p>
+        </div> 
+      </div> 
+    )
+  }else{
   return(
     <div>
   
-      <h3>Faltas</h3>
+      <h3>Faltas </h3>
 
       {this.state.faltas.map((falta) => {
             const name = `${falta.jugador.apellido} ${falta.jugador.nombre}`;
@@ -56,6 +71,7 @@ render(){
     
     </div>
   )
+}
 }
 }
 

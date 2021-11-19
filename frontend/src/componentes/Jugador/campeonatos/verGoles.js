@@ -3,7 +3,8 @@ import React from 'react';
 import '../estilos.css'
 
 class VerGoles extends React.Component {
-
+  
+  
   constructor(props){
     super(props)
     this.state = { 
@@ -31,7 +32,7 @@ render(){
           <h1 className="App-title">Goles</h1>
         </header>
         <div>
-          <p>cargando...</p>
+          <p>...</p>
         </div> 
       </div> 
     )
