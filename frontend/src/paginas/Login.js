@@ -19,6 +19,7 @@ function Login () {
 	const [password, setPassword] = useState("");
 	const [rol, setRol] = useState("nada");
 	const [check, setCheck] = useState("");
+	const[usuario, setUsuario] = useState("");
 
   	
 	const handleDNIChange = (e) => {
@@ -32,7 +33,17 @@ function Login () {
 
 
 	
+	const getUsuarioJugador = async () => {
+		await fetch('http://localhost:8080//getResponsableDNI?dni=${DNI}')
+			.then(response => response.json())
+			.then(data => setUsuario(data))
+	}
 
+	const getUsuarioResponsable = async () => {
+		await fetch('http://localhost:8080//getResponsableDNI?dni=${DNI}')
+			.then(response => response.json())
+			.then(data => setUsuario(data))
+	}
 
 	const comprobarUsuario = async () => {
 		await fetch(`http://localhost:8080/chequearUsuarioContraseña?doc=${DNI}&contra=${password}`)
@@ -51,6 +62,7 @@ function Login () {
 		await fetch(`http://localhost:8080/obtenerRolUsuario?doc=${DNI}`)
 			.then(response => response.json())
 			.then(data => setRol(data.rol));
+			getUsuarioResponsable.call();
 	}
 
 useEffect(() => {  comprobarRol()  } , [rol] );
@@ -135,12 +147,14 @@ if(rol ==="nada"){
 </div>
 	)
 } else if( rol==="JUGADOR"){
-	return(<Jugador/>)
+	getUsuarioJugador.call();
+	return(<Jugador usuario />)
 	
 } else if(rol === "ADMIN"){
 	return(<Admin/>)
 }else if (rol === "REPRESENTANTE")
-	return(<Representante name="rol" />)
+	getUsuarioResponsable.call();
+	return(<Representante usuario />) //probar pasando objeto entero
 
 }
 

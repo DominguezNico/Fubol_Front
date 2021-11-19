@@ -54,7 +54,7 @@ return(
 
            <div className="container">
              <div className="row"> </div>
-             <input type="doc" className="form-control col-20" placeholder="Ingrese el documento"  onChange={ handledocChange }/>
+             <input type="doc" className="form-control col-100" placeholder="Ingrese el documento"  onChange={ handledocChange }/>
              <br/> 
              <input type="tipo" className="form-control" placeholder="Ingrese el tipo de documento"  onChange={ handletipoChange }/>
              <br/> 
