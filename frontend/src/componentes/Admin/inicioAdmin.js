@@ -21,10 +21,8 @@ import generarPartidos from './partidos/generarPartidos.js';
 import modificarFechaPartido from './partidos/modificarFechaPartido.js';
 import actualizarGoles from './partidos/actualizarGoles.js';
 import actualizarFaltas from './partidos/crearFaltaJugador.js';
-import crearEstadisticasClub from './partidos/crearEstadisticasClub.js';
 
-import crearPlanilla from './planilla/crearPlanilla.js';
-import modificarPlanilla from './planilla/modificarPlanilla.js';
+
 import verPlanillas from './planilla/verPlanillas.js';
 
 
@@ -58,12 +56,10 @@ function InicioAdmin () {
               <NavDropdown.Item> <Link to={"/ModificarFechaPartido"} className="nav-link">Modificar fecha partido</Link> </NavDropdown.Item>
               <NavDropdown.Item> <Link to={"/ActualuzarGoles"} className="nav-link">Actualizar goles</Link> </NavDropdown.Item>
               <NavDropdown.Item> <Link to={"/axtualizarFaltas"} className="nav-link">Actualizar faltas</Link> </NavDropdown.Item>
-              <NavDropdown.Item> <Link to={"/crearEstadisticasClub"} className="nav-link">Crear estadísticas club</Link> </NavDropdown.Item>
+             
             </NavDropdown>
 
             <NavDropdown title="Planilla" id="basic-nav-dropdown">
-              <NavDropdown.Item> <Link to={"/crearPlanilla"} className="nav-link">Crear planilla</Link> </NavDropdown.Item>
-              <NavDropdown.Item> <Link to={"/modificarPlanilla"} className="nav-link">Modificar planilla</Link> </NavDropdown.Item>
               <NavDropdown.Item> <Link to={"/verPlanillas"} className="nav-link">Ver planillas</Link> </NavDropdown.Item>
             </NavDropdown>
 
@@ -89,10 +85,7 @@ function InicioAdmin () {
         <Route exact path="/ModificarFechaPartido" component={modificarFechaPartido}/>
         <Route exact path="/ActualuzarGoles" component={actualizarGoles}/>
         <Route exact path="/axtualizarFaltas" component={actualizarFaltas}/>
-        <Route exact path="/crearEstadisticasClub" component={crearEstadisticasClub}/>
-
-        <Route exact path="/crearPlanilla" component={crearPlanilla}/>
-        <Route exact path="/modificarPlanilla" component={modificarPlanilla}/>
+     
         <Route exact path="/verPlanillas" component={verPlanillas}/>
       
         <Route component={pagenotfound}/>

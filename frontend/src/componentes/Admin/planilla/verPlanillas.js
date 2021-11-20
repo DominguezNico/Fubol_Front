@@ -4,7 +4,7 @@ import React from 'react'
 function verPlanillas (){
   return(
     <div>
-      <h3>ver Planillas</h3>
+      <h3>MOSTRAR LA LISTA DE PARTIDOS? O CHAU</h3>
     </div>
   ) 
 }
