@@ -51,44 +51,31 @@ const handlesetEstadoChange = (e) => {
   
 
     return(
-      <div className="container">
+      <div className="containerrr3">
        <div className="d-flex justify-content-center h-100">
-        <div className="card">
+        <div className="card3">
           <div className="card-header">
           <div className="card-body">
             <form>
 
-              <div className="input-group form-group">
-                <div className="input-group-prepend"></div>
-                <input type="text" id="doc" className="form-control" placeholder="descripcion"  onChange={handledescripIChange} />
+              <div className="container">
+              <div className="row"> </div>
+                <input type="text" id="doc" className="form-control col-20" placeholder="Descripcion"  onChange={handledescripIChange} />
+                <br/>
+                <input type="fechaInicio" className="form-control col-20" placeholder="Fecha Inicio"  onChange={handlefechaInicioChange}/>
+                <br/>
+                <input type="fechaFin" className="form-control col-20" placeholder="Fecha Fin"  onChange={handledesetFechaFinChange}/>
+                <br/>
+                <input type="estado" className="form-control col-20" placeholder="Estado"  onChange={handlesetEstadoChange}/>
+                <br/>
               </div>
 
 
-
-
-              <div className="input-group form-group">
-                <div className="input-group-prepend"></div>
-                <input type="fechaInicio" className="form-control" placeholder="fechaInicio"  onChange={handlefechaInicioChange}/>
-              </div>
-
-
-              <div className="input-group form-group">
-                <div className="input-group-prepend"> </div>
-                <input type="fechaFin" className="form-control" placeholder="fechaFin"  onChange={handledesetFechaFinChange}/>
-              </div>
-
-
-
-              <div className="input-group form-group">
-                <div className="input-group-prepend"> </div>
-                <input type="estado" className="form-control" placeholder="estado"  onChange={handlesetEstadoChange}/>
-              </div>
-
-
-
-              <div className="form-group">
-                <input type="Button" value="crearCamp" className="btn btn-primary col-lg-5 mx-1 mb-1" onClick={crearCamp}/>
-              </div>
+            <br/> 
+           <br/> 
+           <div className="form-group">
+                <input type="Button" value="crearCamp" className="boton" onClick={crearCamp}/>
+            </div>
 
           </form>
 

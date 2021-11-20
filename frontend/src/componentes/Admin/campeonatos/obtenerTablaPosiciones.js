@@ -6,30 +6,25 @@ import {createBrowserHistory} from "history";
 
 function ObtenerTablaPosiciones () {
 
- const [posiciones,setPosiciones]=useState([]);
- const [id,setId]=useState("");
+  const [id,setId]=useState("");
+  const [items,setItems]=useState([])
+   
 
- 
-const handleIdChange = (e) => {
-  setId(e.target.value);
-  };
-
-  const handleChange = (e) => {
-    setPosiciones(e.target.value);
-    };
-
+    
   const obtenerPosiciones =  async () => {
      await fetch(`http://localhost:8080/obtenerTablaPosicionCampeonato?idCampeonato=${id}`)
-     .then(async response => {
-         const data=await response.json();
-        
+     .then(response => response.json())
+     .then(data => setItems([data]))
+     .then(console.log("ITEMS "+items));
         
 
-     })
+  
      
   };
 
-
+  const handleidChange =  (e) => {
+     setId(e.target.value);
+    };
 
 
   
@@ -44,11 +39,10 @@ const handleIdChange = (e) => {
 
 
 
-              <div className="input-group form-group">
+            <div className="input-group form-group">
                 <div className="input-group-prepend"> </div>
-                <input type="id" className="form-control" placeholder="id"  onChange={ handleIdChange }/>
+                <input type="id" className="form-control" placeholder="id"  onChange={ handleidChange }/>
               </div>
-
 
 
               <div className="form-group">
@@ -60,18 +54,19 @@ const handleIdChange = (e) => {
 
           </form>
             </div>
-           <div> POSICIONES</div>
-           <table>
-              <thead>
-                <tr>
-                  <th>id</th>
-                </tr>
-              </thead>
-              <body>
 
-               
-              </body>
-            </table>
+
+           <div> POSICIONES</div>
+           <div className = "App">
+            <h1> TABLAS </h1>  {
+                items.map((item) => ( 
+                <ol key = {item.cantidadganados } >
+                   idTabla: {item.cantidadganados } 
+                   
+                    </ol>
+                ))
+            }
+        </div>
 
            </div>
 

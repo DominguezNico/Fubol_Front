@@ -38,31 +38,24 @@ const handleidCampeonatoChange = (e) => {
     return(
       <div className="container">
        <div className="d-flex justify-content-center h-100">
-        <div className="card">
+        <div className="card3">
           <div className="card-header">
           <div className="card-body">
             <form>
 
-              <div className="input-group form-group">
-                <div className="input-group-prepend"></div>
-                <input type="text" id="doc" className="form-control" placeholder="id"  onChange={handledidChange} />
-              </div>
-
-
-
-
-              <div className="input-group form-group">
-                <div className="input-group-prepend"></div>
+            <div className="container">
+             <div className="row"> </div>
+                <input type="ID" id="doc" className="form-control" placeholder="ID"  onChange={handledidChange} />
+                <br/>
                 <input type="idCampeonato" className="form-control" placeholder="idCampeonato"  onChange={handleidCampeonatoChange}/>
+                <br/>
               </div>
 
 
-            
-
-
-
-              <div className="form-group">
-                <input type="Button" value="INCRIBIR" className="btn btn-primary col-lg-5 mx-1 mb-1" onClick={inscribir}/>
+            <br/> 
+           <br/> 
+           <div className="form-group">
+                <input type="Button" value="INCRIBIR" className="boton" onClick={inscribir}/>
               </div>
 
           </form>
