@@ -46,7 +46,7 @@ function InicioAdmin () {
             <NavDropdown.Item > <Link to={"/inscribirClub"} className="nav-link"> inscribirClub</Link> </NavDropdown.Item>
             <NavDropdown.Item > <Link to={"/obtenerEstado"} className="nav-link"> obtenerEstado</Link> </NavDropdown.Item>
             <NavDropdown.Item > <Link to={"/obtenerTablaPosiciones"} className="nav-link"> obtenerTablaPosiciones</Link> </NavDropdown.Item>
-            <NavDropdown.Item > <Link to={"/actualizarTablaPosiciones"} className="nav-link"> actualizarTablaPosiciones</Link> </NavDropdown.Item>
+            
             </NavDropdown>
 
             <NavDropdown title="Club" id="basic-nav-dropdown">
@@ -81,7 +81,7 @@ function InicioAdmin () {
         <Route exact path="/inscribirClub" component={inscribirClub}/>
         <Route exact path="/obtenerEstado" component={obtenerEstado}/>
         <Route exact path="/obtenerTablaPosiciones" component={obtenerTablaPosiciones}/>
-        <Route exact path="/actualizarTablaPosiciones" component={actualizarTablaPosiciones}/>
+       
 
         <Route exact path="/agregarRepresentante" component={AgregarRepresentante}/>
 

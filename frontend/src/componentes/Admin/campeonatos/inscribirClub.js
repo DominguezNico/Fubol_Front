@@ -11,7 +11,7 @@ function IncribirClub () {
   const [idCampeonato,setidCampeonato]=useState("");
 
 
-
+  
 
   const handledidChange = (e) => {
     setId(e.target.value);
@@ -38,16 +38,16 @@ const handleidCampeonatoChange = (e) => {
     return(
       <div className="container">
        <div className="d-flex justify-content-center h-100">
-        <div className="card3">
+        <div className="card2">
           <div className="card-header">
           <div className="card-body">
             <form>
 
             <div className="container">
              <div className="row"> </div>
-                <input type="ID" id="doc" className="form-control" placeholder="ID"  onChange={handledidChange} />
+                <input type="ID" id="doc" className="form-control" placeholder="Id Club"  onChange={handledidChange} />
                 <br/>
-                <input type="idCampeonato" className="form-control" placeholder="idCampeonato"  onChange={handleidCampeonatoChange}/>
+                <input type="idCampeonato" className="form-control" placeholder="Id Campeonato"  onChange={handleidCampeonatoChange}/>
                 <br/>
               </div>
 

@@ -12,13 +12,14 @@ function CrearCampeonato () {
     fechaInicio:"",
     fechaFin:"",
     estado:"",
+    pendiente:"",
   };
 
   const [descrip,setDescrip]=useState(inicialEstadoParams);
   const [fechaInicio,setfechaInicio]=useState(inicialEstadoParams);
   const [fechaFin,setFechaFin]=useState(inicialEstadoParams);
   const [estado,setEstado]=useState(inicialEstadoParams);
-
+  const [pendiente,setPendiente]=useState(false);
 
 
   const handledescripIChange = (e) => {
@@ -39,14 +40,21 @@ const handlesetEstadoChange = (e) => {
 
 
 
-  const crearCamp =  async () => {
-    fetch(`http://localhost:8080/crearCampeonato?descripcion=${descrip}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&estado=${estado}`, {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
-   
-  })
-    
+  const crearCamp =   () => {
+
+    setPendiente(true);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({ })
   };
+
+    fetch(`http://localhost:8080/crearCampeonato?descripcion=${descrip}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&estado=${estado}`,requestOptions)
+    .then(()=>{setPendiente(false)}
+    )
+    
+  }
 
   
 
@@ -74,7 +82,10 @@ const handlesetEstadoChange = (e) => {
             <br/> 
            <br/> 
            <div className="form-group">
-                <input type="Button" value="crearCamp" className="boton" onClick={crearCamp}/>
+           {!pendiente && <input type="Button" value="Crear Campeonato" className="boton" onClick={crearCamp} />}
+             {pendiente && <input type="Button" value="Creando Campeonato..." className="boton" onClick={crearCamp} />}
+             
+            
             </div>
 
           </form>
