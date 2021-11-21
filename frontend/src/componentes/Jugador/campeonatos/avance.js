@@ -16,27 +16,8 @@ function Avance (props){
       .then(response =>response.json())
       .then(response => {
 
-        console.log(response)
-
         setDatos(response)
 
-        /*
-        setDatos({
-          nombreClub: response[0].c.nombre,  
-          camp: response[0].camp,  
-          cantidadJugados: response[0].cantidadJugados,  
-          cantidadempatados: response[0].cantidadempatados,  
-          cantidadganados: response[0].cantidadganados,  
-          cantidadperdidos: response[0].cantidadperdidos,   
-          diferenciaGoles: response[0].diferenciaGoles,   
-          golesContra: response[0].golesContra,   
-          golesFavor: response[0].golesFavor,    
-          promedio: response[0].promedio,   
-          puntos: response[0].puntos, 
-
-          
-        })*/
-       
       })
   
   }

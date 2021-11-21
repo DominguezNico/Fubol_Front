@@ -11,6 +11,8 @@ import Representante from '../componentes/Representante/inicioRepr.js'
 import Registro from './registro.js'
 import Home from "../componentes/Jugador/homeJugador";
 
+import './EstiloPagina/estiloInicio.css'
+
 
 
 function Login () {
@@ -66,6 +68,7 @@ function Login () {
 	}
 if(rol ==="nada"){
 	return(
+		
 	<div className="container">
 	<div className="d-flex justify-content-center h-100">
 		<div className="card">
@@ -111,6 +114,7 @@ if(rol ==="nada"){
 
 
 </div>
+	 
 	)
 } else if( rol==="JUGADOR"){
 	return(<Jugador usuario={usuario}/>)

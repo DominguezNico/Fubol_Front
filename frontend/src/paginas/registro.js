@@ -1,9 +1,17 @@
 import React from 'react'
 
 const Registro = () => (
-  <section className="Registro">
-    <h3>Home, sweet Home</h3>
-  </section>
+  <div class="login-page">
+		<div class="form">
+		  <form class="register-form">
+			<input type="text" placeholder="name"/>
+			<input type="password" placeholder="password"/>
+			<input type="text" placeholder="email address"/>
+			<button>create</button>
+			<p class="message">Already registered? <a href="#">Sign In</a></p>
+		  </form>
+		</div>
+	  </div>
 )
 
 export default Registro

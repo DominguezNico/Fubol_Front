@@ -108,7 +108,7 @@ function ModificarDatosPersonales (props){
             
               <h2 className="colorTitulo">{datosPersonales.nombre} {datosPersonales.apellido}</h2>
 
-              <p className="colorSubtitulo"><strong>Direccion:</strong> {mostarDirec}</p>
+              <p className="colorSubtitulo"><strong>Dirección:</strong> {mostarDirec}</p>
               <br/>
               <p className="colorSubtitulo"><strong>Teléfono:</strong>{mostarTel}</p>
               <br/>

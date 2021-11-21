@@ -26,7 +26,7 @@ function InicioJugador ({usuario}) {
         <Nav className="me-auto">
           <NavDropdown title="Campeonatos" id="basic-nav-dropdown">
             <NavDropdown.Item ><Link to={{pathname:"/avance", state:usuario}} className="nav-link">Consultar avance del club</Link></NavDropdown.Item>
-            <NavDropdown.Item ><Link to={"/tablaPosiciones"} className="nav-link">Ver tabla de posiciones </Link></NavDropdown.Item>
+            <NavDropdown.Item ><Link to={{pathname:"/tablaPosiciones", state:usuario}} className="nav-link">Ver tabla de posiciones </Link></NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="Perfil" id="basic-nav-dropdown">
             <NavDropdown.Item><Link to={{pathname:"/modificarDatos", state:usuario}} className="nav-link">Modificar datos personales </Link></NavDropdown.Item>
