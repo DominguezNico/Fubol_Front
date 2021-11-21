@@ -9,7 +9,7 @@ import Admin from '../componentes/Admin/inicioAdmin'
 import Jugador from '../componentes/Jugador/inicioJugador.js'
 import Representante from '../componentes/Representante/inicioRepr.js'
 import Registro from './registro.js'
-import Home from "../componentes/Jugador/campeonatos/homeJugador";
+import Home from "../componentes/Jugador/homeJugador";
 
 
 
