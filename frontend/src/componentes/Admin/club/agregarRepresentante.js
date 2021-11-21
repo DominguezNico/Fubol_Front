@@ -26,7 +26,7 @@ function AgregarRepresentante (){
     
     
     const handleIdChange = (e) => {
-        console.log(e.target.value)
+        console.log("VALOR "+e.target.value)
         setBuscarClubes(e.target.value);
     }
 

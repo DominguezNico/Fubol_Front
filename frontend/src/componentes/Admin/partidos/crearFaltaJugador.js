@@ -11,6 +11,8 @@ function CrearFaltaJugador () {
     idPartido:"",
     idJugador:"",
     idCampeonato:"",
+
+    
     minuto:"",
     tipo:"",
     pendiente:"",

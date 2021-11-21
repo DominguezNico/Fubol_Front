@@ -7,21 +7,25 @@ import {createBrowserHistory} from "history";
 
 function ActualuzarGoles () {
 
-  const inicialEstadoParams ={
-    idPartido:"",
-   goles:"",
-   pendiente:"",
-  };
-
-  const [idPartido,setIdPartido]=useState(inicialEstadoParams);
-  const [goles,setGoles]=useState(inicialEstadoParams);
+  const [buscarPartidos,setBuscarPartidos]=useState('');
+  const [partidos,setPartidos]=useState([]);
+  const [goles,setGoles]=useState('');
   const [pendiente,setPendiente]=useState(false);
 
 
 
-  const handledIdPartidoChange = (e) => {
-    setIdPartido(e.target.value);
-  };
+
+  useEffect(() => {
+    obtenerPartidos();
+  },[]);
+
+
+
+  const handleIdChange = (e) => {
+    console.log("VALOR "+e.target.value)
+    setBuscarPartidos(e.target.value);
+}
+
 
   const handleGolesChange = (e) => {
     setGoles(e.target.value);
@@ -29,21 +33,54 @@ function ActualuzarGoles () {
 
     
 
+    const  obtenerPartidos =  async () =>{
+      await fetch('http://localhost:8080/getPartidos')
+       .then(response =>response.json())
+       .then(response => {
+ 
+         let nombres=[]
+ 
+ 
+         response.map(datos => {
+           nombres.push([datos.nroFecha,datos.id])
+         })
+ 
+         
+         setPartidos([["Partidos","IdPartidos"]].concat(nombres));
+ 
+ 
+       }).catch(e => {
+         console.log(e);
+       })
+     }
+
+
+
+
+
 
   const cambiarGol =   () => {
 
-    setPendiente(true);
+    if(buscarPartidos!="IdPartidos"){
+      setPendiente(true);
+      
 
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({ })
-  };
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ })
+      };
 
-    fetch(`http://localhost:8080/actualizarGolesLocal?idPartido=${idPartido}&goles=${goles}`,requestOptions)
-    .then(()=>{setPendiente(false)}
-    )
+      console.log(requestOptions)
+
+      fetch(`http://localhost:8080/actualizarGolesLocal?idPartido=${buscarPartidos}&goles=${goles}`, requestOptions )
+      .then( () => {
+          console.log('Se agrego el responsable');
+          setPendiente(false)
+      })
+    }
     
+
   }
 
   
@@ -58,22 +95,32 @@ function ActualuzarGoles () {
 
               <div className="container">
               <div className="row"> </div>
-                <input type="text" id="doc" className="form-control col-20" placeholder="Id Partido"  onChange={handledIdPartidoChange} />
-                <br/>
                 <input type="goles" className="form-control col-20" placeholder="Goles"  onChange={handleGolesChange}/>
                 <br/>
-        
               </div>
 
-
-            <br/> 
-           <br/> 
-           <div className="form-group">
-           {!pendiente && <input type="Button" value="Actualizar Goles" className="boton" onClick={cambiarGol} />}
-             {pendiente && <input type="Button" value="Actualizando Goles..." className="boton" onClick={cambiarGol} />}
              
-            
-            </div>
+
+              <div className="dropdown">
+                       <select onChange={handleIdChange}>
+                          {partidos.map(partido => {
+                            return (
+                              <option value={partido[1]}> {partido[0]} </option>
+                            )
+                          })}
+                        </select>
+              
+              </div> 
+               <br/> 
+
+             <br/> 
+             <br/> 
+             <div className="form-group centrar">
+               {!pendiente && <input type="Button" value="Actualizar Goles " className="boton" onClick={cambiarGol} />}
+               {pendiente && <input type="Button" value="Actualizando ..." className="boton" onClick={cambiarGol} />}
+               
+                      
+             </div>
 
           </form>
 

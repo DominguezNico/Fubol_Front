@@ -42,7 +42,7 @@ function Avance (props){
   }
   
   return(    
-    <div className="fondo">
+    <div className="container">
 
       {datos.map((dato) => {
         return (
