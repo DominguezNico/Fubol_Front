@@ -25,7 +25,7 @@ function InicioJugador ({usuario}) {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <NavDropdown title="Campeonatos" id="basic-nav-dropdown">
-            <NavDropdown.Item ><Link to={"/avance"} className="nav-link">Consultar avance del club</Link></NavDropdown.Item>
+            <NavDropdown.Item ><Link to={{pathname:"/avance", state:usuario}} className="nav-link">Consultar avance del club</Link></NavDropdown.Item>
             <NavDropdown.Item ><Link to={"/tablaPosiciones"} className="nav-link">Ver tabla de posiciones </Link></NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="Perfil" id="basic-nav-dropdown">
