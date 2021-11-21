@@ -1,3 +1,20 @@
-#colorTitulo{
+.colorTitulo{
     color: whitesmoke;
+}
+
+.colorSubtitulo{
+    color: wheat;
+    width:20px;
+    font-size: 130%;
+    display: inline;
+
+}
+
+
+
+.cardPerfil{
+    height: 500px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+    width: 400px;
 }

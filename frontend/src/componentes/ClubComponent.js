@@ -49,19 +49,8 @@ class ClubComponent extends React.Component{
       .then(response => response.json())
       .then(clubJSON => this.setState({club:clubJSON}));
 
-       /*
-     await axios.get(`http://localhost:8080/getClub?idClub=${id}`)
-      .then(res =>   this.setState({club:res.data}))
-  .catch((error) => {
-    console.log(error)})
-
-*/
     }
 
-
-   /* crearClub=async (id,nombre,direccion) =>{
-      await axios.post(`http://localhost:8080/addClub?idClub=${id}&nombreClub=${nombre}&DireccionClub=${direccion}`);
-    }*/
 
     render(){
 

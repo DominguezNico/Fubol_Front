@@ -40,7 +40,7 @@ const handlesetEstadoChange = (e) => {
 
 
 
-  const crearCamp =   () => {
+  const crearCamp = () => {
 
     setPendiente(true);
 
