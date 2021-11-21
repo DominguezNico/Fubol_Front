@@ -9,6 +9,7 @@ import Admin from '../componentes/Admin/inicioAdmin'
 import Jugador from '../componentes/Jugador/inicioJugador.js'
 import Representante from '../componentes/Representante/inicioRepr.js'
 import Registro from './registro.js'
+import Home from "../componentes/Jugador/campeonatos/homeJugador";
 
 
 
@@ -60,7 +61,9 @@ function Login () {
 			.then(data => setUsuario(data));
 	}
 
-
+	const registrar=async()=>{
+		return(<Home></Home>)
+	}
 if(rol ==="nada"){
 	return(
 	<div className="container">
@@ -98,7 +101,7 @@ if(rol ==="nada"){
 				</form>
 			</div>
 			<div className="card-footer">
-				No tienes cuenta?	<a href="/Home">Registrate</a> 
+				No tienes cuenta?	<input type="Button" value="Registro" className="btn float-right login_btn " onClick={registrar}/>
 			
 			</div>
 
