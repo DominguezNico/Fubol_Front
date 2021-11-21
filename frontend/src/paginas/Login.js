@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "../estilos/estiloLogin.css"
 import { BsKeyFill,BsFillPersonFill} from "react-icons/bs";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch,Link} from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 
 
 import Admin from '../componentes/Admin/inicioAdmin'
 import Jugador from '../componentes/Jugador/inicioJugador.js'
 import Representante from '../componentes/Representante/inicioRepr.js'
-
+import Registro from './registro.js'
 
 
 
 function Login () {
 
-	  
+ const 	routeChange =()=> { let path = `/registro`; this.props.history.push(path); }
+
+	
 	
 	const [DNI, setDNI] = useState("");
 	const [password, setPassword] = useState("");
@@ -60,7 +63,7 @@ function Login () {
 
 if(rol ==="nada"){
 	return(
-		<div className="container">
+	<div className="container">
 	<div className="d-flex justify-content-center h-100">
 		<div className="card">
 			<div className="card-header">
@@ -77,7 +80,7 @@ if(rol ==="nada"){
 						<div className="input-group-prepend">
 							<span className="input-group-text"><BsFillPersonFill/></span>
 						</div>
-						<input type="text" id="doc" className="form-control" placeholder="Docomento"  onChange={handleDNIChange} />
+						<input type="text" id="doc" className="form-control" placeholder="Documento"  onChange={handleDNIChange} />
 						
 					</div>
 					<div className="input-group form-group">
@@ -95,13 +98,10 @@ if(rol ==="nada"){
 				</form>
 			</div>
 			<div className="card-footer">
-				<div className="d-flex justify-content-center links">
-					No tienes cuenta?<a href="#">Registrate</a>
-				</div>
-				<div className="d-flex justify-content-center">
-					<a href="#">Olvidaste la contraseña?</a>
-				</div>
+				No tienes cuenta?	<a href="/Home">Registrate</a> 
+			
 			</div>
+
 		</div>
 	</div>
 	

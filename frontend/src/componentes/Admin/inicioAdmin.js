@@ -39,7 +39,7 @@ function InicioAdmin () {
           <Nav className="me-auto">
             <NavDropdown title="Campeonatos" id="basic-nav-dropdown">
             <NavDropdown.Item > <Link to={"/crearCampeonato"} className="nav-link"> Crear campeonato</Link> </NavDropdown.Item>
-            <NavDropdown.Item > <Link to={"/crearEstadisticas"} className="nav-link"> crear Estadisticas</Link> </NavDropdown.Item>
+            <NavDropdown.Item > <Link to={"/crearEstadisticas"} className="nav-link">  Estadisticas</Link> </NavDropdown.Item>
             <NavDropdown.Item > <Link to={"/crearTablaPosiciones"} className="nav-link"> Crear TablaPosiciones</Link> </NavDropdown.Item>
             <NavDropdown.Item > <Link to={"/inscribirClub"} className="nav-link"> inscribirClub</Link> </NavDropdown.Item>
             <NavDropdown.Item > <Link to={"/obtenerEstado"} className="nav-link"> obtenerEstado</Link> </NavDropdown.Item>

@@ -1,11 +1,11 @@
 import React from "react";
 
-function obtenerTablaPosiciones(){
+function ObtenerTablaPosiciones(){
 return(
     <div>
-        <h1>OBTENER TABLA</h1>
+        <h1>OBTENER TABLAS POSICIONES CON PARAMETRO ID CAMPEONATO </h1>
     </div>
 )
 }
 
-export default obtenerTablaPosiciones
+export default ObtenerTablaPosiciones

@@ -56,7 +56,7 @@ const handleidCampeonatoChange = (e) => {
            <br/> 
            <div className="form-group">
                 <input type="Button" value="INCRIBIR" className="boton" onClick={inscribir}/>
-              </div>
+            </div>
 
           </form>
 
