@@ -7,6 +7,8 @@ function Avance (props){
     cargarAlPrincipio();
   },[]);
 
+
+  console.log(props.location.state)
   const [datos,setDatos]=useState([])
 
   const cargarAlPrincipio = async () =>{
@@ -26,6 +28,8 @@ function Avance (props){
     <div className="container">
 
       {datos.map((dato) => {
+        { console.log("DATO")}
+        { console.log(dato)}
         return (
           <div >
             <div className="d-flex justify-content-center h-100">
@@ -34,9 +38,7 @@ function Avance (props){
                   <div className="card-body">
                     <div className="container">
 
-                      <h2 className="colorTitulo centrar">{dato.nombreClub}</h2>
-
-                      <p className="colorSubtitulo"><strong>Campeonato:</strong> {dato.camp}</p>
+                      <p className="colorSubtitulo"><strong>Campeonato:</strong> {dato.camp.descripcion}</p>
                       <br/>
                       <p className="colorSubtitulo"><strong>Cantidad de partidos jugados:</strong> {dato.cantidadJugados}</p>
                       <br/>
