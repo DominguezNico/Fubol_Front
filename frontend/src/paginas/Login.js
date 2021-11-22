@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../estilos/estiloLogin.css"
 import { BsKeyFill,BsFillPersonFill} from "react-icons/bs";
-import {BrowserRouter as Router, Route, Switch,Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import { NavLink } from 'react-router-dom'
 
 
@@ -11,13 +11,11 @@ import Representante from '../componentes/Representante/inicioRepr.js'
 import Registro from './registro.js'
 import Home from "../componentes/Jugador/homeJugador";
 
+import './EstiloPagina/estiloInicio.css'
 
 
-function Login () {
 
- const 	routeChange =()=> { let path = `/registro`; this.props.history.push(path); }
-
-	
+function Login ()  {	
 	
 	const [DNI, setDNI] = useState("");
 	const [password, setPassword] = useState("");
@@ -64,53 +62,23 @@ function Login () {
 	const registrar=async()=>{
 		return(<Home></Home>)
 	}
+console.log(rol)
 if(rol ==="nada"){
 	return(
-	<div className="container">
-	<div className="d-flex justify-content-center h-100">
-		<div className="card">
-			<div className="card-header">
-				<h3>Iniciar sesion</h3>
-				<div className="d-flex justify-content-end social_icon">
-					<span><i className="fab fa-facebook-square"></i></span>
-					<span><i className="fab fa-google-plus-square"></i></span>
-					<span><i className="fab fa-twitter-square"></i></span>
-				</div>
-			</div>
-			<div className="card-body">
-				<form>
-					<div className="input-group form-group">
-						<div className="input-group-prepend">
-							<span className="input-group-text"><BsFillPersonFill/></span>
-						</div>
-						<input type="text" id="doc" className="form-control" placeholder="Documento"  onChange={handleDNIChange} />
-						
-					</div>
-					<div className="input-group form-group">
-						<div className="input-group-prepend">
-							<span className="input-group-text"><BsKeyFill/></span>
-						</div>
-						<input type="contraseña" className="form-control" placeholder="Contraseña"  onChange={handlePasswordChange}/>
-					</div>
-					<div className="row align-items-center remember">
-						<input type="checkbox"/>Recordarme
-					</div>
-					<div className="form-group">
-						<input type="Button" value="Login" className="btn float-right login_btn " onClick={comprobarUsuario}/>
-					</div>
-				</form>
-			</div>
-			<div className="card-footer">
-				No tienes cuenta?	<input type="Button" value="Registro" className="btn float-right login_btn " onClick={registrar}/>
-			
-			</div>
-
+		
+		<div class="login-page">
+		<div class="form">
+		  <div class="login-form">
+			<input type="text" placeholder="Documento" value={DNI} onChange={handleDNIChange}/>
+			<input type="password" placeholder="Contraseña" value={password}  onChange={handlePasswordChange}/>
+			<button onClick={comprobarUsuario}>Iniciar sesion</button>
+			<p class="message">No estas registrado? <a  href="#"><Link to={"/Registro"} className="nav-link">Registrate </Link></a></p>
+		  </div>
 		</div>
-	</div>
-	
-
-
-</div>
+	  </div>
+	  
+	  
+	  
 	)
 } else if( rol==="JUGADOR"){
 	return(<Jugador usuario={usuario}/>)
