@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
-import getJugClub from './Jugadores/getJugClub'
+import GetJugClub from './Jugadores/getJugClub'
 import registrar from './Jugadores/registrar'
 import eliminar from './Jugadores/eliminar'
 import getJugId from './Jugadores/getJugId'
@@ -37,21 +37,21 @@ function InicioRepr ({usuario}) {
 <div> 
   <Navbar bg="light" expand="lg">
   <Container>
-    <Navbar.Brand> <Link to={"/"} className="nav-link">Representante</Link></Navbar.Brand>
+    <Navbar.Brand> <Link to={{pathname:"/", state:usuario}} className="nav-link">Representante</Link></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
 
         <NavDropdown title="Jugadores" id="basic-nav-dropdown">
-          <NavDropdown.Item > <Link to={"/registrar" }className="nav-link"> Registrar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/registrar", state:usuario}}className="nav-link"> Registrar jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/eliminar"}className="nav-link"> Eliminar jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugClub"}className="nav-link"> Obtener jugadores del club</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugId"}className="nav-link"> Obtener jugador por id</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/habilitar"}className="nav-link"> habilitar jugador</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/deshabilitar"}className="nav-link"> deshabilitar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={"/habilitar"}className="nav-link"> Habilitar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={"/deshabilitar"}className="nav-link"> Deshabilitar jugador</Link> </NavDropdown.Item>
        </NavDropdown>
 
-        <NavDropdown title="club" id="basic-nav-dropdown">
+        <NavDropdown title="Club" id="basic-nav-dropdown">
           <NavDropdown.Item > <Link to={"/inscribirClub"}className="nav-link"> Inscribir club</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/cambiarDireccion"}className="nav-link"> Cambiar direccion</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/verAvance"}className="nav-link"> Ver avance en Campeonatos</Link> </NavDropdown.Item>
@@ -60,7 +60,7 @@ function InicioRepr ({usuario}) {
         
         </NavDropdown>
 
-        <NavDropdown title="partidos" id="basic-nav-dropdown">
+        <NavDropdown title="Partidos" id="basic-nav-dropdown">
         <NavDropdown.Item > <Link to={"/mostrarJugadores"}className="nav-link"> Mostrar Jugadores </Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/agregarJugador"}className="nav-link"> Agregar Jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/eliminarJugador"}className="nav-link"> Eliminar Jugador</Link> </NavDropdown.Item>
@@ -76,7 +76,7 @@ function InicioRepr ({usuario}) {
 <Switch>
   <Route exact path="/" component={homeRepresentante}/>
 
-	  <Route exact path="/getJugClub" component={getJugClub}/>
+	  <Route exact path="/getJugClub" render={(props) => (<GetJugClub {...props} usuario={usuario}/>)}/>
     <Route exact path="/registrar" component={registrar}/>
     <Route exact path="/eliminar" component={eliminar}/>
     <Route exact path="/getJugId" component={getJugId}/>

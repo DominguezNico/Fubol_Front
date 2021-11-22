@@ -1,11 +1,14 @@
 import React from "react";
-
-function homeRepresentate(){
+import Leon from "../../estilos/leon.png"
+import "../../estilos/estiloRepresentante.css"
+function HomeRepresentate(props){
+console.log(props.location.state)
 return(
     <div>
-        <h1>HOME REPRESENTANTE</h1>
+        <h1 className="bienvenido"><b>¡Bienvenido! </b></h1>
+        <img className="Leon" src={Leon} height="500" alt="Its getting bigger!" />
     </div>
 )
 }
 
-export default homeRepresentate
+export default HomeRepresentate
