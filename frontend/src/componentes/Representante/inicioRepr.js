@@ -12,8 +12,7 @@ import getJugId from './Jugadores/getJugId'
 import habilitar from './Jugadores/habilitar'
 import pagenotfound from '../../paginas/PageNotFound.js'
 import homeRepresentante from './homeRepresentante';
-
-
+import deshabilitar from './Jugadores/deshabilitar'
 
 import cambiarDireccion from './club/cambiarDireccion';
 import inscribirClub from './club/inscribirClub';
@@ -28,6 +27,7 @@ import mostrarJugadores from './partidos/mostrarJugadores';
 import verPlanilla from './partidos/verPlanilla';
 
 import '../../estilos/estiloLogin.css'
+import Deshabilitar from './Jugadores/deshabilitar';
 
 
 
@@ -47,8 +47,8 @@ function InicioRepr ({usuario}) {
           <NavDropdown.Item > <Link to={"/eliminar"}className="nav-link"> Eliminar jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugClub"}className="nav-link"> Obtener jugadores del club</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugId"}className="nav-link"> Obtener jugador por id</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/habilitar"}className="nav-link"> habilitar jugador</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/deshabilitar"}className="nav-link"> deshabilitar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/habilitar",state:usuario}} className="nav-link"> habilitar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/deshabilitar",state:usuario}} className="nav-link"> deshabilitar jugador</Link> </NavDropdown.Item>
        </NavDropdown>
 
         <NavDropdown title="club" id="basic-nav-dropdown">
@@ -81,7 +81,8 @@ function InicioRepr ({usuario}) {
     <Route exact path="/eliminar" component={eliminar}/>
     <Route exact path="/getJugId" component={getJugId}/>
     <Route exact path="/habilitar" component={habilitar}/>
-    <Route exact path="/deshabilitar" component={habilitar}/>
+    <Route exact path="/deshabilitar" component={deshabilitar}/>
+   
 
     <Route exact path="/inscribirClub" component={inscribirClub}/>
     <Route exact path="/cambiarDireccion" component={cambiarDireccion}/>

@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 
 
-function Habilitar(){
+function Deshabilitar(props){
     const [buscarJugador,setBuscarJugador]=useState('');
     const [jugadores,setJugadores]=useState([]);
 
     const [pendiente,setPendiente]=useState(false);
-
-
+   
+    console.log(props.location.state)
     useEffect(() => {
         obtenerJugadores();
       },[]);
@@ -22,7 +22,7 @@ function Habilitar(){
 
 
       const  obtenerJugadores =  async () =>{
-        await fetch('http://localhost:8080/getJugadores')
+        await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
          .then(response =>response.json())
          .then(response => {
       
@@ -45,7 +45,8 @@ function Habilitar(){
 
 
 
-       const habilitar =   () => {
+       const deshabilitar =   () => {
+      
         if(buscarJugador!="IdJugadores"){
           setPendiente(true);
           
@@ -58,7 +59,7 @@ function Habilitar(){
     
           console.log(requestOptions)
     
-          fetch(`http://localhost:8080/habilitarJugador2?idJugador=${buscarJugador}`, requestOptions )
+          fetch(`http://localhost:8080/deshabilitarJugador?idJugador=${buscarJugador}`, requestOptions )
           .then( () => {
               console.log('Se deshabilito el jugador');
               setPendiente(false)
@@ -96,8 +97,8 @@ return(
 
            <br/> 
            <div className="form-group centrar">
-           {!pendiente && <input type="Button" value="Habilitar " className="boton" onClick={habilitar} />}
-             {pendiente && <input type="Button" value=" Habilitando ..." className="boton" onClick={habilitar} />}
+           {!pendiente && <input type="Button" value="Deshabilitar " className="boton" onClick={deshabilitar} />}
+             {pendiente && <input type="Button" value=" Deshabilitando ..." className="boton" onClick={deshabilitar} />}
                          
            </div>
           </form>
@@ -111,4 +112,4 @@ return(
     )
 }
 
-export default Habilitar
+export default Deshabilitar
