@@ -17,10 +17,8 @@ import '../../estilos/estiloLogin.css'
 
 
 function InicioRepr (props) {
-  console.log(props.name)
-const [rol,setRol]=useState(props.name);
-  console.log(rol)
-  console.log("llegue")
+  const {usuario} = props;
+  console.log({usuario})
   return(
 <Router>
 <div> 
@@ -31,7 +29,7 @@ const [rol,setRol]=useState(props.name);
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
         <NavDropdown title="Jugadores" id="basic-nav-dropdown">
-          <NavDropdown.Item > <Link to={"/registrar"}className="nav-link"> Registrar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={"/registrar" }className="nav-link"> Registrar jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/eliminar"}className="nav-link"> Eliminar jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugClub"}className="nav-link"> Obtener jugadores del club</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugId"}className="nav-link"> Obtener jugador por id</Link> </NavDropdown.Item>
