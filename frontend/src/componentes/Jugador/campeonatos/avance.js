@@ -7,6 +7,8 @@ function Avance (props){
     cargarAlPrincipio();
   },[]);
 
+  
+
   const [datos,setDatos]=useState([])
 
   const cargarAlPrincipio = async () =>{
@@ -36,7 +38,7 @@ function Avance (props){
 
                       <h2 className="colorTitulo centrar">{dato.nombreClub}</h2>
 
-                      <p className="colorSubtitulo"><strong>Campeonato:</strong> {dato.camp}</p>
+                      <p className="colorSubtitulo"><strong>Campeonato:</strong> {dato.camp.descripcion}</p>
                       <br/>
                       <p className="colorSubtitulo"><strong>Cantidad de partidos jugados:</strong> {dato.cantidadJugados}</p>
                       <br/>
