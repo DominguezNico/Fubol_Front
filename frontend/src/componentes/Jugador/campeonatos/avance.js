@@ -1,42 +1,73 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 
-function Avance (){
+function Avance (props){
 
+  useEffect(() => {
+    cargarAlPrincipio();
+  },[]);
+
+  const [datos,setDatos]=useState([])
+
+  const cargarAlPrincipio = async () =>{
+ 
+    
+    await fetch(`http://localhost:8080/consultarAvanceClub?idClub=${props.location.state.idClub}`)
+      .then(response =>response.json())
+      .then(response => {
+
+        setDatos(response)
+
+      })
   
-  return(
-    <div className="containerrr3">
-    <div className="d-flex justify-content-center h-100">
-     <div className="card3">
-       <div className="card-header">
-       <div className="card-body">
-         <form>
+  }
+  
+  return(    
+    <div className="container">
 
+      {datos.map((dato) => {
+        return (
+          <div >
+            <div className="d-flex justify-content-center h-100">
+              <div className="cardAvanceClub">
+                <div className="card-header">
+                  <div className="card-body">
+                    <div className="container">
 
+                      <h2 className="colorTitulo centrar">{dato.nombreClub}</h2>
 
-           <div className="container">
-             <div className="row"> </div>
-             <input type="doc" className="form-control col-20" placeholder="Ingrese el documento" />
-             <br/>
-           </div>
-
-
-           <br/> 
-           <br/> 
-           <div className="form-group">
-             <input type="Button" value="Registrar jugador" className="boton" />
-             
-                    
-           </div>
-
-
-       </form>
-         </div>
-         </div> 
-         </div> 
-         </div> 
+                      <p className="colorSubtitulo"><strong>Campeonato:</strong> {dato.camp}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Cantidad de partidos jugados:</strong> {dato.cantidadJugados}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Cantidad de partidos empatados:</strong> {dato.cantidadempatados}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Cantidad de partidos ganados:</strong> {dato.cantidadganados}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Cantidad de partidos perdidos:</strong> {dato.cantidadperdidos}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Diferencia de goles:</strong> {dato.diferenciaGoles}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Goles en contra:</strong> {dato.golesContra}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Goles a favor:</strong> {dato.golesFavor}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Promedio:</strong> {dato.promedio}</p>
+                      <br/>
+                      <p className="colorSubtitulo"><strong>Puntos:</strong> {dato.puntos}</p>
+                      <br/>
+                      
+                    </div>
+                  </div>
+                </div> 
+              </div> 
+            </div> 
+          </div>
+        );
+      })}
+    
     </div>
-
+    
   ) 
 }
 

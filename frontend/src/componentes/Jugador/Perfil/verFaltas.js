@@ -1,29 +1,45 @@
 import React from 'react';
 
-class Avance extends React.Component {
+import '../estilos.css'
 
-  constructor(props){
-    super(props)
-    this.state = { 
-      faltas:[]
-     }
-}
+class VerFaltas extends React.Component {
+
+  state = { 
+    usuario:{...this.props.usuario},
+    faltas:[],
+    cargando: true 
+  }
+
   
 
   componentDidMount(){
-    fetch('http://localhost:8080/getFaltasJugador?idJugador=17')
+    fetch(`http://localhost:8080/getFaltasJugador?idJugador=${this.state.usuario.id}`)
     .then(response => response.json())
-    .then(data => this.setState({ faltas: data}) , console.log(this.faltas))
+    .then(data => this.setState({ faltas: data, cargando:false}) , console.log(this.faltas))
     .catch(error => {
       console.log('Hay un error en la llamada');
     });
   }
 
 render(){
+
+  if(this.state.cargando){
+    return(
+
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Faltas</h1>
+        </header>
+        <div>
+          <p>...</p>
+        </div> 
+      </div> 
+    )
+  }else{
   return(
     <div>
   
-      <h3>Faltas</h3>
+      <h3>Faltas </h3>
 
       {this.state.faltas.map((falta) => {
             const name = `${falta.jugador.apellido} ${falta.jugador.nombre}`;
@@ -36,7 +52,7 @@ render(){
               
                  <div className="card-body text-dark">
                     
-                    <h5 className="card-title center">{name}</h5>
+                    <h5 className="card-title center" className="colorTitulo">{name}</h5>
                     <p className="card-text-right">
                       <strong>Tipo: </strong>{falta.tipo}<br/>
                       <strong>Minuto: </strong>{falta.minuto}<br/>
@@ -56,6 +72,7 @@ render(){
   )
 }
 }
+}
 
 
-  export default Avance;
+  export default VerFaltas;

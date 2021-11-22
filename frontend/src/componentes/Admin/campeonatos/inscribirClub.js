@@ -7,31 +7,99 @@ import {createBrowserHistory} from "history";
 
 function IncribirClub () {
 
-  const [id,setId]=useState("");
-  const [idCampeonato,setidCampeonato]=useState("");
+  const [buscarCampeonatos,setBuscarCampeonatos]=useState('');
+  const [campeonatos,setCampeonatos]=useState([]);
+  const [buscarClubes,setBuscarClubes]=useState('');
+  const [clubes,setClubes]=useState([]);
+  const [pendiente,setPendiente]=useState(false);
+
+  
+
+  useEffect(() => {
+    obtenerCampeonatos();
+    obtenerClubes();
+  },[]);
+
+
+  const handleIdChange = (e) => {
+    console.log("VALOR: "+e.target.value)
+    setBuscarCampeonatos(e.target.value);
+}
+
+const handleIdClubChange = (e) => {
+  console.log("VALOR "+e.target.value)
+  setBuscarClubes(e.target.value);
+}
+
+
+const  obtenerClubes =  async () =>{
+  await fetch('http://localhost:8080/obtenerClubes')
+   .then(response =>response.json())
+   .then(response => {
+
+     let nombres=[]
+
+
+     response.map(datos => {
+       nombres.push([datos.nombre,datos.idClub])
+     })
+
+
+     setClubes([["Clubes","IdClubes"]].concat(nombres));
+
+
+   }).catch(e => {
+     console.log(e);
+   })
+ }
+
+
+ const  obtenerCampeonatos =  async () =>{
+  await fetch('http://localhost:8080/obtenerCampeonatos1')
+   .then(response =>response.json())
+   .then(response => {
+
+     let nombres=[]
+
+
+     response.map(datos => {
+       nombres.push([datos.descripcion,datos.idCampeonato])
+     })
+
+
+     setCampeonatos([["Campeonatos","IdCampeonatos"]].concat(nombres));
+
+
+   }).catch(e => {
+     console.log(e);
+   })
+ }
 
 
 
 
-  const handledidChange = (e) => {
-    setId(e.target.value);
-  };
-
-const handleidCampeonatoChange = (e) => {
-    setidCampeonato(e.target.value);
-  };
 
 
+  const inscribir =   () => {
+    if(buscarCampeonatos!="IdCampeonatos" ){
+      setPendiente(true);
+      
 
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ })
+      };
 
-  const inscribir =  async () => {
-    fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${id}&idCampeonato=${idCampeonato}`, {
-    method: 'post',
-    headers: { 'Content-Type': 'application/json' },
-   
-  })
-    
-  };
+      console.log(requestOptions)
+
+       fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${buscarClubes}&idCampeonato=${buscarCampeonatos}`, requestOptions )
+      .then( () => {
+          console.log('Se incribio');
+           setPendiente(false)
+      })
+    }
+ }
 
   
 
@@ -41,30 +109,40 @@ const handleidCampeonatoChange = (e) => {
         <div className="card">
           <div className="card-header">
           <div className="card-body">
-            <form>
-
-              <div className="input-group form-group">
-                <div className="input-group-prepend"></div>
-                <input type="text" id="doc" className="form-control" placeholder="id"  onChange={handledidChange} />
-              </div>
-
-
-
-
-              <div className="input-group form-group">
-                <div className="input-group-prepend"></div>
-                <input type="idCampeonato" className="form-control" placeholder="idCampeonato"  onChange={handleidCampeonatoChange}/>
-              </div>
-
-
-            
+             <form> 
+             <div className="container">
+                 
+                <div className="dropdown">
+                     <select onChange={handleIdChange}>
+                        {campeonatos.map(campeonato => {
+                            return (
+                              <option value={campeonato[1]}> {campeonato[0]} </option>
+                            )
+                          })}
+                      </select>
+                  </div>
+                  <br/>
 
 
+                <div className="dropdown">
+                      <select onChange={handleIdClubChange}>
+                          {clubes.map(club => {
+                            return (
+                              <option value={club[1]}> {club[0]} </option>
+                            )
+                          })}
+                        </select>
+                        
+                  </div> 
+                  <br/>
+            </div>
 
-              <div className="form-group">
-                <input type="Button" value="INCRIBIR" className="btn btn-primary col-lg-5 mx-1 mb-1" onClick={inscribir}/>
-              </div>
-
+           <br/> 
+           <div className="form-group centrar">
+           {!pendiente && <input type="Button" value="Incribir club " className="boton" onClick={inscribir} />}
+             {pendiente && <input type="Button" value="Inscribiendo club ..." className="boton" onClick={inscribir} />}
+                         
+           </div>
           </form>
 
           </div>

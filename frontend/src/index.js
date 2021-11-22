@@ -4,6 +4,7 @@ import {createBrowserHistory} from "history";
 import {BrowserRouter as Router, Route,Switch,Redirect} from "react-router-dom";
 
 import Login from './paginas/Login.js';
+import App from './App.js'
 import Jugador from './componentes/Jugador/inicioJugador.js'
 
 
@@ -12,7 +13,7 @@ import Jugador from './componentes/Jugador/inicioJugador.js'
 
 
 ReactDOM.render(
-    <Login />,
+    <App />,
   document.getElementById('root')
 );
 

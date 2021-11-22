@@ -1,0 +1,68 @@
+.colorTitulo{
+    color: whitesmoke;
+}
+
+.colorSubtitulo{
+    color: wheat;
+    width:20px;
+    font-size: 130%;
+    display: inline;
+
+}
+
+
+.cardPerfil{
+    height: 500px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+    width: 400px;
+}
+
+.cardAvanceClub{
+    margin-top: 3%;
+
+    height: 150%;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+    width: 60%;
+    box-sizing: border-box;
+}
+
+.centrar{
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-container{
+	margin: 150px auto;
+	width: 600px;
+}
+
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td{
+	padding: 20px;
+}
+
+thead{
+	background-color: #246355;
+	border-bottom: solid 5px #0F362D;
+	color: white;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color: #369681;
+	color: white;
+}
+

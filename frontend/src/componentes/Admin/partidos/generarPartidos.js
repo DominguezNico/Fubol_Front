@@ -12,7 +12,7 @@ function GenerarPartidos (){
 
   return(
     <div>
-      <h3>generar Partidos</h3>
+      <h3>CREAR PARTIDO</h3>
     </div>
   ) 
 }

@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
+    /*
 background-image: url('fondoLogin.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
 font-family: 'Numans', sans-serif;
+*/
+background: url('fondoLogin.jpg') no-repeat center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
 }
 
 .container{
@@ -35,9 +42,6 @@ font-family: 'Numans', sans-serif;
     cursor: pointer;
     }
     
-    .card-header h3{
-    color: white;
-    }
     
     .social_icon{
     position: absolute;

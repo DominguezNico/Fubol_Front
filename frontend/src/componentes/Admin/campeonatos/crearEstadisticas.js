@@ -1,11 +1,11 @@
 import React from "react";
 
-function crearEstadisticas(){
+function CrearEstaditicas(){
 return(
     <div>
-        <h1>ACTUALIZAR TABLA</h1>
+        <h1>MOSTRAR LISTA ESTADISTICAS JUGADORES( LISTA DE STRING) </h1>
     </div>
 )
 }
 
-export default crearEstadisticas
+export default CrearEstaditicas

@@ -10,23 +10,66 @@ function ObtenerEstado () {
  
 
 const [estado,setEstado]=useState("");
-const [id,setId]=useState("");
+const [buscarCampeonatos,setBuscarCampeonatos]=useState('');
+const [campeonatos,setCampeonatos]=useState([]);
+const [pendiente,setPendiente]=useState(false);
 
+  useEffect(() => {
+    obtenerCampeonatos();
+  },[]);
 
+  
 const handlesetEstadoChange = (e) => {
   setEstado(e.target.value);
   };
 
-  const handleidChange = (e) => {
-    setId(e.target.value);
-    };
+  const handleIdChange = (e) => {
+    console.log("VALOR: "+e.target.value)
+    setBuscarCampeonatos(e.target.value);
+}
 
 
-  const getEstadoCampeonato =  async () => {
-     await fetch(`http://localhost:8080/getCampeonatobyID?id=${id}`)
-     .then(response => response.json())
-     .then(data => setEstado(data.estado))
-     .then(console.log(estado));
+
+const  obtenerCampeonatos =  async () =>{
+  await fetch('http://localhost:8080/obtenerCampeonatos1')
+   .then(response =>response.json())
+   .then(response => {
+
+     let nombres=[]
+
+
+     response.map(datos => {
+       nombres.push([datos.descripcion,datos.idCampeonato])
+     })
+
+
+     setCampeonatos([["Campeonatos","IdCampeonatos"]].concat(nombres));
+
+
+   }).catch(e => {
+     console.log(e);
+   })
+ }
+
+
+
+
+
+
+  const getEstadoCampeonato =   () => {
+
+    if(buscarCampeonatos!="IdCampeonatos"){
+      setPendiente(true);
+      
+       fetch(`http://localhost:8080/getCampeonatobyID?id=${buscarCampeonatos}` )
+      
+      .then(response => response.json())
+      .then(data => setEstado(data.estado))
+      .then( () => {
+        console.log('Se creo la tabla');
+         setPendiente(false)
+    })
+    }
   }
 
 
@@ -36,39 +79,46 @@ const handlesetEstadoChange = (e) => {
 
     return(
       <div className="container">
-       <div className="d-flex justify-content-center h-100">
+       <div className="d-flex justify-content-center h-150">
         <div className="card">
           <div className="card-header">
           <div className="card-body">
             <form>
 
 
-
-              <div className="input-group form-group">
-                <div className="input-group-prepend"> </div>
-                <input type="id" className="form-control" placeholder="id"  onChange={ handleidChange }/>
-              </div>
-
-
+            <div className="container">
+                 <div className="dropdown">
+                        
+                     <select onChange={handleIdChange}>
+                        {campeonatos.map(campeonato => {
+                            return (
+                              <option value={campeonato[1]}> {campeonato[0]} </option>
+                            )
+                          })}
+                        </select>
+                        
+                  </div> 
+             <br/>
+            </div>
 
               <div className="form-group">
-                <input type="Button" value="getEstadoCampeonato" className="btn btn-primary col-lg-5 mx-1 mb-1" onClick={getEstadoCampeonato}/>
-                
-                       
+              <br/>
+              <input type="Button" value="Obtener Estado" className="boton" onClick={getEstadoCampeonato}/>
+              <br/>
               </div>
-
-
-          </form>
-            </div>
-           <div> ESTADO DEL CAMPEONATO: {estado}</div>
-           </div>
-
+              <p className="card-text-right">
+              <strong>Estado : </strong>{estado}<br/> 
+              </p>
+            </form>
+          </div>
+          
           </div>
 
         </div>
-      
-     
+
       </div>
+     
+    </div>
     )
   
   }
