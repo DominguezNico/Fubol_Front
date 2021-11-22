@@ -28,6 +28,7 @@ function Avance (props){
     <div className="container">
 
       {datos.map((dato) => {
+
         return (
           <div >
             <div className="d-flex justify-content-center h-100">
@@ -35,8 +36,6 @@ function Avance (props){
                 <div className="card-header">
                   <div className="card-body">
                     <div className="container">
-
-                      <h2 className="colorTitulo centrar">{dato.nombreClub}</h2>
 
                       <p className="colorSubtitulo"><strong>Campeonato:</strong> {dato.camp.descripcion}</p>
                       <br/>

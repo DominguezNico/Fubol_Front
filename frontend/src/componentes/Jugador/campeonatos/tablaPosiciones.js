@@ -5,9 +5,34 @@ function TablaPosiciones (props){
 
   useEffect(() => {
     cargarAlPrincipio();
+    CampeonatosDeUnClub();
   },[]);
 
   const [datos,setDatos]=useState([])
+  const [campeonatos,setCampeonatos]=useState([])
+
+  console.log(props.location.state)
+
+  const CampeonatosDeUnClub = async () =>{
+    await fetch(`http://localhost:8080/obtenerCampeonatosDelClub?idClub=${props.location.state.idClub}`)
+      .then(response =>response.json())
+      .then(response => {
+
+        console.log(response)
+
+       }).catch(e => console.log(e))    
+  }
+
+  const clubesCampeonato = async () =>{
+    await fetch(`http://localhost:8080/clubesCampeonato?idCampeonato=${props.location.state.idClub}`)
+      .then(response =>response.json())
+      .then(response => {
+
+        setDatos(response)
+
+       }).catch(e => console.log(e))  
+  }
+  
 
   const cargarAlPrincipio = async () =>{
  
@@ -18,7 +43,7 @@ function TablaPosiciones (props){
 
         setDatos(response)
 
-      })
+       }).catch(e => console.log(e))     
   
   }
   
