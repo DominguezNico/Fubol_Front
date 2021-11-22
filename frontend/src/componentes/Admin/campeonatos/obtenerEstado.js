@@ -80,7 +80,7 @@ const  obtenerCampeonatos =  async () =>{
     return(
       <div className="container">
        <div className="d-flex justify-content-center h-150">
-        <div className="card">
+        <div className="card2">
           <div className="card-header">
           <div className="card-body">
             <form>
