@@ -52,10 +52,10 @@ function InicioRepr ({usuario}) {
        </NavDropdown>
 
         <NavDropdown title="Club" id="basic-nav-dropdown">
-          <NavDropdown.Item > <Link to={{pathname:"/inscribirClub",state:usuario}}className="nav-link"> Inscribir club</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/inscribirClub",state:usuario}} className="nav-link"> Inscribir club</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={{pathname:"/cambiarDireccion",state:usuario}} className="nav-link"> Cambiar direccion</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/verAvance"}className="nav-link"> Ver avance en Campeonatos</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/verTabla"}className="nav-link"> Tabla posiciones</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/verAvance",state:usuario}} className="nav-link"> Ver avance en Campeonatos</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/verTabla", state:usuario }} className="nav-link"> Tabla posiciones</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/verRepresentantes"}className="nav-link"> Ver otros Representantes</Link> </NavDropdown.Item>
         
         </NavDropdown>

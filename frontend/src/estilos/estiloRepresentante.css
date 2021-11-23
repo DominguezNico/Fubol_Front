@@ -50,6 +50,13 @@
     background-color: rgba(0,0,0,0.8) !important;
     border-radius: 5%;
 }
+.card5{
+    height: 130px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+    width: 400px;
+
+}
 .cardheader{
     height:10px;
 }
@@ -83,7 +90,10 @@ h1{
 p{
     color:white;
 }
-
+.containerrr4{
+    margin-top: 50px;
+    height: 150px;
+}
 table{
 	background-color: white;
 	text-align: left;
