@@ -1,11 +1,17 @@
 import React from "react";
+import Leon from "../../estilos/leon.png"
+import "../../estilos/estiloRepresentante.css"
 
-function homeAdmin(){
+function HomeJugador(props){
+console.log(props.location.state)
 return(
-    <div>
-        <h1>HOME REPRESENTANTE</h1>
+  <div className='row'>
+    <div >
+        <h1 className="textoInicio centrar col-12 bordeLetra "><b>¡Bienvenido! </b></h1>
+        <img className="centrarImagen " height='500' src={Leon} />
     </div>
+  </div>
 )
 }
 
-export default homeAdmin
+export default HomeJugador
