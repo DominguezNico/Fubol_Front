@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 
 
-function Habilitar(){
+function Habilitar(props){
     const [buscarJugador,setBuscarJugador]=useState('');
     const [jugadores,setJugadores]=useState([]);
 
@@ -22,7 +22,7 @@ function Habilitar(){
 
 
       const  obtenerJugadores =  async () =>{
-        await fetch('http://localhost:8080/getJugadores')
+        await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
          .then(response =>response.json())
          .then(response => {
       
@@ -58,7 +58,7 @@ function Habilitar(){
     
           console.log(requestOptions)
     
-          fetch(`http://localhost:8080/habilitarJugador2?idJugador=${buscarJugador}`, requestOptions )
+          fetch(`http://localhost:8080/habilitarJugador?idJugador=${buscarJugador}`, requestOptions )
           .then( () => {
               console.log('Se deshabilito el jugador');
               setPendiente(false)
@@ -71,9 +71,9 @@ function Habilitar(){
 
 
 return(
-    <div className="container">
+    <div className="containerrr3">
        <div className="d-flex justify-content-center h-100">
-        <div className="card2">
+        <div className="card8">
           <div className="card-header">
           <div className="card-body">
              <form> 

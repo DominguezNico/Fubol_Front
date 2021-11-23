@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 
-function AgregarJugador (){
+function AgregarJugador (props){
 
 
   const [buscarPartidos,setBuscarPartidos]=useState('');
@@ -9,23 +9,18 @@ function AgregarJugador (){
   const [buscarJugador,setBuscarJugador]=useState('');
   const [jugadores,setJugadores]=useState([]);
 
-  const [buscarClubes,setBuscarClubes]=useState('');
-  const [clubes,setClubes]=useState([]);
+  
   const [pendiente,setPendiente]=useState(false);
 
 
 
   useEffect(() => {
-    obtenerClubes();
+  
     obtenerJugadores();
     obtenerPartidos();
   },[]);
 
 
-  const handleIdClubChange = (e) => {
-    console.log("VALOR "+e.target.value)
-    setBuscarClubes(e.target.value);
-  }
   const handleIdPartidoChange = (e) => {
     console.log("VALOR "+e.target.value)
     setBuscarPartidos(e.target.value);
@@ -37,27 +32,6 @@ const handleIdJugadorChange = (e) => {
 }
 
 
-
-const  obtenerClubes =  async () =>{
-  await fetch('http://localhost:8080/obtenerClubes')
-   .then(response =>response.json())
-   .then(response => {
-
-     let nombres=[]
-
-
-     response.map(datos => {
-       nombres.push([datos.nombre,datos.idClub])
-     })
-
-
-     setClubes([["Clubes","IdClubes"]].concat(nombres));
-
-
-   }).catch(e => {
-     console.log(e);
-   })
- }
 
 
 
@@ -84,9 +58,8 @@ const  obtenerPartidos =  async () =>{
 
 
 
-
  const  obtenerJugadores =  async () =>{
-  await fetch('http://localhost:8080/getJugadores')
+  await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
    .then(response =>response.json())
    .then(response => {
 
@@ -110,8 +83,9 @@ const  obtenerPartidos =  async () =>{
 
 
 
+
  const agregar =   () => {
-  if(buscarClubes!="IdClubes" ){
+  if(buscarJugador!="IdJugador" ){
     setPendiente(true);
     
 
@@ -123,7 +97,7 @@ const  obtenerPartidos =  async () =>{
 
     console.log(requestOptions)
 
-     fetch(`http://localhost:8080/agregarJugadorPartido?idClub=${buscarClubes}&idPartido=${buscarPartidos}&idJugador=${buscarJugador}`, requestOptions )
+     fetch(`http://localhost:8080/agregarJugadorPartido?idClub=${props.location.state.club.idClub}&idPartido=${buscarPartidos}&idJugador=${buscarJugador}`, requestOptions )
     .then( () => {
         console.log('Se incribio');
          setPendiente(false)
@@ -135,7 +109,7 @@ const  obtenerPartidos =  async () =>{
 return(
   <div className="containerrr3">
    <div className="d-flex justify-content-center h-100">
-    <div className="card3">
+    <div className="card10">
       <div className="card-header">
       <div className="card-body">
         <form>
@@ -167,17 +141,7 @@ return(
             </div> 
             <br/>
             
-            <div className="dropdown">
-                      <select onChange={handleIdClubChange}>
-                          {clubes.map(club => {
-                            return (
-                              <option value={club[1]}> {club[0]} </option>
-                            )
-                          })}
-                        </select>
-                        
-                  </div> 
-                  <br/>
+         
         </div>
 
        <br/> 

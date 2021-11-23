@@ -44,7 +44,7 @@ function InicioRepr ({usuario}) {
 
         <NavDropdown title="Jugadores" id="basic-nav-dropdown">
           <NavDropdown.Item > <Link to={{pathname:"/registrar", state:usuario}}className="nav-link"> Registrar jugador</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/eliminar"}className="nav-link"> Eliminar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/eliminar",state:usuario}}className="nav-link"> Eliminar jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugClub"}className="nav-link"> Obtener jugadores del club</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugId"}className="nav-link"> Obtener jugador por id</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={{pathname:"/habilitar",state:usuario}} className="nav-link"> habilitar jugador</Link> </NavDropdown.Item>
@@ -52,8 +52,8 @@ function InicioRepr ({usuario}) {
        </NavDropdown>
 
         <NavDropdown title="Club" id="basic-nav-dropdown">
-          <NavDropdown.Item > <Link to={"/inscribirClub"}className="nav-link"> Inscribir club</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/cambiarDireccion"}className="nav-link"> Cambiar direccion</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/inscribirClub",state:usuario}}className="nav-link"> Inscribir club</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/cambiarDireccion",state:usuario}} className="nav-link"> Cambiar direccion</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/verAvance"}className="nav-link"> Ver avance en Campeonatos</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/verTabla"}className="nav-link"> Tabla posiciones</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/verRepresentantes"}className="nav-link"> Ver otros Representantes</Link> </NavDropdown.Item>
@@ -62,8 +62,8 @@ function InicioRepr ({usuario}) {
 
         <NavDropdown title="Partidos" id="basic-nav-dropdown">
         <NavDropdown.Item > <Link to={"/mostrarJugadores"}className="nav-link"> Mostrar Jugadores </Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/agregarJugador"}className="nav-link"> Agregar Jugador</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={"/eliminarJugador"}className="nav-link"> Eliminar Jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/agregarJugador",state:usuario}}className="nav-link"> Agregar Jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/eliminarJugador",state:usuario}}className="nav-link"> Eliminar Jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/verPlanilla"}className="nav-link"> Ver Planilla</Link> </NavDropdown.Item>
         </NavDropdown>
       </Nav>

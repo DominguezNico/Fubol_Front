@@ -5,19 +5,18 @@ import {BrowserRouter, Route, Switch,useHistory} from "react-router-dom";
 import {createBrowserHistory} from "history";
 
 
-function IncribirClub () {
+function IncribirClub (props) {
 
   const [buscarCampeonatos,setBuscarCampeonatos]=useState('');
   const [campeonatos,setCampeonatos]=useState([]);
-  const [buscarClubes,setBuscarClubes]=useState('');
-  const [clubes,setClubes]=useState([]);
+ 
   const [pendiente,setPendiente]=useState(false);
 
   
 
   useEffect(() => {
     obtenerCampeonatos();
-    obtenerClubes();
+   
   },[]);
 
 
@@ -26,32 +25,6 @@ function IncribirClub () {
     setBuscarCampeonatos(e.target.value);
 }
 
-const handleIdClubChange = (e) => {
-  console.log("VALOR "+e.target.value)
-  setBuscarClubes(e.target.value);
-}
-
-
-const  obtenerClubes =  async () =>{
-  await fetch('http://localhost:8080/obtenerClubes')
-   .then(response =>response.json())
-   .then(response => {
-
-     let nombres=[]
-
-
-     response.map(datos => {
-       nombres.push([datos.nombre,datos.idClub])
-     })
-
-
-     setClubes([["Clubes","IdClubes"]].concat(nombres));
-
-
-   }).catch(e => {
-     console.log(e);
-   })
- }
 
 
  const  obtenerCampeonatos =  async () =>{
@@ -78,8 +51,6 @@ const  obtenerClubes =  async () =>{
 
 
 
-
-
   const inscribir =   () => {
     if(buscarCampeonatos!="IdCampeonatos" ){
       setPendiente(true);
@@ -93,7 +64,7 @@ const  obtenerClubes =  async () =>{
 
       console.log(requestOptions)
 
-       fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${buscarClubes}&idCampeonato=${buscarCampeonatos}`, requestOptions )
+       fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${props.location.state.club.idClub}&idCampeonato=${buscarCampeonatos}`, requestOptions )
       .then( () => {
           console.log('Se incribio');
            setPendiente(false)
@@ -104,9 +75,9 @@ const  obtenerClubes =  async () =>{
   
 
     return(
-      <div className="container">
+      <div className="containerrr3">
        <div className="d-flex justify-content-center h-100">
-        <div className="card2">
+        <div className="card8">
           <div className="card-header">
           <div className="card-body">
              <form> 
@@ -122,19 +93,7 @@ const  obtenerClubes =  async () =>{
                       </select>
                   </div>
                   <br/>
-
-
-                <div className="dropdown">
-                      <select onChange={handleIdClubChange}>
-                          {clubes.map(club => {
-                            return (
-                              <option value={club[1]}> {club[0]} </option>
-                            )
-                          })}
-                        </select>
-                        
-                  </div> 
-                  <br/>
+                  
             </div>
 
            <br/> 

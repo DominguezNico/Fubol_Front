@@ -35,6 +35,21 @@
     background-color: rgba(0,0,0,0.8) !important;
     border-radius: 5%;
 }
+.card8{
+    height: 150px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+}
+.card9{
+    height: 150px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+}
+.card10{
+    height: 200px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+}
 .cardheader{
     height:10px;
 }

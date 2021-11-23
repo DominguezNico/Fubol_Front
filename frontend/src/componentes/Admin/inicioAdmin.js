@@ -10,7 +10,7 @@ import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 import homeAdmin from './homeAdmin';
 import pagenotfound from '../../paginas/PageNotFound.js'
 import inscribirClub from './campeonatos/inscribirClub';
-import actualizarTablaPosiciones  from './campeonatos/actualizarTablaPosiciones';
+
 import obtenerEstado from './campeonatos/obtenerEstado';
 import crearTablaPosiciones from './campeonatos/crearTablaPosiciones';
 import obtenerTablaPosiciones from './campeonatos/obtenerTablaPosiciones';

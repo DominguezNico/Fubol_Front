@@ -72,9 +72,9 @@ function Deshabilitar(props){
 
 
 return(
-    <div className="container">
+    <div className="containerrr3">
        <div className="d-flex justify-content-center h-100">
-        <div className="card2">
+        <div className="card8">
           <div className="card-header">
           <div className="card-body">
              <form> 
