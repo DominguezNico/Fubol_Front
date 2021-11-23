@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 function TablaPosiciones (props){
 
   useEffect(() => {
-    cargarAlPrincipio();
     CampeonatosDeUnClub();
   },[]);
 
@@ -18,38 +17,30 @@ function TablaPosiciones (props){
       .then(response =>response.json())
       .then(response => {
 
+        console.log("Campeonatos de un club")
         console.log(response)
+
+        setCampeonatos(response)
 
        }).catch(e => console.log(e))    
   }
 
   const clubesCampeonato = async () =>{
-    await fetch(`http://localhost:8080/clubesCampeonato?idCampeonato=${props.location.state.idClub}`)
+    await fetch(`http://localhost:8080/obtenerTablaPosiciones?idCampeonato=${props.location.state.idClub}`)
       .then(response =>response.json())
       .then(response => {
 
-        setDatos(response)
+        console.log("Tabla posiciones de un campeonato")
+        console.log(response)
 
        }).catch(e => console.log(e))  
   }
   
 
-  const cargarAlPrincipio = async () =>{
- 
-    
-    await fetch(`http://localhost:8080/consultarAvanceClub?idClub=${props.location.state.idClub}`)
-      .then(response =>response.json())
-      .then(response => {
-
-        setDatos(response)
-
-       }).catch(e => console.log(e))     
-  
-  }
   
   return(    
     <div className="fondo">
-
+      {console.log(datos)}
       {datos.map((dato) => {
         return (
           <div >
