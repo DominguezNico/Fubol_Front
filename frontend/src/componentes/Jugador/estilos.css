@@ -10,6 +10,16 @@
 
 }
 
+.colorTituloTabla{
+    color: whitesmoke;  /* fallback for old browsers */
+    
+    
+}
+
+.colorFondoTituloTabla{
+    background-color: #141517 ;
+    display: inline-block;
+}
 
 .cardPerfil{
     height: 500px;
@@ -34,6 +44,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.centrarTabla{
+    margin:auto;
+}
+
+
 
 #main-container{
 	margin: 150px auto;

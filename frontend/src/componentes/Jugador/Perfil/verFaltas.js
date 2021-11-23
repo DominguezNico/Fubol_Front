@@ -28,7 +28,7 @@ render(){
 
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Faltas</h1>
+        <h3 className="colorTituloTabla colorFondoTituloTabla centrar">Faltas </h3>
         </header>
         <div>
           <p>...</p>
@@ -38,36 +38,39 @@ render(){
   }else{
   return(
     <div>
-  
-      <h3>Faltas </h3>
+      <div class="row">
+        <h3 className="colorTituloTabla colorFondoTituloTabla centrar">Faltas </h3>
 
-      {this.state.faltas.map((falta) => {
-            const name = `${falta.jugador.apellido} ${falta.jugador.nombre}`;
-            return (
-            
-              <div className="col-lg-3 pb-3 md-7">
-                 
-             
-               <div className="card text  ">
+        {this.state.faltas.map((falta) => {
+              const name = `${falta.jugador.apellido} ${falta.jugador.nombre}`;
+              return (
               
-                 <div className="card-body text-dark">
-                    
-                    <h5 className="card-title center" className="colorTitulo">{name}</h5>
-                    <p className="card-text-right">
-                      <strong>Tipo: </strong>{falta.tipo}<br/>
-                      <strong>Minuto: </strong>{falta.minuto}<br/>
-                      <strong>Campeonato: </strong>{falta.partido.campeonato.descripcion}<br/>
-                    </p>
+              
+            
+                <div className="col pb-2 md-4">
+                  
+              
+                <div className="card text ">
+                
+                  <div className="card-body text-dark ">
+                      
+                      <h5 className="card-title center" className="colorTitulo">{name}</h5>
+                      <p className="card-text-right">
+                        <strong>Tipo: </strong>{falta.tipo}<br/>
+                        <strong>Minuto: </strong>{falta.minuto}<br/>
+                        <strong>Campeonato: </strong>{falta.partido.campeonato.descripcion}<br/>
+                      </p>
+
+                    </div>
 
                   </div>
-
-                </div>
-                </div>
+                  </div>
+                  
               
-
-            );
-          })}
-    
+              
+              );
+            })}
+      </div>
     </div>
   )
 }

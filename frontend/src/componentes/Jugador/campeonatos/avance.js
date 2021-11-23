@@ -7,8 +7,8 @@ function Avance (props){
     cargarAlPrincipio();
   },[]);
 
+  
 
-  console.log(props.location.state)
   const [datos,setDatos]=useState([])
 
   const cargarAlPrincipio = async () =>{
@@ -26,45 +26,29 @@ function Avance (props){
   
   return(    
     <div className="container">
-
+      
       {datos.map((dato) => {
-        { console.log("DATO")}
-        { console.log(dato)}
+        console.log(dato.cantidadJugados)
         return (
-          <div >
-            <div className="d-flex justify-content-center h-100">
-              <div className="cardAvanceClub">
-                <div className="card-header">
-                  <div className="card-body">
-                    <div className="container">
 
-                      <p className="colorSubtitulo"><strong>Campeonato:</strong> {dato.camp.descripcion}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Cantidad de partidos jugados:</strong> {dato.cantidadJugados}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Cantidad de partidos empatados:</strong> {dato.cantidadempatados}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Cantidad de partidos ganados:</strong> {dato.cantidadganados}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Cantidad de partidos perdidos:</strong> {dato.cantidadperdidos}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Diferencia de goles:</strong> {dato.diferenciaGoles}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Goles en contra:</strong> {dato.golesContra}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Goles a favor:</strong> {dato.golesFavor}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Promedio:</strong> {dato.promedio}</p>
-                      <br/>
-                      <p className="colorSubtitulo"><strong>Puntos:</strong> {dato.puntos}</p>
-                      <br/>
-                      
-                    </div>
-                  </div>
-                </div> 
-              </div> 
-            </div> 
+          <div >
+            <table className="centrarTabla">
+              <thead>
+                <tr>
+                  <th>Campeonato</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
+                </tr>
+              </thead>
+
+              <tr>
+                <td>{dato.camp.descripcion}</td><td>{dato.c.nombre}</td><td>{dato.cantidadJugados}</td><td>{dato.cantidadganados}</td><td>{dato.cantidadempatados}</td><td>{dato.cantidadperdidos}</td><td>{dato.golesFavor}</td><td>{dato.golesContra}</td><td>{dato.diferenciaGoles}</td><td>{dato.puntos}</td>
+              </tr>
+            </table>
+          <br/>
+          <br/>
           </div>
+
+
+          
         );
       })}
     

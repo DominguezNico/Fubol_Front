@@ -119,11 +119,11 @@ function ModificarDatosPersonales (props){
               <br/>
               
 
-             <input type="tipo" className="form-control" placeholder="Cambiar direccion"  onChange={handlesetMailChange}/>
+             <input type="tipo" className="form-control" placeholder="Cambiar direccion"  onChange={handlesetDirecChange}/>
              <br/>
              <input type="doc" className="form-control " placeholder="Cambiar teléfono" onChange={handlesetTelChange}  />
              <br/> 
-             <input type="tipo" className="form-control" placeholder="Cambiar mail" onChange={handlesetDirecChange}/>
+             <input type="tipo" className="form-control" placeholder="Cambiar mail" onChange={handlesetMailChange}/>
              <br/> 
             
 
