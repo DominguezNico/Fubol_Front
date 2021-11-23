@@ -5,72 +5,120 @@ function TablaPosiciones (props){
 
   useEffect(() => {
     CampeonatosDeUnClub();
+    clubesCampeonato();
   },[]);
 
-  const [datos,setDatos]=useState([])
+  const [tablaPos,setTablaPos]=useState([])
   const [campeonatos,setCampeonatos]=useState([])
+  const [tablaPosOrdenada,setTablaPosOrdenada]=useState([])
+  const [cargo,setCargo]=useState(false)
 
-  console.log(props.location.state)
 
   const CampeonatosDeUnClub = async () =>{
     await fetch(`http://localhost:8080/obtenerCampeonatosDelClub?idClub=${props.location.state.idClub}`)
       .then(response =>response.json())
       .then(response => {
 
-        console.log("Campeonatos de un club")
+        console.log("Campeonatos")
         console.log(response)
 
         setCampeonatos(response)
+        setCargo(true)
 
        }).catch(e => console.log(e))    
   }
 
-  const clubesCampeonato = async () =>{
-    await fetch(`http://localhost:8080/obtenerTablaPosiciones?idCampeonato=${props.location.state.idClub}`)
+
+  const clubesCampeonato = () =>{
+
+      fetch(`http://localhost:8080/obtenerTodaLaTablaPosiciones`)
       .then(response =>response.json())
       .then(response => {
 
-        console.log("Tabla posiciones de un campeonato")
         console.log(response)
+        setTablaPos(response)
+        setCargo(true)
 
        }).catch(e => console.log(e))  
   }
-  
+
+  useEffect(()=>{
+    if(cargo===true){
+      ordenarPosicion();
+    }
+    
+  })
+
+  const ordenarPosicion = () => {
+
+    let aux=[];
+    let listFinal=[];
+    let cont=0;
+    campeonatos.map((d)=>{
+      cont=0;
+      tablaPos.map((dato)=>{
+        if(dato.camp.idCampeonato===d.idCampeonato){
+          
+          listFinal.push(dato)
+          
+          if(cont!=0){
+            if(listFinal[cont-1].puntos<=listFinal[cont].puntos){
+              aux=listFinal[cont-1]
+              listFinal[cont-1]=listFinal[cont]
+              listFinal[cont]=aux
+            }
+          }
+          cont=cont+1;
+        }
+      })
+    })
+
+    setTablaPosOrdenada(listFinal)
+  }
 
   
   return(    
     <div className="fondo">
-      {console.log(datos)}
-      {datos.map((dato) => {
-        return (
-          <div >
+    
+      {campeonatos.map((d)=> {
+          let cont=0;
+          
+          return(<div> 
             <table>
               <thead>
                 <tr>
                   <th>#</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
                 </tr>
               </thead>
-
+              </table>
+            {tablaPosOrdenada?.map((dato) => {
+              cont=cont+1;
+              /*console.log("dato")
+              console.log(dato)
+              console.log("d")
+              console.log(d)*/
+              console.log(dato.c.nombre)
+              if(dato.camp.idCampeonato===d.idCampeonato){
+                return (
+          <div >
+            <table>
               <tr>
-                <td>1</td><td>Racing</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-              </tr>
-              <tr>
-                <td>2</td><td>Boca Juniors</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-              </tr>
-              <tr>
-                <td>3</td><td>River</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-              </tr>
-              <tr>
-                <td>4</td><td>Estudiantes</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                <td>{cont}</td><td>{dato.c.nombre}</td><td>{dato.cantidadJugados}</td><td>{dato.cantidadganados}</td><td>{dato.cantidadempatados}</td><td>{dato.cantidadperdidos}</td><td>{dato.golesFavor}</td><td>{dato.golesContra}</td><td>{dato.diferenciaGoles}</td><td>{dato.puntos}</td>
               </tr>
             </table>
-          <br/>
-          <br/>
+          
           </div>
 
         );
+              }
+        
+        
       })}
-    
+          <br/>
+          <br/>
+          </div>);
+      
+      })}
     </div>
     
   ) 
