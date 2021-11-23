@@ -51,6 +51,7 @@ function Login ()  {
 		await fetch(`http://localhost:8080/obtenerRolUsuario?doc=${DNI}`)
 			.then(response => response.json())
 			.then(data => setRol(data.rol));
+			getUsuario.call();
 	}
 	
 	const getUsuario = async () => {

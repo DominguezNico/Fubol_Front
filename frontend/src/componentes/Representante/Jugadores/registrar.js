@@ -5,7 +5,7 @@ import {createBrowserHistory} from "history";
 import '../../../estilos/estiloRepresentante.css'
 
 
-function Registrar(){
+function Registrar(props){
 
 
 const [documento,setDocumento]=useState("");
@@ -34,12 +34,25 @@ const handletipoChange = (e) => {
     setTipoDoc(e.target.value);
 }; 
 
-  const agregarJugador=  async () => {
-     /*await fetch(`http://localhost:8080/getCampeonatobyID?id=${id}`)
-     .then(response => response.json())
-     .then(data => setEstado(data.estado))
-     .then(console.log(estado));*/
-  }
+  const agregarJugador=  () => {
+
+      /*if(buscarClubes!="IdClubes"){
+        setPendiente(true);*/
+        
+    
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({ })
+    };
+    
+    console.log(requestOptions)
+          
+    fetch(`http://localhost:8080/addJugador?documento=${documento}&nombre=${nombre}&apellido=${apellido}&fechaNacimiento=${fechaNacimiento}&tipoDoc=${tipoDoc}&idClub=${props.location.state.club.idClub}`, requestOptions )
+        .then( () => {
+            console.log('Se agrego ');
+        })
+    }
 
 
 return(
@@ -54,7 +67,7 @@ return(
 
            <div className="container">
              <div className="row"> </div>
-             <input type="doc" className="form-control col-20" placeholder="Ingrese el documento"  onChange={ handledocChange }/>
+             <input type="doc" className="form-control col-100" placeholder="Ingrese el documento"  onChange={ handledocChange }/>
              <br/> 
              <input type="tipo" className="form-control" placeholder="Ingrese el tipo de documento"  onChange={ handletipoChange }/>
              <br/> 
