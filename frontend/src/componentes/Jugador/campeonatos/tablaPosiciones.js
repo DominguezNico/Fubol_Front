@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import '../estilos.css'
 
 function TablaPosiciones (props){
 
@@ -13,6 +14,7 @@ function TablaPosiciones (props){
   const [tablaPosOrdenada,setTablaPosOrdenada]=useState([])
   const [cargo,setCargo]=useState(false)
 
+  console.log(props.location.state.idClub)
 
   const CampeonatosDeUnClub = async () =>{
     await fetch(`http://localhost:8080/obtenerCampeonatosDelClub?idClub=${props.location.state.idClub}`)
@@ -51,12 +53,31 @@ function TablaPosiciones (props){
 
   const ordenarPosicion = () => {
 
+    var listaFinal=[];
+    listaFinal=tablaPos;
+
+
+    listaFinal.sort(function (a, b) {
+      if(a.puntos>b.puntos && a.camp.idCampeonato===b.camp.idCampeonato){
+        return -1;
+      }
+      if(a.puntos<b.puntos && a.camp.idCampeonato===b.camp.idCampeonato){
+        return 1;
+      }
+      else{
+        return 0;
+      }
+
+    })
+    
+    setTablaPosOrdenada(listaFinal);
+    /*
     let aux=[];
     let listFinal=[];
     let cont=0;
     campeonatos.map((d)=>{
       cont=0;
-      tablaPos.map((dato)=>{
+      tablaPosOrdenada.map((dato)=>{
         if(dato.camp.idCampeonato===d.idCampeonato){
           
           listFinal.push(dato)
@@ -73,51 +94,44 @@ function TablaPosiciones (props){
       })
     })
 
-    setTablaPosOrdenada(listFinal)
+    setTablaPosOrdenada(listFinal)*/
   }
 
   
   return(    
-    <div className="fondo">
+    <div className="fondo centrar row">
     
       {campeonatos.map((d)=> {
-          let cont=0;
+        
+        let cont=0
           
-          return(<div> 
-            <table>
+        return(
+          <div >
+            <h3 className='colorTituloTabla colorFondoTituloTabla'><strong>Campeonato:</strong> {d.descripcion}</h3>
+            <table className="centrarTabla">
               <thead>
                 <tr>
                   <th>#</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
                 </tr>
               </thead>
-              </table>
-            {tablaPosOrdenada?.map((dato) => {
-              cont=cont+1;
-              /*console.log("dato")
-              console.log(dato)
-              console.log("d")
-              console.log(d)*/
-              console.log(dato.c.nombre)
-              if(dato.camp.idCampeonato===d.idCampeonato){
-                return (
-          <div >
-            <table>
-              <tr>
-                <td>{cont}</td><td>{dato.c.nombre}</td><td>{dato.cantidadJugados}</td><td>{dato.cantidadganados}</td><td>{dato.cantidadempatados}</td><td>{dato.cantidadperdidos}</td><td>{dato.golesFavor}</td><td>{dato.golesContra}</td><td>{dato.diferenciaGoles}</td><td>{dato.puntos}</td>
-              </tr>
-            </table>
+            
+                  {tablaPosOrdenada?.map((dato) => {
+                    
+                    if(dato.camp.idCampeonato===d.idCampeonato){
+                      cont=cont+1
+                      return (
+                        <tr>
+                          <td>{cont}</td><td>{dato.c.nombre}</td><td>{dato.cantidadJugados}</td><td>{dato.cantidadganados}</td><td>{dato.cantidadempatados}</td><td>{dato.cantidadperdidos}</td><td>{dato.golesFavor}</td><td>{dato.golesContra}</td><td>{dato.diferenciaGoles}</td><td>{dato.puntos}</td>
+                        </tr>    
+                      );
+                    }
+                  })}
           
+            </table>
+            <br/>
+            <br/>
           </div>
-
-        );
-              }
-        
-        
-      })}
-          <br/>
-          <br/>
-          </div>);
-      
+        );        
       })}
     </div>
     

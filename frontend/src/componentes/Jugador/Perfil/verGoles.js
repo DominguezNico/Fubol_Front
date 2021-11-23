@@ -27,7 +27,7 @@ render(){
 
       <div className="App">
         <header className="App-header">
-          <h3>Goles </h3>
+        <h3 className="colorTituloTabla colorFondoTituloTabla centrar">Goles </h3>
         </header>
         <div>
           <p>...</p>
@@ -37,17 +37,17 @@ render(){
   }else{
   return(
     <div>
-  
-      <h3>Goles </h3>
+    <div class="row">
+    <h3 className="colorTituloTabla colorFondoTituloTabla centrar">Goles </h3>
 
       {this.state.goles.map((gol) => {
             const name = `${gol.jugador.apellido} ${gol.jugador.nombre}`;
             return (
             
-              <div className="col-lg-3 pb-3 md-7">
+              <div className="col pb-2 md-4">
                  
              
-               <div className="card text  ">
+               <div className="card text ">
               
                  <div className="card-body text-dark">
                     
@@ -67,7 +67,7 @@ render(){
 
             );
           })}
-    
+    </div>
     </div>
   )
 }

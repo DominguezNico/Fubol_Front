@@ -32,7 +32,7 @@ function Avance (props){
         return (
 
           <div >
-            <table>
+            <table className="centrarTabla">
               <thead>
                 <tr>
                   <th>Campeonato</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
