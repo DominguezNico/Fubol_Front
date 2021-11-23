@@ -26,7 +26,6 @@ function ActualizarGolesVisitante () {
     setBuscarPartidos(e.target.value);
 }
 
-
   const handleGolesChange = (e) => {
     setGoles(e.target.value);
     };
@@ -55,7 +54,7 @@ function ActualizarGolesVisitante () {
      }
 
 
-
+     
 
 
 
