@@ -62,8 +62,8 @@ function InicioRepr ({usuario}) {
 
         <NavDropdown title="Partidos" id="basic-nav-dropdown">
         <NavDropdown.Item > <Link to={"/mostrarJugadores"}className="nav-link"> Mostrar Jugadores </Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={{pathname:"/agregarJugador",state:usuario}}className="nav-link"> Agregar Jugador</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={{pathname:"/eliminarJugador",state:usuario}}className="nav-link"> Eliminar Jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/agregarJugador",state:usuario}} className="nav-link"> Agregar Jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/eliminarJugador",state:usuario}} className="nav-link"> Eliminar Jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/verPlanilla"}className="nav-link"> Ver Planilla</Link> </NavDropdown.Item>
         </NavDropdown>
       </Nav>

@@ -156,7 +156,8 @@ const  obtenerClubes =  async () =>{
     fetch(`http://localhost:8080/agregarPartido?nroFecha=${nroFecha}&nroZona=${nroZona}&categoria=${categoria}&idClubLocal=${buscarClubes}&idClubVisitante=${buscarClubesVisitantes}&fechaPartido=${fechaPart}&idCampeonato=${buscarCampeonatos}&etapa=${etapa}`, requestOptions )
     .then( () => {
         console.log('Se agrego ');
-        setPendiente(false)
+        setPendiente(false);
+        alert("Se creò correctamente");
     })
   }
   
@@ -169,7 +170,7 @@ const  obtenerClubes =  async () =>{
   return(
      <div className="containerrr3">
        <div className="d-flex justify-content-center h-150">
-        <div className="card5">
+        <div className="card6">
           <div className="card-header">
           <div className="card-body">
             <form>

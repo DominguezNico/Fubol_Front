@@ -12,7 +12,8 @@ function ActualuzarGoles () {
   const [goles,setGoles]=useState('');
   const [pendiente,setPendiente]=useState(false);
 
-
+/*HACER COMO CREAR FALTA Y AGREGAR JUGADOR
+LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
 
 
   useEffect(() => {

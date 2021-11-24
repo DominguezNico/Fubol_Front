@@ -11,9 +11,8 @@ function VerAvance (props){
 
   const [datos,setDatos]=useState([])
 
-  const cargarAlPrincipio = async () =>{
- 
-    
+
+  const cargarAlPrincipio = async () =>{   
     await fetch(`http://localhost:8080/consultarAvanceClub?idClub=${props.location.state.club.idClub}`)
       .then(response =>response.json())
       .then(response => {

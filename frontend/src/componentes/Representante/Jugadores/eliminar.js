@@ -24,8 +24,8 @@ function Eliminar(props){
          .then(response => {
       
            let nombres=[]
-           console.log("RESULTA")
-          console.log(response)
+          
+  
            response.map(datos => {
              nombres.push([datos.nombre,datos.id])
            })
@@ -39,6 +39,9 @@ function Eliminar(props){
          })
        }
 
+
+
+       
        const eliminar =   () => {
       
         if(buscarJugador!="IdJugadores"){

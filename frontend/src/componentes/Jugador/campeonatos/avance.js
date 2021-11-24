@@ -10,7 +10,7 @@ function Avance (props){
   
 
   const [datos,setDatos]=useState([])
-
+  
   const cargarAlPrincipio = async () =>{
  
     
