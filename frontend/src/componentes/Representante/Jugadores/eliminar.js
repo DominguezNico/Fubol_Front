@@ -22,13 +22,14 @@ function Eliminar(props){
         await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
          .then(response =>response.json())
          .then(response => {
-      
-           let nombres=[]
-           console.log("RESULTA")
-          console.log(response)
-             nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id])
-           response?.map(datos => {
-           })
+  
+          let nombres=[]
+   
+   
+          response.map(datos => {
+           nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
+          })
+     
       
       
            setJugadores([["Nombre","Apellido","X"]].concat(nombres));

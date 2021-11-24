@@ -64,17 +64,13 @@ const handleTipoChange = (e) => {
 
 const  obtenerPartidos =  async () =>{
   await fetch('http://localhost:8080/getPartidos')
-   .then(response =>response.json())
-   .then(response => {
-
-     let nombres=[]
-
-
-      nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
-     response?.map(datos => {
-     })
-
-     
+  .then(response =>response.json())
+  .then(response => {
+ 
+    let nombres=[]
+    response?.map(datos => {
+     nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
+    })
      setPartidos([["Partido","Local","Visitante"]].concat(nombres));
 
 
@@ -111,13 +107,14 @@ const  obtenerPartidos =  async () =>{
   await fetch('http://localhost:8080/getJugadores')
    .then(response =>response.json())
    .then(response => {
+  
+    let nombres=[]
 
-     let nombres=[]
-     console.log("RESULTA")
-    console.log(response)
-      nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id])
-     response?.map(datos => {
-     })
+
+    response.map(datos => {
+     nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
+    })
+
 
 
      setJugadores([["Nombre","Apellido","X"]].concat(nombres));
