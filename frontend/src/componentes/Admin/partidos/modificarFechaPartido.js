@@ -44,11 +44,11 @@ function ModificarFechaPartido () {
  
  
          response.map(datos => {
-           nombres.push([datos.nroFecha,datos.id])
+          nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
          })
  
          
-         setPartidos([["Partidos","IdPartidos"]].concat(nombres));
+         setPartidos([["Partido","Local","Visitante"]].concat(nombres));
  
  
        }).catch(e => {
@@ -89,27 +89,31 @@ function ModificarFechaPartido () {
 
     return(
       <div className="container">
+        <br/>
        <div className="d-flex justify-content-center h-150">
         <div className="card2">
           <div className="card-header">
           <div className="card-body">
             <form>
 
+            <div className="dropdown">
+                       <select onChange={handleIdChange}>
+                          {partidos.map(partido => {
+                            return (
+                              <option value={partido[3]}> {'Fecha: '+partido[0]+' - '+partido[1]+' vs '+partido[2]} </option>
+                            )
+                          })}
+                        </select>
+                        
             <div className="container">
              <div className="row"> </div>
-                <input type="fecha" className="form-control" placeholder="Fecha "  onChange={handleFechaChange}/>
+             <br/>
+                <input type="fecha" className="form-control" placeholder="Ingresar nueva fecha "  onChange={handleFechaChange}/>
                 <br/>
               </div>
 
 
-              <div className="dropdown">
-                       <select onChange={handleIdChange}>
-                          {partidos.map(partido => {
-                            return (
-                              <option value={partido[1]}> {partido[0]} </option>
-                            )
-                          })}
-                        </select>
+             
               
               </div> 
                <br/> 

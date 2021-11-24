@@ -40,10 +40,10 @@ function InicioAdmin () {
             <NavDropdown title="Campeonatos" id="basic-nav-dropdown">
             <NavDropdown.Item > <Link to={"/crearCampeonato"} className="nav-link"> Crear campeonato</Link> </NavDropdown.Item>
             <NavDropdown.Item > <Link to={"/crearEstadisticas"} className="nav-link">  Estadisticas</Link> </NavDropdown.Item>
-            <NavDropdown.Item > <Link to={"/crearTablaPosiciones"} className="nav-link"> Crear TablaPosiciones</Link> </NavDropdown.Item>
-            <NavDropdown.Item > <Link to={"/inscribirClub"} className="nav-link"> inscribirClub</Link> </NavDropdown.Item>
-            <NavDropdown.Item > <Link to={"/obtenerEstado"} className="nav-link"> obtenerEstado</Link> </NavDropdown.Item>
-            <NavDropdown.Item > <Link to={"/obtenerTablaPosiciones"} className="nav-link"> obtenerTablaPosiciones</Link> </NavDropdown.Item>
+            <NavDropdown.Item > <Link to={"/crearTablaPosiciones"} className="nav-link"> Crear tabla de posiciones</Link> </NavDropdown.Item>
+            <NavDropdown.Item > <Link to={"/inscribirClub"} className="nav-link"> Inscribir club</Link> </NavDropdown.Item>
+            <NavDropdown.Item > <Link to={"/obtenerEstado"} className="nav-link"> Obtener estado</Link> </NavDropdown.Item>
+            <NavDropdown.Item > <Link to={"/obtenerTablaPosiciones"} className="nav-link"> Obtener tabla de posiciones</Link> </NavDropdown.Item>
             
             </NavDropdown>
 

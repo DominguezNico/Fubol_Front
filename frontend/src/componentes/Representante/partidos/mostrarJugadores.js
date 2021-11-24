@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import "../../../estilos/estiloRepresentante.css"
 
 
 function MostrarJugador (){
@@ -27,8 +28,7 @@ function MostrarJugador (){
          nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
        })
 
-       
-       setPartidos(nombres);
+       setPartidos([["Partido","Local","Visitante"]].concat(nombres));
 
 
      }).catch(e => {
@@ -73,8 +73,9 @@ function MostrarJugador (){
 
   return(
     <div className="containerrr4">
+
        <div className="d-flex justify-content-center h-100">
-        <div className="card5">
+        <div className="card56">
           <div className="card-header">
           <div className="card-body">
           <div className="dropdown">
@@ -100,6 +101,8 @@ function MostrarJugador (){
         </div>
         </div>
          <div>
+         <br/>
+         <br/>
           <table>
               <thead>
                 <tr>

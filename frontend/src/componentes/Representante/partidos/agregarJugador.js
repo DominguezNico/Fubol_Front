@@ -44,11 +44,11 @@ const  obtenerPartidos =  async () =>{
 
 
      response.map(datos => {
-       nombres.push([datos.nroFecha,datos.id])
+      nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
      })
 
      
-     setPartidos([["Partidos","IdPartidos"]].concat(nombres));
+     setPartidos([["Partido","Local","Visitante"]].concat(nombres));
 
 
    }).catch(e => {
@@ -67,11 +67,11 @@ const  obtenerPartidos =  async () =>{
      console.log("RESULTA")
     console.log(response)
      response.map(datos => {
-       nombres.push([datos.nombre,datos.id])
+      nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id])
      })
 
 
-     setJugadores([["Jugadores","IdJugadores"]].concat(nombres));
+     setJugadores([["Nombre","Apellido","X"]].concat(nombres));
 
 
    }).catch(e => {
@@ -120,7 +120,7 @@ return(
                  <select onChange={handleIdPartidoChange}>
                     {partidos.map(partido => {
                         return (
-                          <option value={partido[1]}> {partido[0]} </option>
+                          <option value={partido[3]}> {'Fecha: '+partido[0]+' - '+partido[1]+' vs '+partido[2]} </option>
                         )
                       })}
                   </select>
@@ -133,7 +133,7 @@ return(
                       {jugadores.map(jugador => {
                         console.log(jugador)
                         return (
-                          <option value={jugador[1]}> {jugador[0]} </option>
+                          <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
                         )
                       })}
                     </select>

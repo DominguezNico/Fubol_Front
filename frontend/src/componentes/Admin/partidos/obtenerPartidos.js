@@ -39,35 +39,24 @@ class  ObtenerPartidos extends React.Component{
   return(
     <div>
   
-      <h3>Partidos </h3>
-
+      <h1>Partidos </h1>
+      <table className="Partidos">
+              <thead>
+                <tr>
+                  <th>Club Local</th><th>Club Visitante</th><th>Etapa</th><th>Nro Fecha</th><th>Fecha</th><th>Campeonato</th><th>Goles Local</th><th>Goles Visitante</th>
+                </tr>
+              </thead>
       {this.state.partidos.map((partido) => {
-            const name = `${partido.clubLocal.nombre} -  ${partido.clubVisitante.nombre}`;
             return (
-            
-              <div className="col-lg-3 pb-3 md-7">
-                 
-             
-               <div className="card text  ">
               
-                 <div className="card-body text-dark">
-                    
-                    <h5 className="card-title center" className="colorTitulo">{name}</h5>
-                    <p className="card-text-right">
-                      <strong>Etapa: </strong>{partido.etapa}<br/>
-                      <strong>Nro Fecha: </strong>{partido.nroFecha}<br/>
-                      <strong>Fecha: </strong>{partido.fechaPartido}<br/>
-                      
-                    </p>
-
-                  </div>
-
-                </div>
-                </div>
-              
-
+        
+              <tr>
+                <td>{partido.clubLocal.nombre}</td><td>{partido.clubVisitante.nombre}</td><td>{partido.etapa}</td><td>{partido.nroFecha}</td><td>{partido.fechaPartido}</td><td>{partido.campeonato.descripcion}</td><td>{partido.golesLocal}</td><td>{partido.golesVisitante}</td>
+              </tr>
+           
             );
           })}
+           </table>
     
     </div>
   )

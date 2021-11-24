@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import '../../../estilos/estiloAdmin.css'
 
 function VerEstadisticas (props){
   useEffect(() => {
@@ -24,9 +24,8 @@ function VerEstadisticas (props){
     let aux=e.target.value.split(',')
     
     console.log(aux)
-    setBuscarJugador(aux[1]);
-
-    setBuscarClub(aux[2])
+    setBuscarJugador(aux[3]);
+    setBuscarClub(aux[4])
   }
 
 
@@ -42,6 +41,7 @@ function VerEstadisticas (props){
         })
 
         setFaltas(cont)
+        console.log(faltas)
 
       }).catch(e=> console.log(e))
     
@@ -85,11 +85,11 @@ function VerEstadisticas (props){
 
 
        response.map(datos => {
-         nombres.push([datos.nombre,datos.id,datos.idClub])
+        nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
        })
   
   
-       setJugadores([["Jugadores","IdJugadores","IdClub"]].concat(nombres));
+       setJugadores([["Nombre","Apellido","X"]].concat(nombres));
   
   
      }).catch(e => {
@@ -102,14 +102,13 @@ function VerEstadisticas (props){
   <div >
     <div className="centrar">
     <div className="cardEstadisticas centrar">
-      <div className="card-header">
+      <div className="card1">
         <div className="card-body">
           <div className="dropdown">
             <select onChange={handleIdJugadorChange}>
                 {jugadores.map(jugador => {
-                  console.log(jugador)
                   return (
-                    <option value={jugador}> {jugador[0]} </option>
+                    <option value={jugador}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
                   )
                 })}
               </select>            
@@ -131,8 +130,7 @@ function VerEstadisticas (props){
         </tr>
       </thead>
 
-      <tr>{console.log("ganados")}
-                {console.log(perdidos)}
+      <tr>
         <td>{faltas}</td><td>{goles}</td><td>{ganados}</td><td>{perdidos}</td>
       </tr>
     </table>
