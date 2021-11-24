@@ -10,6 +10,7 @@ import tablaPosicones from './campeonatos/tablaPosiciones.js';
 import modificarDatos from './Perfil/modificarDatosPersonales.js';
 import VerGoles from './Perfil/verGoles.js';
 import VerFaltas from './Perfil/verFaltas.js';
+import VerEstadisticas from './Perfil/verEstadisticasGenerales.js';
 
 
 function InicioJugador ({usuario}) {
@@ -30,6 +31,7 @@ function InicioJugador ({usuario}) {
           </NavDropdown>
           <NavDropdown title="Perfil" id="basic-nav-dropdown">
             <NavDropdown.Item><Link to={{pathname:"/modificarDatos", state:usuario}} className="nav-link">Modificar datos personales </Link></NavDropdown.Item>
+            <NavDropdown.Item><Link to={{pathname:"/estadisticas", state:usuario}} className="nav-link">Ver estadisticas generales</Link></NavDropdown.Item>
             <NavDropdown.Item><Link to={"/verFaltas"} className="nav-link">Ver mis faltas </Link></NavDropdown.Item>
             <NavDropdown.Item><Link to={"/varGoles"} className="nav-link">Ver mis goles</Link></NavDropdown.Item>
           </NavDropdown>
@@ -47,6 +49,7 @@ function InicioJugador ({usuario}) {
         <Route exact path="/tablaPosiciones" component={tablaPosicones} />
         
         <Route path="/modificarDatos" component={modificarDatos} />
+        <Route path="/estadisticas" component={VerEstadisticas} />
         
         <Route exact path="/verFaltas" render={(props) => (
           <VerFaltas {...props} usuario={usuario}/>

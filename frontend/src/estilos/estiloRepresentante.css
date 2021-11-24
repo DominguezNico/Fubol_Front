@@ -17,6 +17,22 @@
     border-radius: 5%;
 }
 
+.cardEstadisticas{
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    width: 10%;
+    display:block;
+    
+    
+}
+
+.tablaEstadisticas{
+    margin:auto;
+    width:98%;
+}
+
 .card4{
     height: 300px;
     background-color: rgba(0,0,0,0.8) !important;

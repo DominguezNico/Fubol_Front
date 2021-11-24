@@ -129,11 +129,7 @@ const  obtenerPartidos =  async () =>{
  }
 
 
-
-
-
-
-
+ 
   const crearFalta =   () => {
 
     if(buscarPartidos!="IdPartidos"){
@@ -158,9 +154,6 @@ const  obtenerPartidos =  async () =>{
   }
 
 
-
-  
- console.log(campeonatos)
     return(
       <div className="containerrr3">
        <div className="d-flex justify-content-center h-100">
