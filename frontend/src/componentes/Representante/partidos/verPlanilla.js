@@ -23,6 +23,14 @@ class  VerPlanilla extends React.Component{
 
 
   render(){
+  if(this.state.partidos.status===400){
+    return(
+      <div>
+        <h3 className="sinAvance"> No tenes ninguna planilla que mostrar</h3>
+      </div>
+    )
+  }else{
+
   if(this.state.cargando){
     return(
 
@@ -73,6 +81,7 @@ class  VerPlanilla extends React.Component{
   )
 }
 }
+  }
 }
 
 

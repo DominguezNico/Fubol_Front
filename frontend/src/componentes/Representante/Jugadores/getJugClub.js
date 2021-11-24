@@ -22,8 +22,15 @@ componentDidMount(){
   }
 
 render(){
-console.log(this.state.jugadores)
-return(
+
+if(this.state.jugadores.status===400){
+  return(
+    <div>
+      <h3 className="sinAvance"> No hay jugadores que mostrar</h3>
+    </div>
+  )
+}else{
+  return(
     <div>
         <h1>Jugadores del club:</h1>
         <br/> 
@@ -40,6 +47,8 @@ return(
             </table>
     </div>
 )
+}
+
 }
 }
 export default GetJugClub

@@ -62,6 +62,10 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
 
   const cambiarGol =   () => {
 
+    if(goles.length==0){
+      alert("Los campos no deben quedar vacios")
+    }else{
+
     if(buscarPartidos!="IdPartidos"){
       setPendiente(true);
       
@@ -80,7 +84,7 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
           setPendiente(false)
       })
     }
-    
+  }
 
   }
 

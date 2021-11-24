@@ -23,6 +23,13 @@ class  VerRepresentantes extends React.Component{
 
 
   render(){
+  if(this.state.representantes.status===400){
+    return(
+      <div>
+        <h3 className="sinAvance"> No tenes ningun representante que mostrar</h3>
+      </div>
+    )
+  }else{
   if(this.state.cargando){
     return(
 
@@ -76,6 +83,7 @@ class  VerRepresentantes extends React.Component{
      </div>
     </div>
   )
+}
 }
 }
 }

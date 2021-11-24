@@ -61,6 +61,10 @@ function ModificarFechaPartido () {
 
 
   const moficiarFecha =   () => {
+    if(fecha.length==0){
+      alert("Los campos no deben quedar vacios")
+    }else{
+    
 
     if(buscarPartidos!="IdPartidos"){
       setPendiente(true);
@@ -80,6 +84,7 @@ function ModificarFechaPartido () {
           setPendiente(false)
       })
     }
+  }
   }
 
 

@@ -14,10 +14,15 @@ function GetJugId(){
         };
 
     const getNombreJugador =  async () => {
+        if(id.length==0){
+          alert("Los campos no deben quedar vacios")
+        }else{
+
         await fetch(`http://localhost:8080/getJugador?idJugador=${id}`)
         .then(response => response.json())
         .then(data => [setNombre(data.nombre), setDocumento(data.documento), setApellido(data.apellido), setFecha(data.fechaNacimiento)]) 
-     }
+      }
+    }
 
 return(
     <div className="containerrr">
