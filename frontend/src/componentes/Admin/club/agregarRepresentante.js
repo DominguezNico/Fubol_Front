@@ -42,7 +42,7 @@ function AgregarRepresentante (){
         let nombres=[]
 
 
-        response.map(datos => {
+        response?.map(datos => {
           nombres.push([datos.nombre,datos.idClub])
         })
 
@@ -101,7 +101,7 @@ function AgregarRepresentante (){
              <div className="dropdown">
                         
               <select onChange={handleIdChange}>
-                {clubes.map(club => {
+                {clubes?.map(club => {
                   return (
                     <option value={club[1]}> {club[0]} </option>
                   )

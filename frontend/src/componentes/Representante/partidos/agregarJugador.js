@@ -43,7 +43,7 @@ const  obtenerPartidos =  async () =>{
      let nombres=[]
 
 
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.nroFecha,datos.id])
      })
 
@@ -66,7 +66,7 @@ const  obtenerPartidos =  async () =>{
      let nombres=[]
      console.log("RESULTA")
     console.log(response)
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.nombre,datos.id])
      })
 
@@ -118,7 +118,7 @@ return(
           
              <div className="dropdown">
                  <select onChange={handleIdPartidoChange}>
-                    {partidos.map(partido => {
+                    {partidos?.map(partido => {
                         return (
                           <option value={partido[1]}> {partido[0]} </option>
                         )
@@ -130,7 +130,7 @@ return(
 
             <div className="dropdown">
                   <select onChange={handleIdJugadorChange}>
-                      {jugadores.map(jugador => {
+                      {jugadores?.map(jugador => {
                         console.log(jugador)
                         return (
                           <option value={jugador[1]}> {jugador[0]} </option>

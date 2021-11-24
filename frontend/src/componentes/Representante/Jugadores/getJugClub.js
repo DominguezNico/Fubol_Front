@@ -34,7 +34,7 @@ return(
                  <th>Id</th><th>Nombre</th><th>Apellido</th><th>Documento</th><th>Fecha de Nacimiento</th>
                 </tr>
               </thead>
-              {this.state.jugadores.map(({id, nombre, apellido, documento, fechaNacimiento}) => (
+              {this.state.jugadores?.map(({id, nombre, apellido, documento, fechaNacimiento}) => (
                 <tr><td>{id}</td><td>{nombre}</td><td>{apellido}</td><td>{documento}</td><td>{fechaNacimiento}</td></tr>
             ))}
             </table>

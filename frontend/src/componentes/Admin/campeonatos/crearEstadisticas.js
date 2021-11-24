@@ -1,74 +1,148 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 
-class  CrearEstadisticas extends React.Component{
-  
-  
-  state = { 
-    listas:[],
-    cargando: true 
-  }
-
-
-  componentDidMount(){
-    fetch(`http://localhost:8080/confeccionEsta?idClub=1`)
-    .then(response => response.json())
-    .then(data => this.setState({ listas: data, cargando:false}) , console.log(this.faltas))
-    .catch(error => {
-      console.log('Hay un error en la llamada');
-    });
-  }
-
-
-
-
-  render(){
-  if(this.state.cargando){
-    return(
-
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Estadisticas</h1>
-        </header>
-        <div>
-          <p>...</p>
-        </div> 
-      </div> 
-    )
-  }else{
-  return(
-    <div>
-      <h3>Estadisticas </h3>
-      {this.state.listas.map((partido) => {
-            
-            return (
-            
-              <div className="col-lg-3 pb-3 md-7">
-               <div className="card text  ">
-              
-                 <div className="card-body text-dark">
-                    
-                    <p className="card-text-right">
-                      <strong> </strong>{partido}<br/>
-                     
-                      
-                    </p>
-
-                  </div>
-
-                </div>
-                </div>
-              
-
-            );
-          })}
+function VerEstadisticas (props){
+  useEffect(() => {
+    obtenerJugadores();
     
+    
+  },[]);
+
+ 
+
+  const [faltas,setFaltas]=useState(0)
+  const [goles,setGoles]=useState(0)
+  const [ganados,setGanados]=useState(0)
+  const [perdidos,setPerididos]=useState(0)
+  
+  const [buscarJugador,setBuscarJugador]=useState('');
+  const [buscarClub,setBuscarClub]=useState('');
+  const [jugadores,setJugadores]=useState([]);
+
+  const handleIdJugadorChange = (e) => {
+    console.log("buscarJugador")
+    let aux=e.target.value.split(',')
+    
+    console.log(aux)
+    setBuscarJugador(aux[1]);
+
+    setBuscarClub(aux[2])
+  }
+
+
+  const obtenerDatos =async ()=>{
+    //Faltas
+    await fetch(`http://localhost:8080/getFaltasJugador?idJugador=${buscarJugador}`)
+      .then(response =>response.json())
+      .then(response => {
+
+        let cont=0;
+        response?.map(()=>{
+          cont=cont+1;
+        })
+
+        setFaltas(cont)
+
+      }).catch(e=> console.log(e))
+    
+    //Goles
+    await fetch(`http://localhost:8080/getGolesJugador?idJugador=${buscarJugador}`)
+      .then(response =>response.json())
+      .then(response => {
+
+        let cont=0;
+        response?.map(()=>{
+          cont=cont+1;
+        })
+
+       
+        setGoles(cont)
+
+      }).catch(e=> console.log(e))
+
+    //PartidosGanados
+    await fetch(`http://localhost:8080/partidosGanados?idClub=${buscarClub}`)
+    .then(response =>response.json()) 
+    .then(response => {
+        setGanados(response)
+      }).catch(e=> console.log(e))
+
+    //PartidosPeridos
+    await fetch(`http://localhost:8080/partidosPerdidos?idClub=${buscarClub}`)
+    .then(response =>response.json())   
+    .then(response => {
+        setPerididos(response)
+      }).catch(e=> console.log(e))  
+  }
+  
+
+  const  obtenerJugadores =  async () =>{
+    await fetch('http://localhost:8080/getJugadores')
+     .then(response =>response.json())
+     .then(response => {
+  
+       let nombres=[]
+
+
+       response?.map(datos => {
+         nombres.push([datos.nombre,datos.id,datos.idClub])
+       })
+  
+  
+       setJugadores([["Jugadores","IdJugadores","IdClub"]].concat(nombres));
+  
+  
+     }).catch(e => {
+       console.log(e);
+     })
+   }
+
+ 
+ return(
+  <div >
+    <div className="centrar">
+    <div className="cardEstadisticas centrar">
+      <div className="card-header">
+        <div className="card-body">
+          <div className="dropdown">
+            <select onChange={handleIdJugadorChange}>
+                {jugadores?.map(jugador => {
+                  console.log(jugador)
+                  return (
+                    <option value={jugador}> {jugador[0]} </option>
+                  )
+                })}
+              </select>            
+          </div> 
+          <br/>
+          <div className="centrar">
+            <input type="Button" value="Buscar" className="boton"  onClick={obtenerDatos} />
+          </div>
+          
+        </div>
+      </div>
     </div>
-  )
-}
-}
+    </div>
+
+      <table className="tablaEstadisticas">
+      <thead>
+        <tr>
+          <th>Faltas</th><th>Goles</th><th>Partidos ganados</th><th>Partidos Perdidos</th>
+        </tr>
+      </thead>
+
+      <tr>{console.log("ganados")}
+                {console.log(perdidos)}
+        <td>{faltas}</td><td>{goles}</td><td>{ganados}</td><td>{perdidos}</td>
+      </tr>
+    </table>
+    <br/>
+    <br/>
+  </div>
+
+
+ )
 }
 
 
-
-  export default CrearEstadisticas;
+  export default VerEstadisticas;

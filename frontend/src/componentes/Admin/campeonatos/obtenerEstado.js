@@ -38,7 +38,7 @@ const  obtenerCampeonatos =  async () =>{
      let nombres=[]
 
 
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.descripcion,datos.idCampeonato])
      })
 
@@ -90,7 +90,7 @@ const  obtenerCampeonatos =  async () =>{
                  <div className="dropdown">
                         
                      <select onChange={handleIdChange}>
-                        {campeonatos.map(campeonato => {
+                        {campeonatos?.map(campeonato => {
                             return (
                               <option value={campeonato[1]}> {campeonato[0]} </option>
                             )

@@ -41,7 +41,7 @@ class  ObtenerPartidos extends React.Component{
   
       <h3>Partidos </h3>
 
-      {this.state.partidos.map((partido) => {
+      {this.state.partidos?.map((partido) => {
             const name = `${partido.clubLocal.nombre} -  ${partido.clubVisitante.nombre}`;
             return (
             

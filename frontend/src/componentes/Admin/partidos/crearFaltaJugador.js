@@ -70,7 +70,7 @@ const  obtenerPartidos =  async () =>{
      let nombres=[]
 
 
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.nroFecha,datos.id])
      })
 
@@ -93,7 +93,7 @@ const  obtenerPartidos =  async () =>{
      let nombres=[]
 
 
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.descripcion,datos.idCampeonato])
      })
 
@@ -115,7 +115,7 @@ const  obtenerPartidos =  async () =>{
      let nombres=[]
      console.log("RESULTA")
     console.log(response)
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.nombre,datos.id])
      })
 
@@ -129,11 +129,7 @@ const  obtenerPartidos =  async () =>{
  }
 
 
-
-
-
-
-
+ 
   const crearFalta =   () => {
 
     if(buscarPartidos!="IdPartidos"){
@@ -158,9 +154,6 @@ const  obtenerPartidos =  async () =>{
   }
 
 
-
-  
- console.log(campeonatos)
     return(
       <div className="containerrr3">
        <div className="d-flex justify-content-center h-100">
@@ -179,7 +172,7 @@ const  obtenerPartidos =  async () =>{
 
                  <div className="dropdown">
                      <select onChange={handleIdPartidoChange}>
-                        {partidos.map(partido => {
+                        {partidos?.map(partido => {
                             return (
                               <option value={partido[1]}> {partido[0]} </option>
                             )
@@ -191,7 +184,7 @@ const  obtenerPartidos =  async () =>{
 
                 <div className="dropdown">
                       <select onChange={handleIdJugadorChange}>
-                          {jugadores.map(jugador => {
+                          {jugadores?.map(jugador => {
                             console.log(jugador)
                             return (
                               <option value={jugador[1]}> {jugador[0]} </option>
@@ -204,7 +197,7 @@ const  obtenerPartidos =  async () =>{
                 
                 <div className="dropdown">
                      <select onChange={handleCampeonatoChange}>
-                        {campeonatos.map(campeonato => {
+                        {campeonatos?.map(campeonato => {
                          
                             return (
                               <option value={campeonato[1]}> {campeonato[0]} </option>

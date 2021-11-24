@@ -45,6 +45,25 @@
     align-items: center;
 }
 
+.centrarImagen{
+    display:block;
+    margin:auto;
+    
+    
+}
+
+
+.sinAvance{
+    font-size: 500%;
+    color: whitesmoke;
+    background-color: #141517;
+}
+
+.bordeLetra{
+  -webkit-text-stroke: 5px #141517;
+  color: transparent;
+}
+
 .centrarTabla{
     margin:auto;
 }
@@ -82,3 +101,10 @@ tr:hover td{
 	color: white;
 }
 
+.textoInicio{
+    font-size: 800%;
+    background: url('Pasto1.jpg');
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}

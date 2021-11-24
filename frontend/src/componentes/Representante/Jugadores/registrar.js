@@ -52,7 +52,7 @@ const handletipoChange = (e) => {
         .then( () => {
             console.log('Se agrego ');
             alert("Se agregó correctamente");
-          })
+        })
     }
 
 
@@ -82,7 +82,7 @@ return(
 
            <br/> 
            <br/> 
-           <div className="form-group">
+           <div className="form-group centrar">
              <input type="Button" value="Registrar jugador" className="boton" onClick={agregarJugador}/>
              
                     
