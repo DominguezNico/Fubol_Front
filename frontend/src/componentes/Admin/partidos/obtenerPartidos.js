@@ -43,8 +43,8 @@ class  ObtenerPartidos extends React.Component{
       <table className="Partidos">
               <thead>
                 <tr>
-                  <th>Club Local</th><th>Club Visitante</th><th>Etapa</th><th>Nro Fecha</th><th>Fecha</th><th>Campeonato</th><th>Goles Local</th><th>Goles Visitante</th>
                 </tr>
+                  <th>Club Local</th><th>Club Visitante</th><th>Etapa</th><th>Nro Fecha</th><th>Fecha</th><th>Campeonato</th><th>Goles Local</th><th>Goles Visitante</th>
               </thead>
       {this.state.partidos.map((partido) => {
             return (

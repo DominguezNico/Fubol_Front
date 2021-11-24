@@ -24,7 +24,7 @@ function VerEstadisticas (props){
       .then(response => {
 
         let cont=0;
-        response.map(()=>{
+        response?.map(()=>{
           cont=cont+1;
         })
 
@@ -42,7 +42,7 @@ function VerEstadisticas (props){
       .then(response => {
 
         let cont=0;
-        response.map(()=>{
+        response?.map(()=>{
           cont=cont+1;
         })
 
@@ -78,27 +78,35 @@ function VerEstadisticas (props){
 
 
 
+  if(faltas.status===400 || goles.status===400 || ganados.status===400 || perdidos.status===400){
+    return(
+      <div>
+        <h3 className="sinAvance"> No tienes estadisticas que mostrar</h3>
+      </div>
+    )
+  }else{
+    return(
+      <div >
+        <table className="centrarTabla">
+          <thead>
+            <tr>
+              <th>Faltas</th><th>Goles</th><th>Partidos ganados</th><th>Partidos Perdidos</th>
+            </tr>
+          </thead>
+    
+          <tr>
+    
+            <td>{faltas}</td><td>{goles}</td><td>{ganados}</td><td>{perdidos}</td>
+          </tr>
+        </table>
+        <br/>
+        <br/>
+      </div>
+    
+    
+     )
+  }
  
- return(
-  <div >
-    <table className="centrarTabla">
-      <thead>
-        <tr>
-          <th>Faltas</th><th>Goles</th><th>Partidos ganados</th><th>Partidos Perdidos</th>
-        </tr>
-      </thead>
-
-      <tr>
-
-        <td>{faltas}</td><td>{goles}</td><td>{ganados}</td><td>{perdidos}</td>
-      </tr>
-    </table>
-    <br/>
-    <br/>
-  </div>
-
-
- )
 }
 
 

@@ -73,37 +73,14 @@ function VerTabla (props){
     })
     
     setTablaPosOrdenada(listaFinal);
-    /*
-    let aux=[];
-    let listFinal=[];
-    let cont=0;
-    campeonatos.map((d)=>{
-      cont=0;
-      tablaPosOrdenada.map((dato)=>{
-        if(dato.camp.idCampeonato===d.idCampeonato){
-          
-          listFinal.push(dato)
-          
-          if(cont!=0){
-            if(listFinal[cont-1].puntos<=listFinal[cont].puntos){
-              aux=listFinal[cont-1]
-              listFinal[cont-1]=listFinal[cont]
-              listFinal[cont]=aux
-            }
-          }
-          cont=cont+1;
-        }
-      })
-    })
-
-    setTablaPosOrdenada(listFinal)*/
+    
   }
 
   
   return(    
     <div className="fondo centrar row">
     
-      {campeonatos.map((d)=> {
+      {campeonatos?.map((d)=> {
         
         let cont=0
           

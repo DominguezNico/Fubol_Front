@@ -41,7 +41,7 @@ class  VerRepresentantes extends React.Component{
    <div className="row">
       <h3>Representantes </h3>
 
-      {this.state.representantes.map((rep) => {
+      {this.state.representantes?.map((rep) => {
             const name = `${rep.club.nombre} `;
            
             return (

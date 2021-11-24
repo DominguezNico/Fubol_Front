@@ -29,7 +29,7 @@ function Habilitar(props){
            let nombres=[]
            console.log("RESULTA")
           console.log(response)
-           response.map(datos => {
+           response?.map(datos => {
             nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id])
            })
            
@@ -81,7 +81,7 @@ return(
                  
              <div className="dropdown">
                       <select onChange={handleIdJugadorChange}>
-                          {jugadores.map(jugador => {
+                          {jugadores?.map(jugador => {
                             console.log(jugador)
                             return (
                               <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>

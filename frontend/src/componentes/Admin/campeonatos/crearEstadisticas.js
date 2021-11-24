@@ -36,7 +36,7 @@ function VerEstadisticas (props){
       .then(response => {
 
         let cont=0;
-        response.map(()=>{
+        response?.map(()=>{
           cont=cont+1;
         })
 
@@ -51,7 +51,7 @@ function VerEstadisticas (props){
       .then(response => {
 
         let cont=0;
-        response.map(()=>{
+        response?.map(()=>{
           cont=cont+1;
         })
 

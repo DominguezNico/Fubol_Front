@@ -71,71 +71,56 @@ function TablaPosiciones (props){
     })
     
     setTablaPosOrdenada(listaFinal);
-    /*
-    let aux=[];
-    let listFinal=[];
-    let cont=0;
-    campeonatos.map((d)=>{
-      cont=0;
-      tablaPosOrdenada.map((dato)=>{
-        if(dato.camp.idCampeonato===d.idCampeonato){
-          
-          listFinal.push(dato)
-          
-          if(cont!=0){
-            if(listFinal[cont-1].puntos<=listFinal[cont].puntos){
-              aux=listFinal[cont-1]
-              listFinal[cont-1]=listFinal[cont]
-              listFinal[cont]=aux
-            }
-          }
-          cont=cont+1;
-        }
-      })
-    })
-
-    setTablaPosOrdenada(listFinal)*/
+    
   }
 
-  
-  return(    
-    <div className="fondo centrar row">
-    
-      {campeonatos.map((d)=> {
-        
-        let cont=0
+  if(campeonatos.status===400){
+    return(
+      <div>
+        <h3 className="sinAvance"> No tienes ninguna tabla que mostrar</h3>
+      </div>
+    )
+  }else{
+    return(    
+      <div className="fondo centrar row">
+      
+        {campeonatos?.map((d)=> {
           
-        return(
-          <div >
-            <h3 className='colorTituloTabla colorFondoTituloTabla'><strong>Campeonato:</strong> {d.descripcion}</h3>
-            <table className="centrarTabla">
-              <thead>
-                <tr>
-                  <th>#</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
-                </tr>
-              </thead>
+          let cont=0
             
-                  {tablaPosOrdenada?.map((dato) => {
-                    
-                    if(dato.camp.idCampeonato===d.idCampeonato){
-                      cont=cont+1
-                      return (
-                        <tr>
-                          <td>{cont}</td><td>{dato.c.nombre}</td><td>{dato.cantidadJugados}</td><td>{dato.cantidadganados}</td><td>{dato.cantidadempatados}</td><td>{dato.cantidadperdidos}</td><td>{dato.golesFavor}</td><td>{dato.golesContra}</td><td>{dato.diferenciaGoles}</td><td>{dato.puntos}</td>
-                        </tr>    
-                      );
-                    }
-                  })}
-          
-            </table>
-            <br/>
-            <br/>
-          </div>
-        );        
-      })}
-    </div>
-    
-  ) 
+          return(
+            <div >
+              <h3 className='colorTituloTabla colorFondoTituloTabla'><strong>Campeonato:</strong> {d.descripcion}</h3>
+              <table className="centrarTabla">
+                <thead>
+                  <tr>
+                    <th>#</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
+                  </tr>
+                </thead>
+              
+                    {tablaPosOrdenada?.map((dato) => {
+                      
+                      if(dato.camp.idCampeonato===d.idCampeonato){
+                        cont=cont+1
+                        return (
+                          <tr>
+                            <td>{cont}</td><td>{dato.c.nombre}</td><td>{dato.cantidadJugados}</td><td>{dato.cantidadganados}</td><td>{dato.cantidadempatados}</td><td>{dato.cantidadperdidos}</td><td>{dato.golesFavor}</td><td>{dato.golesContra}</td><td>{dato.diferenciaGoles}</td><td>{dato.puntos}</td>
+                          </tr>    
+                        );
+                      }
+                    })}
+            
+              </table>
+              <br/>
+              <br/>
+            </div>
+          );        
+        })}
+      </div>
+      
+    ) 
+  }
+  
 }
 
 

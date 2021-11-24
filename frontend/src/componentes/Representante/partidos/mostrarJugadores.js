@@ -24,7 +24,7 @@ function MostrarJugador (){
        let nombres=[]
 
 
-       response.map(datos => {
+       response?.map(datos => {
          nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
        })
 
@@ -80,7 +80,7 @@ function MostrarJugador (){
           <div className="card-body">
           <div className="dropdown">
                        <select onChange={handleIdChange}>
-                          {partidos.map(partido => {
+                          {partidos?.map(partido => {
                             return (
                               <option value={partido[3]}> {'Fecha: '+partido[0]+' - '+partido[1]+' vs '+partido[2]} </option>
                             )
@@ -109,7 +109,7 @@ function MostrarJugador (){
                  <th>Id</th><th>Nombre</th><th>Apellido</th><th>Documento</th><th>Club</th>
                 </tr>
               </thead>
-              {jugadoresLocales.map((jugador) => (
+              {jugadoresLocales?.map((jugador) => (
                 <tr><td>{jugador[0]}</td><td>{jugador[1]}</td><td>{jugador[2]}</td><td>{jugador[3]}</td><td>{jugador[4]}</td></tr>
             ))}
             

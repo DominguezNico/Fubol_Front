@@ -6,13 +6,24 @@
 
 }
 
-.cardEstadisticas{
+.card8{
+    height: 150px;
     background-color: rgba(0,0,0,0.8) !important;
     border-radius: 5%;
-    margin-top: 3%;
-    margin-bottom: 2%;
-    width: 30%;
-    display:block;
-    
-    
+}
+.card9{
+    height: 150px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+}
+.card10{
+    height: 200px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+}
+.card6{
+    height: 550px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+    width: 400px;
 }

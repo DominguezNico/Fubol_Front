@@ -52,6 +52,13 @@
     
 }
 
+
+.sinAvance{
+    font-size: 500%;
+    color: whitesmoke;
+    background-color: #141517;
+}
+
 .bordeLetra{
   -webkit-text-stroke: 5px #141517;
   color: transparent;

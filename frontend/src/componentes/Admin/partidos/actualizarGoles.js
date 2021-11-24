@@ -12,7 +12,8 @@ function ActualuzarGoles () {
   const [goles,setGoles]=useState('');
   const [pendiente,setPendiente]=useState(false);
 
-
+/*HACER COMO CREAR FALTA Y AGREGAR JUGADOR
+LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
 
 
   useEffect(() => {
@@ -41,7 +42,7 @@ function ActualuzarGoles () {
          let nombres=[]
  
  
-         response.map(datos => {
+         response?.map(datos => {
            nombres.push([datos.nroFecha,datos.id])
          })
  
@@ -103,7 +104,7 @@ function ActualuzarGoles () {
 
               <div className="dropdown">
                        <select onChange={handleIdChange}>
-                          {partidos.map(partido => {
+                          {partidos?.map(partido => {
                             return (
                               <option value={partido[1]}> {partido[0]} </option>
                             )
