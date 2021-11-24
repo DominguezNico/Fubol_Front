@@ -37,7 +37,7 @@ function VerEstadisticas (props){
       .then(response => {
 
         let cont=0;
-        response.map(()=>{
+        response?.map(()=>{
           cont=cont+1;
         })
 
@@ -51,7 +51,7 @@ function VerEstadisticas (props){
       .then(response => {
 
         let cont=0;
-        response.map(()=>{
+        response?.map(()=>{
           cont=cont+1;
         })
 
@@ -84,7 +84,7 @@ function VerEstadisticas (props){
        let nombres=[]
 
 
-       response.map(datos => {
+       response?.map(datos => {
          nombres.push([datos.nombre,datos.id,datos.idClub])
        })
   
@@ -106,7 +106,7 @@ function VerEstadisticas (props){
         <div className="card-body">
           <div className="dropdown">
             <select onChange={handleIdJugadorChange}>
-                {jugadores.map(jugador => {
+                {jugadores?.map(jugador => {
                   console.log(jugador)
                   return (
                     <option value={jugador}> {jugador[0]} </option>

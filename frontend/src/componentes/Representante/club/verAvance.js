@@ -27,7 +27,7 @@ function VerAvance (props){
   return(    
     <div className="container">
       
-      {datos.map((dato) => {
+      {datos?.map((dato) => {
         console.log(dato.cantidadJugados)
         return (
 

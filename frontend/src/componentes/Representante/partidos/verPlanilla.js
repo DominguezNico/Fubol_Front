@@ -41,7 +41,7 @@ class  VerPlanilla extends React.Component{
   
       <h3>Planilla Finalizacion Partidos </h3>
 
-      {this.state.partidos.map((partido) => {
+      {this.state.partidos?.map((partido) => {
             const name = ` Local: ${partido.clubLocal.nombre}     Visitante:  ${partido.clubVisitante.nombre}`;
             return (
             

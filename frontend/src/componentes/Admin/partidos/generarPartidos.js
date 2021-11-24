@@ -73,7 +73,7 @@ const  obtenerClubes =  async () =>{
      let nombres=[]
 
 
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.nombre,datos.idClub])
      })
 
@@ -97,7 +97,7 @@ const  obtenerClubes =  async () =>{
      let nombres=[]
 
 
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.nombre,datos.idClub])
      })
 
@@ -121,7 +121,7 @@ const  obtenerClubes =  async () =>{
      let nombres=[]
 
 
-     response.map(datos => {
+     response?.map(datos => {
        nombres.push([datos.descripcion,datos.idCampeonato])
      })
 
@@ -190,7 +190,7 @@ const  obtenerClubes =  async () =>{
 
                 <div className="dropdown">
                      <select onChange={cambiarClubes}>
-                        {clubes.map(club => {
+                        {clubes?.map(club => {
                             return (
                               <option value={club[1]}> {club[0]} </option>
                             )
@@ -201,7 +201,7 @@ const  obtenerClubes =  async () =>{
 
                 <div className="dropdown">
                       <select onChange={cambiarClubesVisitantes}>
-                          {clubesV.map(clubV => {
+                          {clubesV?.map(clubV => {
                             console.log(clubV)
                             return (
                               <option value={clubV[1]}> {clubV[0]} </option>
@@ -214,7 +214,7 @@ const  obtenerClubes =  async () =>{
 
                 <div className="dropdown">
                       <select onChange={cambiarCampeonato}>
-                          {campeonatos.map(camp => {
+                          {campeonatos?.map(camp => {
                             console.log(camp)
                             return (
                               <option value={camp[1]}> {camp[0]} </option>

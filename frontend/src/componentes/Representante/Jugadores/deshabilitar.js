@@ -29,7 +29,7 @@ function Deshabilitar(props){
            let nombres=[]
            console.log("RESULTA")
           console.log(response)
-           response.map(datos => {
+           response?.map(datos => {
              nombres.push([datos.nombre,datos.id])
            })
       
@@ -82,7 +82,7 @@ return(
                  
              <div className="dropdown">
                       <select onChange={handleIdJugadorChange}>
-                          {jugadores.map(jugador => {
+                          {jugadores?.map(jugador => {
                             console.log(jugador)
                             return (
                               <option value={jugador[1]}> {jugador[0]} </option>

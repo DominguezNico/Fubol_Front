@@ -32,7 +32,7 @@ function Registro ()  {
 		   let usuarios=[]
 	  
 	  
-		   response.map(datos => {
+		   response?.map(datos => {
 			 usuarios.push([datos.documento])
 		   })
 	  
@@ -93,7 +93,7 @@ function Registro ()  {
 			setNaN(false);
 		}
 
-		usuarios.map(u => {
+		usuarios?.map(u => {
 			if(u==doc){
 				alert("Ya existe un usuario con ese documento");
 				existe= true;
@@ -126,7 +126,7 @@ function Registro ()  {
 				
 			}).catch(e => {
 				console.log(e);
-				alert("Ocurrio un error, intente nuevamente");
+				
 				setPendiente(false);
 			  })
 

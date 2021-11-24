@@ -78,7 +78,7 @@ class ClubComponent extends React.Component{
                 </tr>
               </thead>
               <body>
-                {clubes[0].map((dato) =>
+                {clubes[0]?.map((dato) =>
                     <tr key={dato.idClub}>
                       <td>{dato.nombre}</td>
                       <td>{dato.direccion}</td>

@@ -38,22 +38,32 @@ const handlesetEstadoChange = (e) => {
   setEstado(e.target.value);
   };
 
-
-
   const crearCamp = () => {
 
     setPendiente(true);
 
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({ })
-  };
+    let campo=false;
 
-    fetch(`http://localhost:8080/crearCampeonato?descripcion=${descrip}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&estado=${estado}`,requestOptions)
-    .then(()=>{setPendiente(false)}
-    )
-    
+    if (descrip.length == 0 || fechaInicio.length == 0 || fechaFin.length==0 || estado.length==0 || pendiente.length==0) {
+      alert("Los campos no pueden quedar vacios");
+      campo= true;
+      
+    }
+
+    if(campo==false){
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ })
+    };
+  
+      fetch(`http://localhost:8080/crearCampeonato?descripcion=${descrip}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&estado=${estado}`,requestOptions)
+      .then(()=>{setPendiente(false)}
+      ).catch(e=> console.log(e))
+    }else{
+      setPendiente(false);
+    }
+
   }
 
   
