@@ -30,11 +30,11 @@ function Habilitar(props){
            console.log("RESULTA")
           console.log(response)
            response?.map(datos => {
-             nombres.push([datos.nombre,datos.id])
+            nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id])
            })
+           
       
-      
-           setJugadores([["Jugadores","IdJugadores"]].concat(nombres));
+           setJugadores([["Nombre","Apellido","X"]].concat(nombres));
       
       
          }).catch(e => {
@@ -84,7 +84,7 @@ return(
                           {jugadores?.map(jugador => {
                             console.log(jugador)
                             return (
-                              <option value={jugador[1]}> {jugador[0]} </option>
+                              <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
                             )
                           })}
                         </select>

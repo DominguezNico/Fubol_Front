@@ -67,18 +67,14 @@ const handleTipoChange = (e) => {
 
 const  obtenerPartidos =  async () =>{
   await fetch('http://localhost:8080/getPartidos')
-   .then(response =>response.json())
-   .then(response => {
-
-     let nombres=[]
-
-
-     response?.map(datos => {
-       nombres.push([datos.nroFecha,datos.id])
-     })
-
-     
-     setPartidos([["Partidos","IdPartidos"]].concat(nombres));
+  .then(response =>response.json())
+  .then(response => {
+ 
+    let nombres=[]
+    response?.map(datos => {
+     nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
+    })
+     setPartidos([["Partido","Local","Visitante"]].concat(nombres));
 
 
    }).catch(e => {
@@ -114,16 +110,17 @@ const  obtenerPartidos =  async () =>{
   await fetch('http://localhost:8080/getJugadores')
    .then(response =>response.json())
    .then(response => {
-
-     let nombres=[]
-     console.log("RESULTA")
-    console.log(response)
-     response?.map(datos => {
-       nombres.push([datos.nombre,datos.id])
-     })
+  
+    let nombres=[]
 
 
-     setJugadores([["Jugadores","IdJugadores"]].concat(nombres));
+    response.map(datos => {
+     nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
+    })
+
+
+
+     setJugadores([["Nombre","Apellido","X"]].concat(nombres));
 
 
    }).catch(e => {
@@ -189,7 +186,7 @@ const  obtenerPartidos =  async () =>{
                      <select onChange={handleIdPartidoChange}>
                         {partidos?.map(partido => {
                             return (
-                              <option value={partido[1]}> {partido[0]} </option>
+                              <option value={partido[3]}> {'Fecha: '+partido[0]+' - '+partido[1]+' vs '+partido[2]} </option>
                             )
                           })}
                       </select>
@@ -202,7 +199,7 @@ const  obtenerPartidos =  async () =>{
                           {jugadores?.map(jugador => {
                             console.log(jugador)
                             return (
-                              <option value={jugador[1]}> {jugador[0]} </option>
+                              <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
                             )
                           })}
                         </select>
