@@ -10,7 +10,7 @@ function ActualuzarGoles () {
   const [buscarPartidos,setBuscarPartidos]=useState('');
   const [partidos,setPartidos]=useState([]);
   const [tipo,setTipo]=useState('a favor');
-  const [tipos, setTipos]=useState(['a favor','en contra'])
+  const [tipos, setTipos]=useState(['sentido','a favor','en contra'])
   const [pendiente,setPendiente]=useState(false);
   
   const [buscarJugador,setBuscarJugador]=useState('');
@@ -101,10 +101,6 @@ const handleTipoChange = (e) => {
 
   const cambiarGol =   () => {
 
-    if(goles.length==0){
-      alert("Los campos no deben quedar vacios")
-    }else{
-
     if(buscarPartidos!="IdPartidos"){
       setPendiente(true);
       
@@ -128,7 +124,6 @@ const handleTipoChange = (e) => {
         console.log('Se agrego el jugador');
         setPendiente(false) })
     }
-  }
 
   }
 
@@ -148,13 +143,14 @@ const handleTipoChange = (e) => {
                 <br/>
               </div>
               <div className="dropdown">
-                       <select onChange={handleTipoChange}>
-                          {tipos?.map(tipo => {
-                            return (
-                              <option value={tipo}> {'Sentido: '+{tipo}} </option>
-                            )
-                          })}
-                        </select>
+              <select onChange={handleTipoChange}>
+                  {tipos?.map(faltas => {
+                    console.log(faltas)
+                    return (
+                      <option value={faltas}> Sentido: {faltas} </option>
+                    )
+                  })}
+                </select>  
                         </div>
                 <br/>
               <div className="dropdown">
