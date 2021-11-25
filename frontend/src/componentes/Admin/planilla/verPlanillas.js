@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from "react";
 
 
 class  VerPlanilla extends React.Component{
@@ -6,14 +6,15 @@ class  VerPlanilla extends React.Component{
   
   state = { 
     partidos:[],
-    cargando: true 
+    cargando: true,
+    validoLocal: 0,
+    validoVisitante: 0
   }
 
-
   componentDidMount(){
-    fetch(`http://localhost:8080/getPartidos`)
+    fetch(`http://localhost:8080/getPartidosPendientes`)
     .then(response => response.json())
-    .then(data => this.setState({ partidos: data, cargando:false}) , console.log(this.faltas))
+    .then(data => this.setState({ partidos: data, cargando:false}) , console.log(this.partidos))
     .catch(error => {
       console.log('Hay un error en la llamada');
     });
@@ -23,58 +24,48 @@ class  VerPlanilla extends React.Component{
 
 
   render(){
-  if(this.state.cargando){
-    return(
-
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Planilla Finalizacion Partidos</h1>
-        </header>
-        <div>
-          <p>...</p>
-        </div> 
-      </div> 
-    )
-  }else{
-  return(
-    <div>
+    if(this.state.cargando){
+      return(
   
-      <h3>Planilla Finalizacion Partidos </h3>
-
-      {this.state.partidos?.map((partido) => {
-            const name = ` Local: ${partido.clubLocal.nombre}     Visitante:  ${partido.clubVisitante.nombre}`;
-            return (
-            
-              <div className="col-lg-5 pb-2 md-9">
-                 
-             
-               <div className="card text  ">
-              
-                 <div className="card-body text-dark">
-                    
-                    <h5 className="card-title center" className="colorTitulo">{name}</h5>
-                    <p className="card-text-right">
-                       <strong>Campeonato: </strong>{partido.campeonato.descripcion}<br/>
-                       <strong> Goles Local:{partido.golesLocal}   </strong> <br/>
-                       <strong>Goles Visitante: </strong>{partido.golesVisitante}<br/>
-                      <strong>Fecha: </strong>{partido.fechaPartido}<br/>
-                    </p>
-                   
-                  </div>
-
-                </div>
-                </div>
-              
-
-            );
-          })}
+        <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">Partidos pendientes de confirmación</h1>
+          </header>
+          <div>
+            <p>...</p>
+          </div> 
+        </div> 
+      )
+    }else{
+    return(
+      <div>
     
-    </div>
-  )
-}
-}
-}
-
+        <h1>Partidos </h1>
+        <table className="Partidos">
+                <thead>
+                  <tr>
+                  </tr>
+                    <th>Club Local</th><th>Club Visitante</th><th>Etapa</th><th>Nro Fecha</th><th>Fecha</th><th>Campeonato</th><th>Validado Local</th><th>Validado Visitante</th>
+                </thead>
+        {this.state.partidos.map((partido) => {
+          console.log(partido.convalidaLocal)
+              return (
+                
+          
+                <tr>
+                  <td>{partido.clubLocal.nombre}</td><td>{partido.clubVisitante.nombre}</td><td>{partido.etapa}</td><td>{partido.nroFecha}</td><td>{partido.fechaPartido}</td><td>{partido.campeonato.descripcion}</td><td>{partido.convalidaLocal}</td><td>{partido.convalidaVisitante}</td>
+                </tr>
+             
+              );
+            })}
+             </table>
+      
+      </div>
+    )
+  }
+  }
+  }
+  
 
 
   export default VerPlanilla;
