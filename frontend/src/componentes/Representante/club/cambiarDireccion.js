@@ -36,6 +36,7 @@ function CambiarDireccion (props){
       fetch(`http://localhost:8080/modificarDireccionClub?idClub=${props.location.state.club.idClub}&direccion=${direccion}`, requestOptions )
       .then( () => {
           console.log('Se cambio');
+          alert("Se cambio correctamente");
           setPendiente(false)
       })
       

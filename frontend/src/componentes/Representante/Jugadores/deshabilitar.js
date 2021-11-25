@@ -62,6 +62,7 @@ function Deshabilitar(props){
           fetch(`http://localhost:8080/deshabilitarJugador?idJugador=${buscarJugador}`, requestOptions )
           .then( () => {
               console.log('Se deshabilito el jugador');
+              alert("Se deshabilito correctamente");
               setPendiente(false)
           })
         }

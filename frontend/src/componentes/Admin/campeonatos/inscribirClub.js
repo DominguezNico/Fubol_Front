@@ -96,6 +96,7 @@ const  obtenerClubes =  async () =>{
        fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${buscarClubes}&idCampeonato=${buscarCampeonatos}`, requestOptions )
       .then( () => {
           console.log('Se incribio');
+          alert("Se inscribio correctamente");
            setPendiente(false)
       })
     }

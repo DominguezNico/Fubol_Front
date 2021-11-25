@@ -60,6 +60,7 @@ function Eliminar(props){
           fetch(`http://localhost:8080/quitarJugadorClub?idJugador=${buscarJugador}&idClub=${props.location.state.club.idClub}`, requestOptions )
           .then( () => {
               console.log('Se deshabilito el jugador');
+              alert("Se deshabilito correctamente");
               setPendiente(false)
           })
         }

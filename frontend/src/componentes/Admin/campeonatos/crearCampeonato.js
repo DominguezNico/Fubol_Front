@@ -51,8 +51,10 @@ const handlesetEstadoChange = (e) => {
     };
   
       fetch(`http://localhost:8080/crearCampeonato?descripcion=${descrip}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&estado=${estado}`,requestOptions)
-      .then(()=>{setPendiente(false)}
-      ).catch(e=> console.log(e))
+      .then(()=>{setPendiente(false);
+                alert("se creo correctamente");
+                }
+        ).catch(e=> console.log(e))
     }else{
       setPendiente(false);
     }

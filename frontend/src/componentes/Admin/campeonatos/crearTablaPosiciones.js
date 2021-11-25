@@ -70,6 +70,7 @@ const handleIdChange = (e) => {
        fetch(`http://localhost:8080/iniciarTablaPosicionesCampeonato?idCampeonato=${buscarCampeonatos}`, requestOptions )
       .then( () => {
           console.log('Se creo la tabla');
+          alert("Se creo correctamente");
            setPendiente(false)
       })
     }

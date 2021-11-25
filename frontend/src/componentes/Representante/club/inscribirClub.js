@@ -67,6 +67,7 @@ function IncribirClub (props) {
        fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${props.location.state.club.idClub}&idCampeonato=${buscarCampeonatos}`, requestOptions )
       .then( () => {
           console.log('Se incribio');
+          alert("Se inscribio correctamente");
            setPendiente(false)
       })
     }

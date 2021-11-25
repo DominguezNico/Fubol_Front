@@ -60,7 +60,8 @@ function Habilitar(props){
     
           fetch(`http://localhost:8080/habilitarJugador?idJugador=${buscarJugador}`, requestOptions )
           .then( () => {
-              console.log('Se deshabilito el jugador');
+              console.log('Se habilito el jugador');
+              alert("Se habilito correctamente");
               setPendiente(false)
           })
         }
