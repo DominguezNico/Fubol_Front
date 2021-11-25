@@ -50,6 +50,13 @@ function  VerPlanilla (props) {
 
   }
 
+  const handleRemovePartidos = (id) => {
+    let partidoAct=partidos.filter((part) => part[6] !== id);
+    setPartidos(partidoAct)
+  }
+
+
+
 
  /* if(this.state.partidos.status===400){
     return(
@@ -88,7 +95,7 @@ function  VerPlanilla (props) {
               
         
               <tr>
-                <td>{partido[0]}</td><td>{partido[1]}</td><td>{partido[2]}</td><td>{partido[3]}</td><td>{partido[4]}</td><td>{partido[5]}</td><td><input type="Button" value="Validar" className="boton" onClick={()=>validar(partido[6])}/></td>
+                <td>{partido[0]}</td><td>{partido[1]}</td><td>{partido[2]}</td><td>{partido[3]}</td><td>{partido[4]}</td><td>{partido[5]}</td><td><input type="Button" value="Validar" className="boton" onClick={()=> {validar(partido[6]); handleRemovePartidos(partido[6]);}}/></td>
               </tr>
            
             );

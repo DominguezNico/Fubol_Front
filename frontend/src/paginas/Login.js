@@ -34,22 +34,26 @@ function Login ()  {
   	
 
 	const comprobarUsuario = async () => {
+
+		
 		await fetch(`http://localhost:8080/chequearUsuarioContraseña?doc=${DNI}&contra=${password}`)
 			.then(response => response.json())
 			.then(data => setCheck(data))
 			console.log(check)
-			if(check!=1){
-				errorIngreso()
-			}
+			
 		
 	};
 
-	useEffect(() => { if(check==1){
-						console.log(check)
+	useEffect(() => { 
+					if(check==1){
 						getRol()
 						getUsuario()
+					}else if(check.status===500){
+						errorIngreso()
+					}else if(check===0){
+						errorIngresoDeContraseña()
 					}}
-					 , [check])
+					 ,[check])
 
 	const getRol = async () =>{
 		console.log(DNI)
@@ -66,13 +70,14 @@ function Login ()  {
 	}
 
 	const errorIngreso = () =>{
-		if(check==0){
-		alert("Los datos ingresados no son correctos")}
+		alert("Los datos ingresados no son correctos")
 	}
-	const registrar=async()=>{
-		return(<Home></Home>)
+	const errorIngresoDeContraseña = () =>{
+		alert("La contraseña ingresada no es valida.")
 	}
-console.log(rol)
+	
+
+
 if(rol ==="nada"){
 	return(
 		
