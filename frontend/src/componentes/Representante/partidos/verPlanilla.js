@@ -1,29 +1,57 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from "react";
 
 
-class  VerPlanilla extends React.Component{
+function  VerPlanilla (props) {
+
+  console.log(props.location.state)
   
-  
-  state = { 
-    partidos:[],
-    cargando: true 
+  useEffect(() => {
+    getPartidosPendientes();
+  },[]);
+
+  const [partidos,setPartidos]=useState([]);
+
+  const getPartidosPendientes= async() => {
+    await fetch(`http://localhost:8080/getPartidosPendientesClub?idClub=${props.location.state.club.idClub}`)
+    .then(response =>response.json())
+    .then(response => {
+
+      let nombres=[]
+
+
+      response?.map(datos => {
+       nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.campeonato.descripcion,datos.golesLocal,datos.golesVisitante,datos.id])
+      })
+
+      
+      setPartidos(nombres);
+
+
+    }).catch(e => {
+      console.log(e);
+    })
+  }
+
+  const validar =   (idPart) => {
+
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ })
+      };
+
+      console.log(requestOptions)
+
+      fetch(`http://localhost:8080/validarPartido?idPartido=${idPart}&idRepresentante=${props.location.state.legajo}`, requestOptions )
+      .then( () => {
+          console.log('Se agrego el responsable');
+          alert("Se validaron los datos del partido")
+              })
+
   }
 
 
-  componentDidMount(){
-    fetch(`http://localhost:8080/getPartidos`)
-    .then(response => response.json())
-    .then(data => this.setState({ partidos: data, cargando:false}) , console.log(this.faltas))
-    .catch(error => {
-      console.log('Hay un error en la llamada');
-    });
-  }
-
-
-
-
-  render(){
-  if(this.state.partidos.status===400){
+ /* if(this.state.partidos.status===400){
     return(
       <div>
         <h3 className="sinAvance"> No tenes ninguna planilla que mostrar</h3>
@@ -43,47 +71,38 @@ class  VerPlanilla extends React.Component{
         </div> 
       </div> 
     )
-  }else{
+  }else{*/
   return(
     <div>
   
-      <h3>Planilla Finalizacion Partidos </h3>
-
-      {this.state.partidos?.map((partido) => {
-            const name = ` Local: ${partido.clubLocal.nombre}     Visitante:  ${partido.clubVisitante.nombre}`;
+      <h1>Partidos </h1>
+      <table className="Partidos">
+              <thead>
+                <tr>
+                </tr>
+                  <th>Fecha</th><th>Club Local</th><th>Club Visitante</th><th>Campeonato</th><th>Goles Local</th><th>Goles Visitante</th><th>Validar</th>
+              </thead>
+      {partidos.map((partido) => {
+          console.log(partido)
             return (
-            
-              <div className="col-lg-5 pb-2 md-9">
-                 
-             
-               <div className="card text  ">
               
-                 <div className="card-body text-dark">
-                    
-                    <h5 className="card-title center" className="colorTitulo">{name}</h5>
-                    <p className="card-text-right">
-                       <strong>Campeonato: </strong>{partido.campeonato.descripcion}<br/>
-                       <strong> Goles Local:{partido.golesLocal}   </strong> <br/>
-                       <strong>Goles Visitante: </strong>{partido.golesVisitante}<br/>
-                      <strong>Fecha: </strong>{partido.fechaPartido}<br/>
-                    </p>
-                   
-                  </div>
-
-                </div>
-                </div>
-              
-
+        
+              <tr>
+                <td>{partido[0]}</td><td>{partido[1]}</td><td>{partido[2]}</td><td>{partido[3]}</td><td>{partido[4]}</td><td>{partido[5]}</td><td><input type="Button" value="Validar" className="boton" onClick={()=>validar(partido[6])}/></td>
+              </tr>
+           
             );
           })}
+           </table>
+
+           
     
     </div>
   )
 }
-}
+/*}
   }
-}
-
+*/
 
 
   export default VerPlanilla;
