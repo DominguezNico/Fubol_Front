@@ -113,7 +113,7 @@ function ModificarDatosPersonales (props){
               <p className="colorSubtitulo"><strong>Teléfono:</strong>{mostarTel}</p>
               <br/>
               <p className="colorSubtitulo" ><strong>Mail:</strong> {mostarMail}</p>
-              <br/>
+              <br/> {console.log(datosPersonales)}
               <p className="colorSubtitulo" ><strong>Estado:</strong> {datosPersonales.estadoJugador}</p>
               <br/>
               <br/>

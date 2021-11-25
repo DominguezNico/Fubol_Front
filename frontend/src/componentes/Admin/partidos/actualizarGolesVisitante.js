@@ -67,9 +67,12 @@ const handleTipoChange = (e) => {
        })
      }
 
+     useEffect(()=>{
+      obtenerJugadores();
+     },buscarPartidos)
 
      const  obtenerJugadores =  async () =>{
-      await fetch('http://localhost:8080/getJugadores')
+      await fetch(`http://localhost:8080/getJugadoresVisitantes?idPartido=${buscarPartidos}`)
        .then(response =>response.json())
        .then(response => {
     
@@ -77,7 +80,7 @@ const handleTipoChange = (e) => {
          console.log("RESULTA")
         console.log(response)
          response?.map(datos => {
-          nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
+          nombres.push([datos.jugador.nombre,datos.jugador.apellido,datos.jugador.documento,datos.jugador.id,datos.jugador.idClub])
          })
     
     

@@ -23,13 +23,13 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
 
   useEffect(() => {
     obtenerPartidos();
-    obtenerJugadores();
   },[]);
 
 
   const handleIdChange = (e) => {
     console.log("VALOR "+e.target.value)
     setBuscarPartidos(e.target.value);
+    
 }
 
     const handleIdJugadorChange = (e) => {
@@ -69,9 +69,12 @@ const handleTipoChange = (e) => {
        })
      }
 
+     useEffect(()=>{
+      obtenerJugadores();
+     })
 
      const  obtenerJugadores =  async () =>{
-      await fetch('http://localhost:8080/getJugadores')
+      await fetch(`http://localhost:8080/getJugadoresLocales?idPartido=${buscarPartidos}`)
        .then(response =>response.json())
        .then(response => {
     
@@ -79,11 +82,11 @@ const handleTipoChange = (e) => {
          console.log("RESULTA")
         console.log(response)
          response?.map(datos => {
-          nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
+          nombres.push([datos.jugador.nombre,datos.jugador.apellido,datos.jugador.documento,datos.jugador.id,datos.jugador.idClub,datos.club.nombre])
          })
     
     
-         setJugadores([["Nombre","Apellido","X"]].concat(nombres));
+         setJugadores([["Nombre","Apellido","X","idClub","Club","Club"]].concat(nombres));
     
     
        }).catch(e => {
@@ -171,7 +174,7 @@ const handleTipoChange = (e) => {
                           {jugadores?.map(jugador => {
                             console.log(jugador)
                             return (
-                              <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
+                              <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]+" - "+jugador[5]} </option>
                             )
                           })}
                         </select>

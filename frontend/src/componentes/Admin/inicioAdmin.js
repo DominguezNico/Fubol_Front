@@ -54,8 +54,7 @@ function InicioAdmin () {
             <NavDropdown title="Partidos" id="basic-nav-dropdown">
               <NavDropdown.Item> <Link to={"/generarPartidos"} className="nav-link">Generar partidos</Link> </NavDropdown.Item>
               <NavDropdown.Item> <Link to={"/ModificarFechaPartido"} className="nav-link">Modificar fecha partido</Link> </NavDropdown.Item>
-              <NavDropdown.Item> <Link to={"/ActualuzarGoles"} className="nav-link">Actualizar goles Club Local</Link> </NavDropdown.Item>
-              <NavDropdown.Item> <Link to={"/ActualuzarGolesVisitante"} className="nav-link">Actualizar goles Club Visitante</Link> </NavDropdown.Item>
+              <NavDropdown.Item> <Link to={"/ActualuzarGoles"} className="nav-link">Actualizar goles partido</Link> </NavDropdown.Item>
               <NavDropdown.Item> <Link to={"/axtualizarFaltas"} className="nav-link">Actualizar faltas</Link> </NavDropdown.Item>
               <NavDropdown.Item> <Link to={"/obtenerPartidos"} className="nav-link">Obtener Partidos</Link> </NavDropdown.Item>
 
@@ -86,7 +85,6 @@ function InicioAdmin () {
         <Route exact path="/generarPartidos" component={generarPartidos}/>
         <Route exact path="/ModificarFechaPartido" component={modificarFechaPartido}/>
         <Route exact path="/ActualuzarGoles" component={actualizarGoles}/>
-        <Route exact path="/ActualuzarGolesVisitante" component={actualizarGolesVisitante}/>
         <Route exact path="/axtualizarFaltas" component={actualizarFaltas}/>
         <Route exact path="/obtenerPartidos" component={obtenerPartidos}/>
 

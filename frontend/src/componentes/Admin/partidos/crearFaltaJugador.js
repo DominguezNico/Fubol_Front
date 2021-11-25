@@ -30,7 +30,6 @@ function CrearFaltaJugador () {
 
   useEffect(() => {
     obtenerPartidos();
-    obtenerJugadores();
     obtenerCampeonatos();
   },[]);
 
@@ -38,19 +37,16 @@ function CrearFaltaJugador () {
 
 
 const handleIdPartidoChange = (e) => {
-    console.log("VALOR "+e.target.value)
-    setBuscarPartidos(e.target.value);
+    let aux=e.target.value.split(',')
+    setBuscarPartidos(aux[3]);
+    setBuscarCampeonato(aux[4])
 }
 
 const handleIdJugadorChange = (e) => {
-  console.log("VALOR "+e.target.value)
   setBuscarJugador(e.target.value);
 }
 
-const handleCampeonatoChange = (e) => {
-  console.log("VALOR "+e.target.value)
-  setBuscarCampeonato(e.target.value);
-}
+
 
 
 const handleMinutoChange = (e) => {
@@ -71,8 +67,10 @@ const  obtenerPartidos =  async () =>{
   .then(response => {
  
     let nombres=[]
+    console.log("response")
+    console.log(response)
     response?.map(datos => {
-     nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
+     nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id,datos.campeonato.idCampeonato])
     })
      setPartidos([["Partido","Local","Visitante"]].concat(nombres));
 
@@ -105,22 +103,24 @@ const  obtenerPartidos =  async () =>{
    })
  }
 
+ useEffect(()=>{
+  obtenerJugadores();
+ })
 
  const  obtenerJugadores =  async () =>{
-  await fetch('http://localhost:8080/getJugadores')
+  await fetch(`http://localhost:8080/getJugadoresLocales?idPartido=${buscarPartidos}`)
    .then(response =>response.json())
    .then(response => {
   
     let nombres=[]
 
-
     response.map(datos => {
-     nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
+     nombres.push([datos.jugador.nombre,datos.jugador.apellido,datos.jugador.documento,datos.jugador.id,datos.jugador.idClub,datos.club.nombre])
     })
 
 
 
-     setJugadores([["Nombre","Apellido","X"]].concat(nombres));
+     setJugadores([["Nombre","Apellido","X","idClun","club","club"]].concat(nombres));
 
 
    }).catch(e => {
@@ -146,7 +146,6 @@ const  obtenerPartidos =  async () =>{
           body: JSON.stringify({ })
       };
 
-      console.log(requestOptions)
 
       fetch(`http://localhost:8080/addFalta?minuto=${minuto}&tipo=${tipo}&idJugador=${buscarJugador}&idPartido=${buscarPartidos}&idCampeonato=${buscarCampeonato}`, requestOptions )
       .then( () => {
@@ -172,7 +171,7 @@ const  obtenerPartidos =  async () =>{
                 <br/>
                 <select onChange={handleTipoChange}>
                   {falta?.map(faltas => {
-                    console.log(faltas)
+
                     return (
                       <option value={faltas}> {faltas} </option>
                     )
@@ -185,8 +184,9 @@ const  obtenerPartidos =  async () =>{
                  <div className="dropdown">
                      <select onChange={handleIdPartidoChange}>
                         {partidos?.map(partido => {
+                          
                             return (
-                              <option value={partido[3]}> {'Fecha: '+partido[0]+' - '+partido[1]+' vs '+partido[2]} </option>
+                              <option value={partido}> {'Fecha: '+partido[0]+' - '+partido[1]+' vs '+partido[2]} </option>
                             )
                           })}
                       </select>
@@ -197,9 +197,8 @@ const  obtenerPartidos =  async () =>{
                 <div className="dropdown">
                       <select onChange={handleIdJugadorChange}>
                           {jugadores?.map(jugador => {
-                            console.log(jugador)
                             return (
-                              <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
+                              <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]+" - "+jugador[5]} </option>
                             )
                           })}
                         </select>
@@ -207,18 +206,6 @@ const  obtenerPartidos =  async () =>{
                 </div> 
                 <br/>
                 
-                <div className="dropdown">
-                     <select onChange={handleCampeonatoChange}>
-                        {campeonatos?.map(campeonato => {
-                         
-                            return (
-                              <option value={campeonato[1]}> {campeonato[0]} </option>
-                            )
-                          })}
-                      </select>
-
-                  </div>
-                  <br/>
             </div>
 
            <br/> 

@@ -85,9 +85,9 @@ function AgregarRepresentante (){
      }
 
   return(
-    <div className="containerrr3">
+    <div className="container">
     <div className="d-flex justify-content-center h-100">
-     <div className="card4">
+     <div className="card2">
        <div className="card-header">
        <div className="card-body">
          <form>

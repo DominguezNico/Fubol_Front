@@ -32,7 +32,7 @@ const handleIdJugadorChange = (e) => {
 
 
 const  obtenerPartidos =  async () =>{
-  await fetch('http://localhost:8080/getPartidos')
+  await fetch(`http://localhost:8080/getPartidosClub?idClub=${props.location.state.club.idClub}`)
    .then(response =>response.json())
    .then(response => {
 
