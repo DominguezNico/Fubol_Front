@@ -57,7 +57,7 @@ render(){
                     <div className="col pb-2 md-4">
                       
                   
-                    <div className="card text ">
+                    <div className="card text">
                     
                       <div className="card-body text-dark ">
                           

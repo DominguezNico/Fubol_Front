@@ -58,29 +58,15 @@ function  VerPlanilla (props) {
 
 
 
- /* if(this.state.partidos.status===400){
+  if(partidos.status===400){
     return(
       <div>
         <h3 className="sinAvance"> No tenes ninguna planilla que mostrar</h3>
       </div>
     )
   }else{
-
-  if(this.state.cargando){
-    return(
-
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Planilla Finalizacion Partidos</h1>
-        </header>
-        <div>
-          <p>...</p>
-        </div> 
-      </div> 
-    )
-  }else{*/
   return(
-    <div>
+    <div className="tamañoTabla">
   
       <h1>Partidos </h1>
       <table className="Partidos">
@@ -107,9 +93,9 @@ function  VerPlanilla (props) {
     </div>
   )
 }
-/*}
-  }
-*/
+}
+  
+
 
 
   export default VerPlanilla;

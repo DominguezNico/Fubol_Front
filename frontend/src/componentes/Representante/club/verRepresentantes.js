@@ -53,10 +53,10 @@ class  VerRepresentantes extends React.Component{
            
             return (
               
-              <div className="col pb-2 md-4">
+              <div className="col-3 pb-1 md-1">
                  
              
-               <div className="card text  ">
+               <div className="card text">
               
                  <div className="card-body text-dark">
                     

@@ -22,12 +22,10 @@ function AgregarJugador (props){
 
 
   const handleIdPartidoChange = (e) => {
-    console.log("VALOR "+e.target.value)
     setBuscarPartidos(e.target.value);
 }
 
 const handleIdJugadorChange = (e) => {
-  console.log("VALOR "+e.target.value)
   setBuscarJugador(e.target.value);
 }
 
@@ -36,7 +34,7 @@ const handleIdJugadorChange = (e) => {
 
 
 const  obtenerPartidos =  async () =>{
-  await fetch('http://localhost:8080/getPartidos')
+  await fetch(`http://localhost:8080/getPartidosClub?idClub=${props.location.state.club.idClub}`)
    .then(response =>response.json())
    .then(response => {
 
@@ -48,7 +46,7 @@ const  obtenerPartidos =  async () =>{
      })
 
      
-     setPartidos([["Partido","Local","Visitante"]].concat(nombres));
+    setPartidos([["Partido","Local","Visitante"]].concat(nombres));
 
 
    }).catch(e => {
@@ -64,8 +62,6 @@ const  obtenerPartidos =  async () =>{
    .then(response => {
 
      let nombres=[]
-     console.log("RESULTA")
-    console.log(response)
      response?.map(datos => {
       nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id])
      })
@@ -95,7 +91,6 @@ const  obtenerPartidos =  async () =>{
         body: JSON.stringify({ })
     };
 
-    console.log(requestOptions)
 
      fetch(`http://localhost:8080/agregarJugadorPartido?idClub=${props.location.state.club.idClub}&idPartido=${buscarPartidos}&idJugador=${buscarJugador}`, requestOptions )
     .then( () => {
@@ -119,7 +114,9 @@ return(
              <div className="dropdown">
                  <select onChange={handleIdPartidoChange}>
                     {partidos?.map(partido => {
-                        return (
+                      console.log("partido")
+                          console.log(partido)
+                        return (                          
                           <option value={partido[3]}> {'Fecha: '+partido[0]+' - '+partido[1]+' vs '+partido[2]} </option>
                         )
                       })}
@@ -131,7 +128,6 @@ return(
             <div className="dropdown">
                   <select onChange={handleIdJugadorChange}>
                       {jugadores?.map(jugador => {
-                        console.log(jugador)
                         return (
                           <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
                         )

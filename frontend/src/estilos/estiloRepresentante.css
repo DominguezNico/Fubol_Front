@@ -12,6 +12,10 @@
     height: 300px;
 }
 
+.tamañoTabla{
+    height: auto ;
+    width: 95%;
+}
 .card3{
     height: 400px;
     background-color: rgba(0,0,0,0.8) !important;
@@ -81,7 +85,7 @@
     height: 130px;
     background-color: rgba(0,0,0,0.8) !important;
     border-radius: 5%;
-    width: 400px;
+
 
 }
 .cardheader{
