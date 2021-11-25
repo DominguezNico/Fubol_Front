@@ -31,7 +31,6 @@ function ActualizarGolesVisitante () {
     setBuscarPartidos(e.target.value);
 }
 
-
   const handleGolesChange = (e) => {
     setGoles(e.target.value);
     };
@@ -101,6 +100,10 @@ const handleTipoChange = (e) => {
 
   const cambiarGol =   () => {
 
+    if(goles.length==0){
+      alert("Los campos no deben quedar vacios")
+    }else{
+
     if(buscarPartidos!="IdPartidos"){
       setPendiente(true);
       
@@ -127,7 +130,7 @@ const handleTipoChange = (e) => {
 
 
     }
-    
+  }
 
   }
 

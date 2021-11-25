@@ -36,8 +36,9 @@ const handletipoChange = (e) => {
 
   const agregarJugador=  () => {
 
-      /*if(buscarClubes!="IdClubes"){
-        setPendiente(true);*/
+    if(documento.length==0 || nombre.length==0 || apellido.length==0 || fechaNacimiento.length==0 || tipoDoc.length==0){
+      alert("Los campos no deben quedar vacios")
+    }else{
         
     
     const requestOptions = {
@@ -53,6 +54,7 @@ const handletipoChange = (e) => {
             console.log('Se agrego ');
             alert("Se agregó correctamente");
         })
+    }
     }
 
 

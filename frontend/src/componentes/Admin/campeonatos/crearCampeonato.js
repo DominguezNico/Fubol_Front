@@ -7,18 +7,11 @@ import {createBrowserHistory} from "history";
 
 function CrearCampeonato () {
 
-  const inicialEstadoParams ={
-    descrip:"",
-    fechaInicio:"",
-    fechaFin:"",
-    estado:"",
-    pendiente:"",
-  };
-
-  const [descrip,setDescrip]=useState(inicialEstadoParams);
-  const [fechaInicio,setfechaInicio]=useState(inicialEstadoParams);
-  const [fechaFin,setFechaFin]=useState(inicialEstadoParams);
-  const [estado,setEstado]=useState(inicialEstadoParams);
+  
+  const [descrip,setDescrip]=useState('');
+  const [fechaInicio,setfechaInicio]=useState('');
+  const [fechaFin,setFechaFin]=useState('');
+  const [estado,setEstado]=useState('');
   const [pendiente,setPendiente]=useState(false);
 
 

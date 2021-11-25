@@ -17,24 +17,29 @@ function CambiarDireccion (props){
 
     
      const cambiarDireccion =   () => {
-        setPendiente(true);
-        
-  
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify({ })
-        };
-  
-        console.log(requestOptions)
-  
-        fetch(`http://localhost:8080/modificarDireccionClub?idClub=${props.location.state.club.idClub}&direccion=${direccion}`, requestOptions )
-        .then( () => {
-            console.log('Se cambio');
-            setPendiente(false)
-        })
+      
+      if(direccion.length==0){
+        alert("Los campos no deben quedar vacios")
+      }else{
       
       
+      setPendiente(true); 
+  
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ })
+      };
+
+      console.log(requestOptions)
+
+      fetch(`http://localhost:8080/modificarDireccionClub?idClub=${props.location.state.club.idClub}&direccion=${direccion}`, requestOptions )
+      .then( () => {
+          console.log('Se cambio');
+          setPendiente(false)
+      })
+      
+    }
   
     }
 

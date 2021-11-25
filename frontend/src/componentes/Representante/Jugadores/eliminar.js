@@ -22,16 +22,17 @@ function Eliminar(props){
         await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
          .then(response =>response.json())
          .then(response => {
-      
-           let nombres=[]
-          
   
-           response?.map(datos => {
-             nombres.push([datos.nombre,datos.id])
-           })
+          let nombres=[]
+   
+   
+          response.map(datos => {
+           nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
+          })
+     
       
       
-           setJugadores([["Jugadores","IdJugadores"]].concat(nombres));
+           setJugadores([["Nombre","Apellido","X"]].concat(nombres));
       
       
          }).catch(e => {
@@ -81,7 +82,7 @@ return(
                        {jugadores?.map(jugador => {
                          console.log(jugador)
                          return (
-                           <option value={jugador[1]}> {jugador[0]} </option>
+                           <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
                          )
                        })}
                      </select>
@@ -100,7 +101,6 @@ return(
        </form>
 
        </div>
-
      </div>
    </div>
    </div>

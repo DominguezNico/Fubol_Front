@@ -47,8 +47,8 @@ function InicioRepr ({usuario}) {
           <NavDropdown.Item > <Link to={{pathname:"/eliminar",state:usuario}}className="nav-link"> Eliminar jugador</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugClub"}className="nav-link"> Obtener jugadores del club</Link> </NavDropdown.Item>
           <NavDropdown.Item > <Link to={"/getJugId"}className="nav-link"> Obtener jugador por id</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={{pathname:"/habilitar",state:usuario}} className="nav-link"> habilitar jugador</Link> </NavDropdown.Item>
-          <NavDropdown.Item > <Link to={{pathname:"/deshabilitar",state:usuario}} className="nav-link"> deshabilitar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/habilitar",state:usuario}} className="nav-link"> Habilitar jugador</Link> </NavDropdown.Item>
+          <NavDropdown.Item > <Link to={{pathname:"/deshabilitar",state:usuario}} className="nav-link"> Deshabilitar jugador</Link> </NavDropdown.Item>
        </NavDropdown>
 
         <NavDropdown title="Club" id="basic-nav-dropdown">

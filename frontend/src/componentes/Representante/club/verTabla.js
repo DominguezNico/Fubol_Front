@@ -76,7 +76,13 @@ function VerTabla (props){
     
   }
 
-  
+  if(campeonatos.status===400){
+    return(
+      <div>
+        <h3 className="sinAvance"> No tenes ningun campeonato que mostrar</h3>
+      </div>
+    )
+  }else{
   return(    
     <div className="fondo centrar row">
     
@@ -115,6 +121,7 @@ function VerTabla (props){
     </div>
     
   ) 
+    }
 }
 
 

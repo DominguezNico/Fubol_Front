@@ -140,6 +140,9 @@ const  obtenerClubes =  async () =>{
 
 
  const crearPartido= () => {
+  if(nroFecha.length==0 || nroZona.length==0 || categoria.length==0 || fechaPart.length==0 || etapa.length==0){
+    alert("Los campos no deben quedar vacios")
+  }else{
       
   if(buscarClubes!="IdClubes"){
     setPendiente(true);
@@ -161,7 +164,7 @@ const  obtenerClubes =  async () =>{
     })
   }
   
-    
+}
  }
 
 

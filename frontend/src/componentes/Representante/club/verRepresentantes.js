@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../../../estilos/estiloRepresentante.css"
 
 class  VerRepresentantes extends React.Component{
   
@@ -23,6 +23,13 @@ class  VerRepresentantes extends React.Component{
 
 
   render(){
+  if(this.state.representantes.status===400){
+    return(
+      <div>
+        <h3 className="sinAvance"> No tenes ningun representante que mostrar</h3>
+      </div>
+    )
+  }else{
   if(this.state.cargando){
     return(
 
@@ -55,7 +62,7 @@ class  VerRepresentantes extends React.Component{
                     
                     <h5 className="card-title center" className="colorTitulo">{name}</h5>
                     <p className="card-text-right">
-                      <strong>Documento: </strong>{rep.etapa}<br/>
+                      <strong>Documento: </strong>{rep.documento}<br/>
                       <strong>Nombre: </strong>{rep.nombre}<br/>
                    
                       
@@ -76,6 +83,7 @@ class  VerRepresentantes extends React.Component{
      </div>
     </div>
   )
+}
 }
 }
 }

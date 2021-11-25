@@ -19,8 +19,11 @@ function CrearFaltaJugador () {
   const [campeonatos,setCampeonatos]=useState([]);
 
   const [minuto,setminuto]=useState('');
-  const [tipo,settipo]=useState('');
+  const [tipo,settipo]=useState('amarilla');
   const [pendiente,setPendiente]=useState(false);
+
+  const [falta,setFaltas]=useState(['amarilla','roja'])
+  
 
 
 
@@ -64,18 +67,14 @@ const handleTipoChange = (e) => {
 
 const  obtenerPartidos =  async () =>{
   await fetch('http://localhost:8080/getPartidos')
-   .then(response =>response.json())
-   .then(response => {
-
-     let nombres=[]
-
-
-     response?.map(datos => {
-       nombres.push([datos.nroFecha,datos.id])
-     })
-
-     
-     setPartidos([["Partidos","IdPartidos"]].concat(nombres));
+  .then(response =>response.json())
+  .then(response => {
+ 
+    let nombres=[]
+    response?.map(datos => {
+     nombres.push([datos.nroFecha,datos.clubLocal.nombre, datos.clubVisitante.nombre,datos.id])
+    })
+     setPartidos([["Partido","Local","Visitante"]].concat(nombres));
 
 
    }).catch(e => {
@@ -111,16 +110,17 @@ const  obtenerPartidos =  async () =>{
   await fetch('http://localhost:8080/getJugadores')
    .then(response =>response.json())
    .then(response => {
-
-     let nombres=[]
-     console.log("RESULTA")
-    console.log(response)
-     response?.map(datos => {
-       nombres.push([datos.nombre,datos.id])
-     })
+  
+    let nombres=[]
 
 
-     setJugadores([["Jugadores","IdJugadores"]].concat(nombres));
+    response.map(datos => {
+     nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
+    })
+
+
+
+     setJugadores([["Nombre","Apellido","X"]].concat(nombres));
 
 
    }).catch(e => {
@@ -131,6 +131,10 @@ const  obtenerPartidos =  async () =>{
 
  
   const crearFalta =   () => {
+
+    if(minuto.length==0 || tipo.length==0){
+      alert("Los campos no deben quedar vacios")
+    }else{
 
     if(buscarPartidos!="IdPartidos"){
       setPendiente(true);
@@ -150,7 +154,7 @@ const  obtenerPartidos =  async () =>{
           setPendiente(false)
       })
     }
-    
+  }
   }
 
 
@@ -166,7 +170,15 @@ const  obtenerPartidos =  async () =>{
                 <div className="row"> </div>
                 <input type="text" id="doc" className="form-control col-20" placeholder="Minuto"  onChange={handleMinutoChange} />
                 <br/>
-                <input type="fechaInicio" className="form-control col-20" placeholder="Tipo"  onChange={handleTipoChange}/>
+                <select onChange={handleTipoChange}>
+                  {falta?.map(faltas => {
+                    console.log(faltas)
+                    return (
+                      <option value={faltas}> {faltas} </option>
+                    )
+                  })}
+                </select>  
+                <br/>
                 <br/>
 
 
@@ -174,7 +186,7 @@ const  obtenerPartidos =  async () =>{
                      <select onChange={handleIdPartidoChange}>
                         {partidos?.map(partido => {
                             return (
-                              <option value={partido[1]}> {partido[0]} </option>
+                              <option value={partido[3]}> {'Fecha: '+partido[0]+' - '+partido[1]+' vs '+partido[2]} </option>
                             )
                           })}
                       </select>
@@ -187,7 +199,7 @@ const  obtenerPartidos =  async () =>{
                           {jugadores?.map(jugador => {
                             console.log(jugador)
                             return (
-                              <option value={jugador[1]}> {jugador[0]} </option>
+                              <option value={jugador[3]}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
                             )
                           })}
                         </select>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import '../../../estilos/estiloAdmin.css'
 
 function VerEstadisticas (props){
   useEffect(() => {
@@ -19,18 +19,55 @@ function VerEstadisticas (props){
   const [buscarClub,setBuscarClub]=useState('');
   const [jugadores,setJugadores]=useState([]);
 
+/*
+  const  obtenerJugadores =  async () =>{
+    await fetch('http://localhost:8080/getJugadores')
+     .then(response =>response.json())
+     .then(response => {
+  
+       let nombres=[]
+
+
+       response?.map(datos => {
+         nombres.push([datos.nombre,datos.id,datos.idClub])
+       })
+  
+  
+       setJugadores([["Jugadores","IdJugadores","IdClub"]].concat(nombres));
+  
+  
+     }).catch(e => {
+       console.log(e);
+     })
+    
+   }
+*/
   const handleIdJugadorChange = (e) => {
-    console.log("buscarJugador")
+    
     let aux=e.target.value.split(',')
     
     console.log(aux)
-    setBuscarJugador(aux[1]);
-
-    setBuscarClub(aux[2])
+    setBuscarJugador(aux[3]);
+    setBuscarClub(aux[4])
   }
 
 
   const obtenerDatos =async ()=>{
+
+    console.log("buscarJugador")
+    console.log(buscarJugador)
+    console.log("buscarClub")
+    console.log(buscarClub)
+
+
+    if(buscarJugador.length==0 || buscarClub.length==0){
+      alert("Elija un jugador")
+    }else if(buscarJugador=='IdJugadores' || buscarClub.length=="IdClub"){
+      alert("Elija un jugador")
+    }else{
+      
+    
+
     //Faltas
     await fetch(`http://localhost:8080/getFaltasJugador?idJugador=${buscarJugador}`)
       .then(response =>response.json())
@@ -42,6 +79,7 @@ function VerEstadisticas (props){
         })
 
         setFaltas(cont)
+        console.log(faltas)
 
       }).catch(e=> console.log(e))
     
@@ -73,6 +111,7 @@ function VerEstadisticas (props){
     .then(response => {
         setPerididos(response)
       }).catch(e=> console.log(e))  
+    }
   }
   
 
@@ -84,12 +123,12 @@ function VerEstadisticas (props){
        let nombres=[]
 
 
-       response?.map(datos => {
-         nombres.push([datos.nombre,datos.id,datos.idClub])
+       response.map(datos => {
+        nombres.push([datos.nombre,datos.apellido,datos.documento,datos.id,datos.idClub])
        })
   
   
-       setJugadores([["Jugadores","IdJugadores","IdClub"]].concat(nombres));
+       setJugadores([["Nombre","Apellido","X"]].concat(nombres));
   
   
      }).catch(e => {
@@ -102,14 +141,13 @@ function VerEstadisticas (props){
   <div >
     <div className="centrar">
     <div className="cardEstadisticas centrar">
-      <div className="card-header">
+      <div className="card1">
         <div className="card-body">
           <div className="dropdown">
             <select onChange={handleIdJugadorChange}>
-                {jugadores?.map(jugador => {
-                  console.log(jugador)
+                {jugadores.map(jugador => {
                   return (
-                    <option value={jugador}> {jugador[0]} </option>
+                    <option value={jugador}> {"Doc: "+jugador[2]+" - "+jugador[0]+" "+jugador[1]} </option>
                   )
                 })}
               </select>            
@@ -131,8 +169,7 @@ function VerEstadisticas (props){
         </tr>
       </thead>
 
-      <tr>{console.log("ganados")}
-                {console.log(perdidos)}
+      <tr>
         <td>{faltas}</td><td>{goles}</td><td>{ganados}</td><td>{perdidos}</td>
       </tr>
     </table>
