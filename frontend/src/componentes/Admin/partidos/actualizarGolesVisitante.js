@@ -13,10 +13,15 @@ function ActualizarGolesVisitante () {
   const [pendiente,setPendiente]=useState(false);
 
 
+  const [buscarJugador,setBuscarJugador]=useState('');
+  const [jugadores,setJugadores]=useState([]);
+  const [minuto,setminuto]=useState('');
+  const [tipo,settipo]=useState('');
 
 
   useEffect(() => {
     obtenerPartidos();
+    obtenerJugadores();
   },[]);
 
 
@@ -31,7 +36,20 @@ function ActualizarGolesVisitante () {
     setGoles(e.target.value);
     };
 
+    const handleIdJugadorChange = (e) => {
+      console.log("VALOR "+e.target.value)
+      setBuscarJugador(e.target.value);
+    }
     
+    const handleMinutoChange = (e) => {
+  setminuto(e.target.value);
+};
+
+const handleTipoChange = (e) => {
+    settipo(e.target.value);
+};
+
+
 
     const  obtenerPartidos =  async () =>{
       await fetch('http://localhost:8080/getPartidos')
@@ -54,6 +72,28 @@ function ActualizarGolesVisitante () {
        })
      }
 
+
+     const  obtenerJugadores =  async () =>{
+      await fetch('http://localhost:8080/getJugadores')
+       .then(response =>response.json())
+       .then(response => {
+    
+         let nombres=[]
+         console.log("RESULTA")
+        console.log(response)
+         response?.map(datos => {
+           nombres.push([datos.nombre,datos.id])
+         })
+    
+    
+         setJugadores([["Jugadores","IdJugadores"]].concat(nombres));
+    
+    
+       }).catch(e => {
+         console.log(e);
+       })
+     }
+    
 
 
 
@@ -78,6 +118,14 @@ function ActualizarGolesVisitante () {
           console.log('Se agrego el responsable');
           setPendiente(false)
       })
+
+      fetch(`http://localhost:8080/addGol?minuto=${minuto}&tipo=${tipo}&idJugador=${buscarJugador}`,requestOptions)
+      .then( () => {
+        console.log('Se agrego el jugador');
+        setPendiente(false) })
+
+
+
     }
     
 
@@ -95,6 +143,10 @@ function ActualizarGolesVisitante () {
 
               <div className="container">
               <div className="row"> </div>
+              <input type="text" id="doc" className="form-control col-20" placeholder="Minuto"  onChange={handleMinutoChange} />
+                <br/>
+                <input type="fechaInicio" className="form-control col-20" placeholder="Tipo"  onChange={handleTipoChange}/>
+                <br/>
                 <input type="goles" className="form-control col-20" placeholder="Goles"  onChange={handleGolesChange}/>
                 <br/>
               </div>
@@ -112,6 +164,19 @@ function ActualizarGolesVisitante () {
               
               </div> 
                <br/> 
+
+               <div className="dropdown">
+                      <select onChange={handleIdJugadorChange}>
+                          {jugadores?.map(jugador => {
+                            console.log(jugador)
+                            return (
+                              <option value={jugador[1]}> {jugador[0]} </option>
+                            )
+                          })}
+                        </select>
+                        
+                </div> 
+                <br/>
 
              <br/> 
              <br/> 

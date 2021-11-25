@@ -11,6 +11,11 @@ function ActualuzarGoles () {
   const [partidos,setPartidos]=useState([]);
   const [goles,setGoles]=useState('');
   const [pendiente,setPendiente]=useState(false);
+  
+  const [buscarJugador,setBuscarJugador]=useState('');
+  const [jugadores,setJugadores]=useState([]);
+  const [minuto,setminuto]=useState('');
+  const [tipo,settipo]=useState('');
 
 /*HACER COMO CREAR FALTA Y AGREGAR JUGADOR
 LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
@@ -18,8 +23,8 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
 
   useEffect(() => {
     obtenerPartidos();
+    obtenerJugadores();
   },[]);
-
 
 
   const handleIdChange = (e) => {
@@ -32,7 +37,22 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
     setGoles(e.target.value);
     };
 
+
+    const handleIdJugadorChange = (e) => {
+      console.log("VALOR "+e.target.value)
+      setBuscarJugador(e.target.value);
+    }
     
+    const handleMinutoChange = (e) => {
+  setminuto(e.target.value);
+};
+
+const handleTipoChange = (e) => {
+    settipo(e.target.value);
+};
+
+
+
 
     const  obtenerPartidos =  async () =>{
       await fetch('http://localhost:8080/getPartidos')
@@ -54,6 +74,31 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
          console.log(e);
        })
      }
+
+
+     const  obtenerJugadores =  async () =>{
+      await fetch('http://localhost:8080/getJugadores')
+       .then(response =>response.json())
+       .then(response => {
+    
+         let nombres=[]
+         console.log("RESULTA")
+        console.log(response)
+         response?.map(datos => {
+           nombres.push([datos.nombre,datos.id])
+         })
+    
+    
+         setJugadores([["Jugadores","IdJugadores"]].concat(nombres));
+    
+    
+       }).catch(e => {
+         console.log(e);
+       })
+     }
+    
+
+
 
 
 
@@ -79,6 +124,11 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
           console.log('Se agrego el responsable');
           setPendiente(false)
       })
+
+      fetch(`http://localhost:8080/addGol?minuto=${minuto}&tipo=${tipo}&idJugador=${buscarJugador}&idPartido=${buscarPartidos}`,requestOptions)
+      .then( () => {
+        console.log('Se agrego el jugador');
+        setPendiente(false) })
     }
     
 
@@ -96,6 +146,10 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
 
               <div className="container">
               <div className="row"> </div>
+              <input type="text" id="doc" className="form-control col-20" placeholder="Minuto"  onChange={handleMinutoChange} />
+                <br/>
+                <input type="fechaInicio" className="form-control col-20" placeholder="Tipo"  onChange={handleTipoChange}/>
+                <br/>
                 <input type="goles" className="form-control col-20" placeholder="Goles"  onChange={handleGolesChange}/>
                 <br/>
               </div>
@@ -113,6 +167,20 @@ LLAMAR FETCH A AGREGAR GOL( ID JUGADOR)*/
               
               </div> 
                <br/> 
+
+
+               <div className="dropdown">
+                      <select onChange={handleIdJugadorChange}>
+                          {jugadores?.map(jugador => {
+                            console.log(jugador)
+                            return (
+                              <option value={jugador[1]}> {jugador[0]} </option>
+                            )
+                          })}
+                        </select>
+                        
+                </div> 
+                <br/>
 
              <br/> 
              <br/> 
