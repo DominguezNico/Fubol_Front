@@ -31,7 +31,7 @@ const handlesetEstadoChange = (e) => {
 
 
 const  obtenerCampeonatos =  async () =>{
-  await fetch('http://localhost:8080/obtenerCampeonatos1')
+  await fetch('http://localhost:8080/obtenerCampeonatos')
    .then(response =>response.json())
    .then(response => {
 

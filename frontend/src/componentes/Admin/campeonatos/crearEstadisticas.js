@@ -19,7 +19,7 @@ function VerEstadisticas (props){
   const [buscarClub,setBuscarClub]=useState('');
   const [jugadores,setJugadores]=useState([]);
 
-
+/*
   const  obtenerJugadores =  async () =>{
     await fetch('http://localhost:8080/getJugadores')
      .then(response =>response.json())
@@ -41,7 +41,7 @@ function VerEstadisticas (props){
      })
     
    }
-
+*/
   const handleIdJugadorChange = (e) => {
     
     let aux=e.target.value.split(',')

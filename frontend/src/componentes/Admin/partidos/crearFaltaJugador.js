@@ -19,7 +19,7 @@ function CrearFaltaJugador () {
   const [campeonatos,setCampeonatos]=useState([]);
 
   const [minuto,setminuto]=useState('');
-  const [tipo,settipo]=useState('');
+  const [tipo,settipo]=useState('amarilla');
   const [pendiente,setPendiente]=useState(false);
 
   const [falta,setFaltas]=useState(['amarilla','roja'])
