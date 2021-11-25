@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 
 function VerAvance (props){
-
+console.log(props.location.state.club.idClub)
   useEffect(() => {
     cargarAlPrincipio();
   },[]);
@@ -29,29 +29,40 @@ function VerAvance (props){
       </div>
     )
   }else{
-  return(    
-    <div className="container">    
-          <div >
-            <h1>Avance del Club</h1>
-            <table className="centrarTabla">
-              <thead>
+    return(    
+      <div className="container">
+        {console.log(datos.status)}
+        {datos?.map((dato) => {
+          console.log(dato.cantidadJugados)
+          return (
+            
+            <div >
+              <br/>
+              <table className="centrarTabla">
+                <thead>
+                  <tr>
+                    <th>Campeonato</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
+                  </tr>
+                </thead>
+  
                 <tr>
-                  <th>Campeonato</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
+                  <td>{dato.camp.descripcion}</td><td>{dato.c.nombre}</td><td>{dato.cantidadJugados}</td><td>{dato.cantidadganados}</td><td>{dato.cantidadempatados}</td><td>{dato.cantidadperdidos}</td><td>{dato.golesFavor}</td><td>{dato.golesContra}</td><td>{dato.diferenciaGoles}</td><td>{dato.puntos}</td>
                 </tr>
-              </thead>
-              {datos.map((dato) => {
-              <tr>
-                <td>{dato.camp.descripcion}</td><td>{dato.c.nombre}</td><td>{dato.cantidadJugados}</td><td>{dato.cantidadganados}</td><td>{dato.cantidadempatados}</td><td>{dato.cantidadperdidos}</td><td>{dato.golesFavor}</td><td>{dato.golesContra}</td><td>{dato.diferenciaGoles}</td><td>{dato.puntos}</td>
-              </tr>
-              })}
-            </table>
-          <br/>
-          <br/>
-          </div>
-    </div>
-    
-  ) 
-    }
+              </table>
+            <br/>
+            <br/>
+            </div>
+  
+  
+            
+          );
+        })}
+      
+      </div>
+      
+    ) 
+  }
+  
 }
 
 
