@@ -19,8 +19,11 @@ function CrearFaltaJugador () {
   const [campeonatos,setCampeonatos]=useState([]);
 
   const [minuto,setminuto]=useState('');
-  const [tipo,settipo]=useState('');
+  const [tipo,settipo]=useState('amarilla');
   const [pendiente,setPendiente]=useState(false);
+
+  const [falta,setFaltas]=useState(['amarilla','roja'])
+  
 
 
 
@@ -129,6 +132,10 @@ const  obtenerPartidos =  async () =>{
  
   const crearFalta =   () => {
 
+    if(minuto.length==0 || tipo.length==0){
+      alert("Los campos no deben quedar vacios")
+    }else{
+
     if(buscarPartidos!="IdPartidos"){
       setPendiente(true);
       
@@ -147,7 +154,7 @@ const  obtenerPartidos =  async () =>{
           setPendiente(false)
       })
     }
-    
+  }
   }
 
 
@@ -163,7 +170,15 @@ const  obtenerPartidos =  async () =>{
                 <div className="row"> </div>
                 <input type="text" id="doc" className="form-control col-20" placeholder="Minuto"  onChange={handleMinutoChange} />
                 <br/>
-                <input type="fechaInicio" className="form-control col-20" placeholder="Tipo"  onChange={handleTipoChange}/>
+                <select onChange={handleTipoChange}>
+                  {falta?.map(faltas => {
+                    console.log(faltas)
+                    return (
+                      <option value={faltas}> {faltas} </option>
+                    )
+                  })}
+                </select>  
+                <br/>
                 <br/>
 
 

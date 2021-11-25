@@ -57,6 +57,9 @@ function AgregarRepresentante (){
 
 
     const agregarRep= () => {
+      if(doc.length==0 || nom.length==0){
+        alert("Los campos no deben quedar vacios")
+      }else{
       
       if(buscarClubes!="IdClubes"){
         setPendiente(true);
@@ -78,7 +81,7 @@ function AgregarRepresentante (){
       }
       
         
-        
+    }
      }
 
   return(

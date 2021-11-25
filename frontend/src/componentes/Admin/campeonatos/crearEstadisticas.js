@@ -19,8 +19,31 @@ function VerEstadisticas (props){
   const [buscarClub,setBuscarClub]=useState('');
   const [jugadores,setJugadores]=useState([]);
 
+/*
+  const  obtenerJugadores =  async () =>{
+    await fetch('http://localhost:8080/getJugadores')
+     .then(response =>response.json())
+     .then(response => {
+  
+       let nombres=[]
+
+
+       response?.map(datos => {
+         nombres.push([datos.nombre,datos.id,datos.idClub])
+       })
+  
+  
+       setJugadores([["Jugadores","IdJugadores","IdClub"]].concat(nombres));
+  
+  
+     }).catch(e => {
+       console.log(e);
+     })
+    
+   }
+*/
   const handleIdJugadorChange = (e) => {
-    console.log("buscarJugador")
+    
     let aux=e.target.value.split(',')
     
     console.log(aux)
@@ -30,6 +53,21 @@ function VerEstadisticas (props){
 
 
   const obtenerDatos =async ()=>{
+
+    console.log("buscarJugador")
+    console.log(buscarJugador)
+    console.log("buscarClub")
+    console.log(buscarClub)
+
+
+    if(buscarJugador.length==0 || buscarClub.length==0){
+      alert("Elija un jugador")
+    }else if(buscarJugador=='IdJugadores' || buscarClub.length=="IdClub"){
+      alert("Elija un jugador")
+    }else{
+      
+    
+
     //Faltas
     await fetch(`http://localhost:8080/getFaltasJugador?idJugador=${buscarJugador}`)
       .then(response =>response.json())
@@ -73,6 +111,7 @@ function VerEstadisticas (props){
     .then(response => {
         setPerididos(response)
       }).catch(e=> console.log(e))  
+    }
   }
   
 

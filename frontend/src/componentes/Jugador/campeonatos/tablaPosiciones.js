@@ -77,7 +77,7 @@ function TablaPosiciones (props){
   if(campeonatos.status===400){
     return(
       <div>
-        <h3 className="sinAvance"> No tienes ninguna tabla que mostrar</h3>
+        <h3 className="sinAvance"> No tenes ninguna tabla que mostrar</h3>
       </div>
     )
   }else{

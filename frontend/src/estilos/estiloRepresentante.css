@@ -28,7 +28,17 @@
     
     
 }
+.card5{
+    height: 130px;
+    background-color: rgba(0,0,0,0.8) !important;
+    border-radius: 5%;
+    width: 400px;
 
+}
+.containerrr4{
+    margin-top: 50px;
+    height: 150px;
+}
 .tablaEstadisticas{
     margin:auto;
     width:98%;

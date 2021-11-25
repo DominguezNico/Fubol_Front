@@ -22,7 +22,13 @@ function VerAvance (props){
       })
   
   }
-  
+  if(datos.status===400){
+    return(
+      <div>
+        <h3 className="sinAvance"> No tienes ningun avance que mostrar</h3>
+      </div>
+    )
+  }else{
   return(    
     <div className="container">    
           <div >
@@ -45,6 +51,7 @@ function VerAvance (props){
     </div>
     
   ) 
+    }
 }
 
 

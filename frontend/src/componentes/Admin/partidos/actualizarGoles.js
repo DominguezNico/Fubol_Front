@@ -101,6 +101,10 @@ const handleTipoChange = (e) => {
 
   const cambiarGol =   () => {
 
+    if(goles.length==0){
+      alert("Los campos no deben quedar vacios")
+    }else{
+
     if(buscarPartidos!="IdPartidos"){
       setPendiente(true);
       
@@ -124,7 +128,7 @@ const handleTipoChange = (e) => {
         console.log('Se agrego el jugador');
         setPendiente(false) })
     }
-    
+  }
 
   }
 
