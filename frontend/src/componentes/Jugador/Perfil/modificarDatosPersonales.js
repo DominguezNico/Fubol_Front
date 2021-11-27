@@ -79,13 +79,13 @@ function ModificarDatosPersonales (props){
     
     if(!(direc==='')){
       setMostarDirec(direc)
-      await fetch(`http://localhost:8080/cambiarMailJugador?id=${datosPersonales.id}&mail=${direc}`,requestOptions)
+      await fetch(`http://localhost:8080/cambiarDireccionJugador?idJugador=${datosPersonales.id}&direc=${direc}`,requestOptions)
       .then(()=>{setPendiente(false)}
       )
     }
     if(!(mail==='')){
       setMostarMail(mail)
-      await fetch(`http://localhost:8080/cambiarDireccionJugador?idJugador=${datosPersonales.id}&direc=${mail}`,requestOptions)
+      await fetch(`http://localhost:8080/cambiarMailJugador?id=${datosPersonales.id} &mail=${mail}`,requestOptions)
       .then(()=>{setPendiente(false)}
       )
     }
