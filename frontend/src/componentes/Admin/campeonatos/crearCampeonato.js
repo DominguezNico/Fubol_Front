@@ -86,7 +86,7 @@ const handlesetEstadoChange = (e) => {
 
             <br/> 
            <br/> 
-           <div className="form-group">
+           <div className="form-group centrar">
            {!pendiente && <input type="Button" value="Crear Campeonato" className="boton" onClick={crearCamp} />}
              {pendiente && <input type="Button" value="Creando Campeonato..." className="boton" onClick={crearCamp} />}
              

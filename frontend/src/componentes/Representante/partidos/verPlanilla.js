@@ -66,10 +66,10 @@ function  VerPlanilla (props) {
     )
   }else{
   return(
-    <div className="tamañoTabla">
+    <div className="fondo centrar row margen">
   
-      <h1>Partidos </h1>
-      <table className="Partidos">
+      <h3 className='col-2 colorTituloTabla colorFondoTituloTabla'>Partidos </h3>
+      <table className="centrarTabla tamañoTabla2">
               <thead>
                 <tr>
                 </tr>

@@ -100,10 +100,10 @@ function MostrarJugador (){
           </div>
         </div>
         </div>
-         <div>
+         <div className="centrar">
          <br/>
          <br/>
-          <table>
+          <table className="tamañoTabla2">
               <thead>
                 <tr>
                  <th>Id</th><th>Nombre</th><th>Apellido</th><th>Documento</th><th>Club</th>

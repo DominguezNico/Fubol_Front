@@ -37,10 +37,10 @@ class  ObtenerPartidos extends React.Component{
     )
   }else{
   return(
-    <div>
+    <div className="fondo centrar row margen">
   
-      <h1>Partidos </h1>
-      <table className="Partidos">
+      <h3 className='colorTituloTabla colorFondoTituloTabla centrar'>Partidos </h3>
+      <table className="centrarTabla tamañoTabla2">
               <thead>
                 <tr>
                 </tr>

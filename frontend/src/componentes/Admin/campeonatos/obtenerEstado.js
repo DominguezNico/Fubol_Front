@@ -80,7 +80,7 @@ const  obtenerCampeonatos =  async () =>{
     return(
       <div className="container">
        <div className="d-flex justify-content-center h-150">
-        <div className="card2">
+        <div className="card2 margen">
           <div className="card-header">
           <div className="card-body">
             <form>
@@ -101,12 +101,12 @@ const  obtenerCampeonatos =  async () =>{
              <br/>
             </div>
 
-              <div className="form-group">
+              <div className="form-group centrar">
               <br/>
               <input type="Button" value="Obtener Estado" className="boton" onClick={getEstadoCampeonato}/>
               <br/>
               </div>
-              <p className="card-text-right">
+              <p className="card-text-right margen2">
               <strong>Estado : </strong>{estado}<br/> 
               </p>
             </form>

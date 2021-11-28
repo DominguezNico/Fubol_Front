@@ -81,7 +81,7 @@ const handleIdChange = (e) => {
     return(
       <div className="container">
        <div className="d-flex justify-content-center h-150">
-        <div className="card">
+        <div className="card margen">
           <div className="card-header">
           <div className="card-body">
             <form>

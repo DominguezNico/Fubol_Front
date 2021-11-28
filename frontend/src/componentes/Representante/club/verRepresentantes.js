@@ -43,47 +43,45 @@ class  VerRepresentantes extends React.Component{
       </div> 
     )
   }else{
-  return(
-    <div>
-   <div className="row">
-      <h3>Representantes </h3>
-
-      {this.state.representantes?.map((rep) => {
-            const name = `${rep.club.nombre} `;
-           
-            return (
+    return(
+      <div className="container">
+        <div className="row">
+          <h3 className="colorTituloTabla colorFondoTituloTabla centrar margen">Representantes </h3>
+  
+          {this.state.representantes?.map((rep) => {
+                const name = `${rep.club.nombre}`;
+                return (
+                
+                
               
-              <div className="col-3 pb-1 md-1">
-                 
-             
-               <div className="card text">
-              
-                 <div className="card-body text-dark">
+                  <div className="col pb-2 md-4">
                     
-                    <h5 className="card-title center" className="colorTitulo">{name}</h5>
-                    <p className="card-text-right">
-                      <strong>Documento: </strong>{rep.documento}<br/>
-                      <strong>Nombre: </strong>{rep.nombre}<br/>
-                   
-                      
-                    </p>
+                
+                  <div className="card text">
+                  
+                    <div className="card-body text-dark ">
+                        
+                        <h5 className="card-title center" className="colorTitulo">{name}</h5>
+                        <p className="card-text-right">
+                          <strong>Documento: </strong>{rep.documento}<br/>
+                          <strong>Nombre: </strong>{rep.nombre}<br/>
+                          <br/>
+                        </p>
+  
+                      </div>
+  
+                    </div>
+                    </div>
+                    
+                
+                
+                );
+              })}
+        </div>
+      </div>
+    )
+  }
 
-                  </div>
-
-                </div>
-                </div>
-              
-
-            );
-            
-          }
-          )
-         
-          }
-     </div>
-    </div>
-  )
-}
 }
 }
 }

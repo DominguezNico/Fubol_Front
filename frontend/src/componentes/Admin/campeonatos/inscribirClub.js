@@ -107,7 +107,7 @@ const  obtenerClubes =  async () =>{
     return(
       <div className="container">
        <div className="d-flex justify-content-center h-100">
-        <div className="card2">
+        <div className="card2 margen">
           <div className="card-header">
           <div className="card-body">
              <form> 

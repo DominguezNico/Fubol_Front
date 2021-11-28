@@ -31,11 +31,10 @@ if(this.state.jugadores.status===400){
   )
 }else{
   return(
-    <div>
-        <h1>Jugadores del club:</h1>
-        <br/> 
-        <br/> 
-        <table>
+    <div className="fondo centrar row margen">
+      <div>
+        <h3 className='colorTituloTabla colorFondoTituloTabla'>Jugadores del club:</h3>
+        <table className="centrarTabla tamañoTabla">
               <thead>
                 <tr>
                  <th>Id</th><th>Nombre</th><th>Apellido</th><th>Documento</th><th>Fecha de Nacimiento</th>
@@ -45,6 +44,7 @@ if(this.state.jugadores.status===400){
                 <tr><td>{id}</td><td>{nombre}</td><td>{apellido}</td><td>{documento}</td><td>{fechaNacimiento}</td></tr>
             ))}
             </table>
+      </div>
     </div>
 )
 }

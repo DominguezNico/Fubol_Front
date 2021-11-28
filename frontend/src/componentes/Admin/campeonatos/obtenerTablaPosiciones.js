@@ -90,8 +90,8 @@ function ObtenerTablaPosiciones (){
           
         return(
           <div >
-            <h3 className='colorTituloTabla colorFondoTituloTabla'><strong>Campeonato:</strong> {d.descripcion}</h3>
-            <table className="centrarTabla">
+            <h3 className='colorTituloTabla colorFondoTituloTabla margen'><strong>Campeonato:</strong> {d.descripcion}</h3>
+            <table className="centrarTabla tamañoTabla2">
               <thead>
                 <tr>
                   <th>#</th><th>Club</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
@@ -111,7 +111,6 @@ function ObtenerTablaPosiciones (){
                   })}
           
             </table>
-            <br/>
             <br/>
           </div>
         );        

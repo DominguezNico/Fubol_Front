@@ -160,3 +160,24 @@ tr:hover td{
     color: white;
     font-family:'Verdana'
 }
+
+.margen{
+    margin-top: 2%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.tamañoTabla{
+    width: 80%;
+    
+}
+
+.tamañoTabla2{
+    width: 98%;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+body {
+    overflow-x: hidden;
+}
