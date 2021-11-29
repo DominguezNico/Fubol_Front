@@ -58,7 +58,7 @@ const  obtenerPartidos =  async () =>{
 
 
  const  obtenerJugadores =  async () =>{
-  await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
+  await fetch(`http://localhost:8080/getJugadoresHabilitadosClub?idClub=${props.location.state.club.idClub}`)
    .then(response =>response.json())
    .then(response => {
 
