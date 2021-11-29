@@ -11,6 +11,7 @@ function AgregarJugador (props){
 
   
   const [pendiente,setPendiente]=useState(false);
+  const [check,setCheck]=useState("")
 
 
 
@@ -76,10 +77,6 @@ const  obtenerPartidos =  async () =>{
  }
 
 
-
-
-
-
  const agregar =   () => {
   if(buscarJugador!="IdJugador" ){
     setPendiente(true);
@@ -93,13 +90,28 @@ const  obtenerPartidos =  async () =>{
 
 
      fetch(`http://localhost:8080/agregarJugadorPartido?idClub=${props.location.state.club.idClub}&idPartido=${buscarPartidos}&idJugador=${buscarJugador}`, requestOptions )
-    .then( () => {
-        console.log('Se incribio');
-         setPendiente(false)
-    })
+     .then(response => response.json())
+     .then((data) => {
+      console.log("data") 
+      console.log(data)
+       setCheck(data)
+       setPendiente(false)
+      
+      })
   }
 }
 
+
+useEffect(() => {
+  if(check==1){
+    errorDeCarga()
+  }
+
+},[check])
+
+const errorDeCarga = () => {
+  alert("No se puede agregar este jugador a este partido")
+} 
 
 return(
   <div className="containerrr3">
