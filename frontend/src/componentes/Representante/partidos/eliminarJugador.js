@@ -32,7 +32,7 @@ const handleIdJugadorChange = (e) => {
 
 
 const  obtenerPartidos =  async () =>{
-  await fetch(`http://localhost:8080/getPartidosClub?idClub=${props.location.state.club.idClub}`)
+  await fetch(`https://futbolito-back.herokuapp.com/getPartidosClub?idClub=${props.location.state.club.idClub}`)
    .then(response =>response.json())
    .then(response => {
 
@@ -56,7 +56,7 @@ const  obtenerPartidos =  async () =>{
 
 
  const  obtenerJugadores =  async () =>{
-  await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
+  await fetch(`https://futbolito-back.herokuapp.com/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
    .then(response =>response.json())
    .then(response => {
 
@@ -92,7 +92,7 @@ const  obtenerPartidos =  async () =>{
     
           console.log(requestOptions)
          
-          fetch(`http://localhost:8080/BajaJugadorPartido?clubAux=${props.location.state.club.idClub}&partidoAux=${buscarPartidos}&jugadorAux=${buscarJugador}`, requestOptions )
+          fetch(`https://futbolito-back.herokuapp.com/BajaJugadorPartido?clubAux=${props.location.state.club.idClub}&partidoAux=${buscarPartidos}&jugadorAux=${buscarJugador}`, requestOptions )
           .then( () => {
               console.log('Se elimino del partido al  jugador');
               setPendiente(false)

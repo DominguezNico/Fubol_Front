@@ -50,7 +50,7 @@ const handlesetEstadoChange = (e) => {
         body: JSON.stringify({ })
     };
   
-      fetch(`http://localhost:8080/crearCampeonato?descripcion=${descrip}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&estado=${estado}`,requestOptions)
+      fetch(`https://futbolito-back.herokuapp.com/crearCampeonato?descripcion=${descrip}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&estado=${estado}`,requestOptions)
       .then(()=>{setPendiente(false);
                 alert("se creo correctamente");
                 }

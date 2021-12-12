@@ -17,7 +17,7 @@ function ObtenerTablaPosiciones (){
  
 
   const CampeonatosObtener = async () =>{
-    await fetch(`http://localhost:8080/obtenerCampeonatos`)
+    await fetch(`https://futbolito-back.herokuapp.com/obtenerCampeonatos`)
       .then(response =>response.json())
       .then(response => {
 
@@ -33,7 +33,7 @@ function ObtenerTablaPosiciones (){
 
   const clubesCampeonato = () =>{
 
-      fetch(`http://localhost:8080/obtenerTodaLaTablaPosiciones`)
+      fetch(`https://futbolito-back.herokuapp.com/obtenerTodaLaTablaPosiciones`)
       .then(response =>response.json())
       .then(response => {
 

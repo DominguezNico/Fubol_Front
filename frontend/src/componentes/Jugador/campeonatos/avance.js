@@ -14,7 +14,7 @@ function Avance (props){
   const cargarAlPrincipio = async () =>{
  
     
-    await fetch(`http://localhost:8080/consultarAvanceClub?idClub=${props.location.state.idClub}`)
+    await fetch(`https://futbolito-back.herokuapp.com/consultarAvanceClub?idClub=${props.location.state.idClub}`)
       .then(response =>response.json())
       .then(response => {
 

@@ -62,7 +62,7 @@ const handleTipoChange = (e) => {
 
 
 const  obtenerPartidos =  async () =>{
-  await fetch('http://localhost:8080/getPartidos')
+  await fetch('https://futbolito-back.herokuapp.com/getPartidos')
   .then(response =>response.json())
   .then(response => {
  
@@ -83,7 +83,7 @@ const  obtenerPartidos =  async () =>{
 
 
  const  obtenerCampeonatos =  async () =>{
-  await fetch('http://localhost:8080/obtenerCampeonatos')
+  await fetch('https://futbolito-back.herokuapp.com/obtenerCampeonatos')
    .then(response =>response.json())
    .then(response => {
 
@@ -108,7 +108,7 @@ const  obtenerPartidos =  async () =>{
  })
 
  const  obtenerJugadores =  async () =>{
-  await fetch(`http://localhost:8080/getJugadoresLocales?idPartido=${buscarPartidos}`)
+  await fetch(`https://futbolito-back.herokuapp.com/getJugadoresLocales?idPartido=${buscarPartidos}`)
    .then(response =>response.json())
    .then(response => {
   
@@ -147,7 +147,9 @@ const  obtenerPartidos =  async () =>{
       };
 
 
-      fetch(`http://localhost:8080/addFalta?minuto=${minuto}&tipo=${tipo}&idJugador=${buscarJugador}&idPartido=${buscarPartidos}&idCampeonato=${buscarCampeonato}`, requestOptions )
+      fetch(`
+      
+      k.herokuapp.com/addFalta?minuto=${minuto}&tipo=${tipo}&idJugador=${buscarJugador}&idPartido=${buscarPartidos}&idCampeonato=${buscarCampeonato}`, requestOptions )
       .then( () => {
           console.log('Se agrego el jugador');
           setPendiente(false)

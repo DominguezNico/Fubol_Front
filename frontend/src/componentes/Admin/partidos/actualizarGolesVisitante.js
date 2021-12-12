@@ -47,7 +47,7 @@ const handleTipoChange = (e) => {
 
 
     const  obtenerPartidos =  async () =>{
-      await fetch('http://localhost:8080/getPartidos')
+      await fetch('https://futbolito-back.herokuapp.com/getPartidos')
        .then(response =>response.json())
        .then(response => {
  
@@ -72,7 +72,7 @@ const handleTipoChange = (e) => {
      },buscarPartidos)
 
      const  obtenerJugadores =  async () =>{
-      await fetch(`http://localhost:8080/getJugadoresVisitantes?idPartido=${buscarPartidos}`)
+      await fetch(`https://futbolito-back.herokuapp.com/getJugadoresVisitantes?idPartido=${buscarPartidos}`)
        .then(response =>response.json())
        .then(response => {
     
@@ -111,13 +111,13 @@ const handleTipoChange = (e) => {
 
       console.log(requestOptions)
 
-      fetch(`http://localhost:8080/actualizarGolesVisitante?idPartido=${buscarPartidos}`, requestOptions )
+      fetch(`https://futbolito-back.herokuapp.com/actualizarGolesVisitante?idPartido=${buscarPartidos}`, requestOptions )
       .then( () => {
           console.log('Se agrego el responsable');
           setPendiente(false)
       })
 
-      fetch(`http://localhost:8080/addGol?minuto=${minuto}&tipo=${tipo}&idJugador=${buscarJugador}&idPartido=${buscarPartidos}`,requestOptions)
+      fetch(`https://futbolito-back.herokuapp.com/addGol?minuto=${minuto}&tipo=${tipo}&idJugador=${buscarJugador}&idPartido=${buscarPartidos}`,requestOptions)
       .then( () => {
         console.log('Se agrego el jugador');
         setPendiente(false) })

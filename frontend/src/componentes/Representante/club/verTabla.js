@@ -18,7 +18,7 @@ function VerTabla (props){
 
 
   const CampeonatosDeUnClub = async () =>{
-    await fetch(`http://localhost:8080/obtenerCampeonatosDelClub?idClub=${props.location.state.club.idClub}`)
+    await fetch(`https://futbolito-back.herokuapp.com/obtenerCampeonatosDelClub?idClub=${props.location.state.club.idClub}`)
       .then(response =>response.json())
       .then(response => {
 
@@ -35,7 +35,7 @@ function VerTabla (props){
   
   const clubesCampeonato = () =>{
 
-      fetch(`http://localhost:8080/obtenerTodaLaTablaPosiciones`)
+      fetch(`https://futbolito-back.herokuapp.com/obtenerTodaLaTablaPosiciones`)
       .then(response =>response.json())
       .then(response => {
 

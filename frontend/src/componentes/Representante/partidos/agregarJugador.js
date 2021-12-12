@@ -35,7 +35,7 @@ const handleIdJugadorChange = (e) => {
 
 
 const  obtenerPartidos =  async () =>{
-  await fetch(`http://localhost:8080/getPartidosClub?idClub=${props.location.state.club.idClub}`)
+  await fetch(`https://futbolito-back.herokuapp.com/getPartidosClub?idClub=${props.location.state.club.idClub}`)
    .then(response =>response.json())
    .then(response => {
 
@@ -58,7 +58,7 @@ const  obtenerPartidos =  async () =>{
 
 
  const  obtenerJugadores =  async () =>{
-  await fetch(`http://localhost:8080/getJugadoresHabilitadosClub?idClub=${props.location.state.club.idClub}`)
+  await fetch(`https://futbolito-back.herokuapp.com/getJugadoresHabilitadosClub?idClub=${props.location.state.club.idClub}`)
    .then(response =>response.json())
    .then(response => {
 
@@ -89,7 +89,7 @@ const  obtenerPartidos =  async () =>{
     };
 
 
-     fetch(`http://localhost:8080/agregarJugadorPartido?idClub=${props.location.state.club.idClub}&idPartido=${buscarPartidos}&idJugador=${buscarJugador}`, requestOptions )
+     fetch(`https://futbolito-back.herokuapp.com/agregarJugadorPartido?idClub=${props.location.state.club.idClub}&idPartido=${buscarPartidos}&idJugador=${buscarJugador}`, requestOptions )
      .then(response => response.json())
      .then((data) => {
       console.log("data") 

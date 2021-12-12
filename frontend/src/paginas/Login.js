@@ -36,7 +36,7 @@ function Login ()  {
 	const comprobarUsuario = async () => {
 
 		
-		await fetch(`http://localhost:8080/chequearUsuarioContraseña?doc=${DNI}&contra=${password}`)
+		await fetch(`https://futbolito-back.herokuapp.com/chequearUsuarioContraseña?doc=${DNI}&contra=${password}`)
 			.then(response => response.json())
 			.then(data => setCheck(data))
 			console.log(check)
@@ -57,14 +57,14 @@ function Login ()  {
 
 	const getRol = async () =>{
 		console.log(DNI)
-		await fetch(`http://localhost:8080/obtenerRolUsuario?doc=${DNI}`)
+		await fetch(`https://futbolito-back.herokuapp.com/obtenerRolUsuario?doc=${DNI}`)
 			.then(response => response.json())
 			.then(data => setRol(data.rol));
 			getUsuario.call();
 	}
 	
 	const getUsuario = async () => {
-		await fetch(`http://localhost:8080/getObjetoDNI?dni=${DNI}`)
+		await fetch(`https://futbolito-back.herokuapp.com/getObjetoDNI?dni=${DNI}`)
 			.then(response => response.json())
 			.then(data => setUsuario(data));
 	}

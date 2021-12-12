@@ -12,7 +12,7 @@ class  VerPlanilla extends React.Component{
   }
 
   componentDidMount(){
-    fetch(`http://localhost:8080/getPartidosPendientes`)
+    fetch(`https://futbolito-back.herokuapp.com/getPartidosPendientes`)
     .then(response => response.json())
     .then(data => this.setState({ partidos: data, cargando:false}) , console.log(this.partidos))
     .catch(error => {

@@ -22,7 +22,7 @@ function Habilitar(props){
 
 
       const  obtenerJugadores =  async () =>{
-        await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
+        await fetch(`https://futbolito-back.herokuapp.com/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
          .then(response =>response.json())
          .then(response => {
       
@@ -58,7 +58,7 @@ function Habilitar(props){
     
           console.log(requestOptions)
     
-          fetch(`http://localhost:8080/habilitarJugador?idJugador=${buscarJugador}`, requestOptions )
+          fetch(`https://futbolito-back.herokuapp.com/habilitarJugador?idJugador=${buscarJugador}`, requestOptions )
           .then( () => {
               console.log('Se habilito el jugador');
               alert("Se habilito correctamente");

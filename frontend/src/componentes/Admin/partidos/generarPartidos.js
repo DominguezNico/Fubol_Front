@@ -66,7 +66,7 @@ const cambiarCampeonato = (e) => {
 
 
 const  obtenerClubes =  async () =>{
-  await fetch('http://localhost:8080/obtenerClubes')
+  await fetch('https://futbolito-back.herokuapp.com/obtenerClubes')
    .then(response =>response.json())
    .then(response => {
 
@@ -90,7 +90,7 @@ const  obtenerClubes =  async () =>{
 
 
  const  obtenerClubesVisitantes =  async () =>{
-  await fetch('http://localhost:8080/obtenerClubes')
+  await fetch('https://futbolito-back.herokuapp.com/obtenerClubes')
    .then(response =>response.json())
    .then(response => {
 
@@ -114,7 +114,7 @@ const  obtenerClubes =  async () =>{
 
 
  const  obtenerCampeonatos =  async () =>{
-  await fetch('http://localhost:8080/obtenerCampeonatos')
+  await fetch('https://futbolito-back.herokuapp.com/obtenerCampeonatos')
    .then(response =>response.json())
    .then(response => {
 
@@ -156,7 +156,7 @@ const  obtenerClubes =  async () =>{
 
     console.log(requestOptions)
       
-    fetch(`http://localhost:8080/agregarPartido?nroFecha=${nroFecha}&nroZona=${nroZona}&categoria=${categoria}&idClubLocal=${buscarClubes}&idClubVisitante=${buscarClubesVisitantes}&fechaPartido=${fechaPart}&idCampeonato=${buscarCampeonatos}&etapa=${etapa}`, requestOptions )
+    fetch(`https://futbolito-back.herokuapp.com/agregarPartido?nroFecha=${nroFecha}&nroZona=${nroZona}&categoria=${categoria}&idClubLocal=${buscarClubes}&idClubVisitante=${buscarClubesVisitantes}&fechaPartido=${fechaPart}&idCampeonato=${buscarCampeonatos}&etapa=${etapa}`, requestOptions )
     .then( () => {
         console.log('Se agrego ');
         setPendiente(false);

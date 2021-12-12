@@ -33,7 +33,7 @@ function CambiarDireccion (props){
 
       console.log(requestOptions)
 
-      fetch(`http://localhost:8080/modificarDireccionClub?idClub=${props.location.state.club.idClub}&direccion=${direccion}`, requestOptions )
+      fetch(`https://futbolito-back.herokuapp.com/modificarDireccionClub?idClub=${props.location.state.club.idClub}&direccion=${direccion}`, requestOptions )
       .then( () => {
           console.log('Se cambio');
           alert("Se cambio correctamente");

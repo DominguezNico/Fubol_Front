@@ -35,7 +35,7 @@ function AgregarRepresentante (){
 
 
     const  obtenerClubes =  async () =>{
-     await fetch('http://localhost:8080/obtenerClubes')
+     await fetch('https://futbolito-back.herokuapp.com/obtenerClubes')
       .then(response =>response.json())
       .then(response => {
 
@@ -73,7 +73,7 @@ function AgregarRepresentante (){
 
         console.log(requestOptions)
 
-        fetch(`http://localhost:8080/agregarResponsable?documento=${doc.toString()}&nombre=${nom}&idClub=${buscarClubes}`, requestOptions )
+        fetch(`https://futbolito-back.herokuapp.com/agregarResponsable?documento=${doc.toString()}&nombre=${nom}&idClub=${buscarClubes}`, requestOptions )
         .then( () => {
             console.log('Se agrego el responsable');
             setPendiente(false)
