@@ -21,7 +21,7 @@ function ModificarDatosPersonales (props){
   
 
   const cargarAlPrincipio = async () =>{
-    await fetch(`http://localhost:8080/getJugador?idJugador=${props.location.state.id}`)
+    await fetch(`https://futbol--back.herokuapp.com/getJugador?idJugador=${props.location.state.id}`)
       .then(response =>response.json())
       .then(response => {
         
@@ -72,20 +72,20 @@ function ModificarDatosPersonales (props){
     
     if(!(tel==='')){
       setMostarTel(tel)
-      await fetch(`http://localhost:8080/cambiarTelefonoJugador?id=${datosPersonales.id}&telefono=${tel}`,requestOptions)
+      await fetch(`https://futbol--back.herokuapp.com/cambiarTelefonoJugador?id=${datosPersonales.id}&telefono=${tel}`,requestOptions)
       .then(()=>{setPendiente(false)}
       )
     }
     
     if(!(direc==='')){
       setMostarDirec(direc)
-      await fetch(`http://localhost:8080/cambiarDireccionJugador?idJugador=${datosPersonales.id}&direc=${direc}`,requestOptions)
+      await fetch(`https://futbol--back.herokuapp.com/cambiarDireccionJugador?idJugador=${datosPersonales.id}&direc=${direc}`,requestOptions)
       .then(()=>{setPendiente(false)}
       )
     }
     if(!(mail==='')){
       setMostarMail(mail)
-      await fetch(`http://localhost:8080/cambiarMailJugador?id=${datosPersonales.id} &mail=${mail}`,requestOptions)
+      await fetch(`https://futbol--back.herokuapp.com/cambiarMailJugador?id=${datosPersonales.id} &mail=${mail}`,requestOptions)
       .then(()=>{setPendiente(false)}
       )
     }

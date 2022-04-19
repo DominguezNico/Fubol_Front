@@ -25,7 +25,7 @@ function Registro ()  {
 
 	
 	const  obtenerUsuarios =  async () =>{
-		await fetch('http://localhost:8080/obtenerUsuarios')
+		await fetch('https://futbol--back.herokuapp.com/obtenerUsuarios')
 		 .then(response =>response.json())
 		 .then(response => {
 	  
@@ -113,7 +113,7 @@ function Registro ()  {
 			console.log(doc)
 			console.log(contra)
 
-			fetch(`http://localhost:8080/crearUsuario?doc=${doc}&contra=${contra}`,requestOptions)
+			fetch(`https://futbol--back.herokuapp.com/crearUsuario?doc=${doc}&contra=${contra}`,requestOptions)
 			.then(response=> response.text())
 			.then(response=>{
 				setPendiente(false)

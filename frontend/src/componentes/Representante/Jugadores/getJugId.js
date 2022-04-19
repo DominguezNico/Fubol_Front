@@ -18,7 +18,7 @@ function GetJugId(){
           alert("Los campos no deben quedar vacios")
         }else{
 
-        await fetch(`http://localhost:8080/getJugador?idJugador=${id}`)
+        await fetch(`https://futbol--back.herokuapp.com/getJugador?idJugador=${id}`)
         .then(response => response.json())
         .then(data => [setNombre(data.nombre), setDocumento(data.documento), setApellido(data.apellido), setFecha(data.fechaNacimiento)]) 
       }

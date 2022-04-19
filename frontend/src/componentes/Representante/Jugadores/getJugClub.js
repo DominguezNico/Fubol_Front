@@ -13,7 +13,7 @@ state = {
 componentDidMount(){
     console.log("ES ESTE")
     console.log(this.state.usuario.club.idClub)
-    fetch(`http://localhost:8080/getJugadoresClub?idClub=${this.state.usuario.club.idClub}`)
+    fetch(`https://futbol--back.herokuapp.com/getJugadoresClub?idClub=${this.state.usuario.club.idClub}`)
     .then(response => response.json())
     .then(data => this.setState({ jugadores:data, cargando:false}) , console.log(this.state.jugadores))
     .catch(error => {

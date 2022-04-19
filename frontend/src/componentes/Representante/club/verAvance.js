@@ -13,7 +13,7 @@ console.log(props.location.state.club.idClub)
 
 
   const cargarAlPrincipio = async () =>{   
-    await fetch(`http://localhost:8080/consultarAvanceClub?idClub=${props.location.state.club.idClub}`)
+    await fetch(`https://futbol--back.herokuapp.com/consultarAvanceClub?idClub=${props.location.state.club.idClub}`)
       .then(response =>response.json())
       .then(response => {
 

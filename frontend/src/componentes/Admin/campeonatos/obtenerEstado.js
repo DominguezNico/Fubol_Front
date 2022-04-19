@@ -31,7 +31,7 @@ const handlesetEstadoChange = (e) => {
 
 
 const  obtenerCampeonatos =  async () =>{
-  await fetch('http://localhost:8080/obtenerCampeonatos')
+  await fetch('https://futbol--back.herokuapp.com/obtenerCampeonatos')
    .then(response =>response.json())
    .then(response => {
 
@@ -61,7 +61,7 @@ const  obtenerCampeonatos =  async () =>{
     if(buscarCampeonatos!="IdCampeonatos"){
       setPendiente(true);
       
-       fetch(`http://localhost:8080/getCampeonatobyID?id=${buscarCampeonatos}` )
+       fetch(`https://futbol--back.herokuapp.com/getCampeonatobyID?id=${buscarCampeonatos}` )
       
       .then(response => response.json())
       .then(data => setEstado(data.estado))

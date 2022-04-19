@@ -49,7 +49,7 @@ const handletipoChange = (e) => {
     
     console.log(requestOptions)
           
-    fetch(`http://localhost:8080/addJugador?documento=${documento}&nombre=${nombre}&apellido=${apellido}&fechaNacimiento=${fechaNacimiento}&tipoDoc=${tipoDoc}&idClub=${props.location.state.club.idClub}`, requestOptions )
+    fetch(`https://futbol--back.herokuapp.com/addJugador?documento=${documento}&nombre=${nombre}&apellido=${apellido}&fechaNacimiento=${fechaNacimiento}&tipoDoc=${tipoDoc}&idClub=${props.location.state.club.idClub}`, requestOptions )
         .then( () => {
             console.log('Se agrego ');
             alert("Se agregó correctamente");

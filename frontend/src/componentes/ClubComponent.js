@@ -11,7 +11,7 @@ class ClubComponent extends React.Component{
 
 /*C:\Users\Flore\TP_APIS\TP_APIS_FRONT\frontend>*/
    async  componentDidMount(){
-     fetch('http://localhost:8080/obtenerClubes')
+     fetch('https://futbol--back.herokuapp.com/obtenerClubes')
         .then(async response => {
           const data = await response.json();
 
@@ -45,7 +45,7 @@ class ClubComponent extends React.Component{
 
      getClubbyId = async (id) =>{
 
-      fetch(`http://localhost:8080/getClub?idClub=${id}`)
+      fetch(`https://futbol--back.herokuapp.com/getClub?idClub=${id}`)
       .then(response => response.json())
       .then(clubJSON => this.setState({club:clubJSON}));
 

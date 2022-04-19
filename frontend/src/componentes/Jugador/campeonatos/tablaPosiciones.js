@@ -17,7 +17,7 @@ function TablaPosiciones (props){
   console.log(props.location.state.idClub)
 
   const CampeonatosDeUnClub = async () =>{
-    await fetch(`http://localhost:8080/obtenerCampeonatosDelClub?idClub=${props.location.state.idClub}`)
+    await fetch(`https://futbol--back.herokuapp.com/obtenerCampeonatosDelClub?idClub=${props.location.state.idClub}`)
       .then(response =>response.json())
       .then(response => {
 
@@ -33,7 +33,7 @@ function TablaPosiciones (props){
 
   const clubesCampeonato = () =>{
 
-      fetch(`http://localhost:8080/obtenerTodaLaTablaPosiciones`)
+      fetch(`https://futbol--back.herokuapp.com/obtenerTodaLaTablaPosiciones`)
       .then(response =>response.json())
       .then(response => {
 

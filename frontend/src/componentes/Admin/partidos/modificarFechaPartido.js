@@ -36,7 +36,7 @@ function ModificarFechaPartido () {
 
 
     const  obtenerPartidos =  async () =>{
-      await fetch('http://localhost:8080/getPartidos')
+      await fetch('https://futbol--back.herokuapp.com/getPartidos')
        .then(response =>response.json())
        .then(response => {
  
@@ -78,7 +78,7 @@ function ModificarFechaPartido () {
 
       console.log(requestOptions)
 
-      fetch(`http://localhost:8080/modificarFechaPartido?fecha=${fecha}&idPartido=${buscarPartidos}`, requestOptions )
+      fetch(`https://futbol--back.herokuapp.com/modificarFechaPartido?fecha=${fecha}&idPartido=${buscarPartidos}`, requestOptions )
       .then( () => {
           console.log('Se agrego el responsable');
           setPendiente(false)

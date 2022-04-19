@@ -13,7 +13,7 @@ class VerGoles extends React.Component {
   
       
   componentDidMount(){
-    fetch(`http://localhost:8080/getGolesJugador?idJugador=${this.state.usuario.id}`)
+    fetch(`https://futbol--back.herokuapp.com/getGolesJugador?idJugador=${this.state.usuario.id}`)
     .then(response => response.json())
     .then(data => this.setState({ goles: data  , cargando:false}))
     .catch(error => {

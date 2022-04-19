@@ -28,7 +28,7 @@ function IncribirClub (props) {
 
 
  const  obtenerCampeonatos =  async () =>{
-  await fetch('http://localhost:8080/obtenerCampeonatos')
+  await fetch('https://futbol--back.herokuapp.com/obtenerCampeonatos')
    .then(response =>response.json())
    .then(response => {
 
@@ -64,7 +64,7 @@ function IncribirClub (props) {
 
       console.log(requestOptions)
 
-       fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${props.location.state.club.idClub}&idCampeonato=${buscarCampeonatos}`, requestOptions )
+       fetch(`https://futbol--back.herokuapp.com/inscribirClubEnCampeonato?id=${props.location.state.club.idClub}&idCampeonato=${buscarCampeonatos}`, requestOptions )
       .then( () => {
           console.log('Se incribio');
           alert("Se inscribio correctamente");

@@ -17,7 +17,7 @@ function MostrarJugador (){
   },[]);
 
   const  obtenerPartidos =  async () =>{
-    await fetch('http://localhost:8080/getPartidos')
+    await fetch('https://futbol--back.herokuapp.com/getPartidos')
      .then(response =>response.json())
      .then(response => {
 
@@ -42,13 +42,13 @@ function MostrarJugador (){
 }
 
  /* const getPartido =  async () => {
-  await fetch(`http://localhost:8080/getPartido?idPartido=${buscarPartidos}`)
+  await fetch(`https://futbol--back.herokuapp.com/getPartido?idPartido=${buscarPartidos}`)
   .then(response => response.json())
   .then(data => [setIdLocal(data.clubLocal.idClub), setNombreLocal(data.clubLocal.nombre), setIdVisitante(data.clubVisitante.idClub), setNombreVisitante(data.clubVisitante.nombre)])
 }*/
 
     const verJugadores = async  () => {
-        await fetch(`http://localhost:8080/getJugadoresLocales?idPartido=${buscarPartidos}`)
+        await fetch(`https://futbol--back.herokuapp.com/getJugadoresLocales?idPartido=${buscarPartidos}`)
         .then(response =>response.json())
         .then(response => {
         let jugadores=[]
@@ -58,7 +58,7 @@ function MostrarJugador (){
         setJugadoresLocales(jugadores)
         
       })
-      await fetch(`http://localhost:8080/getJugadoresVisitantes?idPartido=${buscarPartidos}`)
+      await fetch(`https://futbol--back.herokuapp.com/getJugadoresVisitantes?idPartido=${buscarPartidos}`)
       .then(response =>response.json())
       .then(response => {
       let jugadoresV=[]

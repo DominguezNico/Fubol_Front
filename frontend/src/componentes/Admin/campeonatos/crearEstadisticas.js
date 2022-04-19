@@ -21,7 +21,7 @@ function VerEstadisticas (props){
 
 /*
   const  obtenerJugadores =  async () =>{
-    await fetch('http://localhost:8080/getJugadores')
+    await fetch('https://futbol--back.herokuapp.com/getJugadores')
      .then(response =>response.json())
      .then(response => {
   
@@ -69,7 +69,7 @@ function VerEstadisticas (props){
     
 
     //Faltas
-    await fetch(`http://localhost:8080/getFaltasJugador?idJugador=${buscarJugador}`)
+    await fetch(`https://futbol--back.herokuapp.com/getFaltasJugador?idJugador=${buscarJugador}`)
       .then(response =>response.json())
       .then(response => {
 
@@ -84,7 +84,7 @@ function VerEstadisticas (props){
       }).catch(e=> console.log(e))
     
     //Goles
-    await fetch(`http://localhost:8080/getGolesJugador?idJugador=${buscarJugador}`)
+    await fetch(`https://futbol--back.herokuapp.com/getGolesJugador?idJugador=${buscarJugador}`)
       .then(response =>response.json())
       .then(response => {
 
@@ -99,14 +99,14 @@ function VerEstadisticas (props){
       }).catch(e=> console.log(e))
 
     //PartidosGanados
-    await fetch(`http://localhost:8080/partidosGanados?idClub=${buscarClub}`)
+    await fetch(`https://futbol--back.herokuapp.com/partidosGanados?idClub=${buscarClub}`)
     .then(response =>response.json()) 
     .then(response => {
         setGanados(response)
       }).catch(e=> console.log(e))
 
     //PartidosPeridos
-    await fetch(`http://localhost:8080/partidosPerdidos?idClub=${buscarClub}`)
+    await fetch(`https://futbol--back.herokuapp.com/partidosPerdidos?idClub=${buscarClub}`)
     .then(response =>response.json())   
     .then(response => {
         setPerididos(response)
@@ -116,7 +116,7 @@ function VerEstadisticas (props){
   
 
   const  obtenerJugadores =  async () =>{
-    await fetch('http://localhost:8080/getJugadores')
+    await fetch('https://futbol--back.herokuapp.com/getJugadores')
      .then(response =>response.json())
      .then(response => {
   

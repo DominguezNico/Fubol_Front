@@ -33,7 +33,7 @@ const handleIdClubChange = (e) => {
 
 
 const  obtenerClubes =  async () =>{
-  await fetch('http://localhost:8080/obtenerClubes')
+  await fetch('https://futbol--back.herokuapp.com/obtenerClubes')
    .then(response =>response.json())
    .then(response => {
 
@@ -55,7 +55,7 @@ const  obtenerClubes =  async () =>{
 
 
  const  obtenerCampeonatos =  async () =>{
-  await fetch('http://localhost:8080/obtenerCampeonatos')
+  await fetch('https://futbol--back.herokuapp.com/obtenerCampeonatos')
    .then(response =>response.json())
    .then(response => {
 
@@ -93,7 +93,7 @@ const  obtenerClubes =  async () =>{
 
       console.log(requestOptions)
 
-       fetch(`http://localhost:8080/inscribirClubEnCampeonato?id=${buscarClubes}&idCampeonato=${buscarCampeonatos}`, requestOptions )
+       fetch(`https://futbol--back.herokuapp.com/inscribirClubEnCampeonato?id=${buscarClubes}&idCampeonato=${buscarCampeonatos}`, requestOptions )
       .then( () => {
           console.log('Se incribio');
           alert("Se inscribio correctamente");

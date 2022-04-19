@@ -11,7 +11,7 @@ class  ObtenerPartidos extends React.Component{
 
 
   componentDidMount(){
-    fetch(`http://localhost:8080/getPartidos`)
+    fetch(`https://futbol--back.herokuapp.com/getPartidos`)
     .then(response => response.json())
     .then(data => this.setState({ partidos: data, cargando:false}) , console.log(this.faltas))
     .catch(error => {

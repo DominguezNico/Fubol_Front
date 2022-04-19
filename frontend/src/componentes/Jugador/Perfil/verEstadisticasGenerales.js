@@ -19,7 +19,7 @@ function VerEstadisticas (props){
   const obtenerFaltas = async () =>{
  
     
-    await fetch(`http://localhost:8080/getFaltasJugador?idJugador=${props.location.state.id}`)
+    await fetch(`https://futbol--back.herokuapp.com/getFaltasJugador?idJugador=${props.location.state.id}`)
       .then(response =>response.json())
       .then(response => {
 
@@ -37,7 +37,7 @@ function VerEstadisticas (props){
   const obtenerGoles = async () =>{
  
     
-    await fetch(`http://localhost:8080/getGolesJugador?idJugador=${props.location.state.id}`)
+    await fetch(`https://futbol--back.herokuapp.com/getGolesJugador?idJugador=${props.location.state.id}`)
       .then(response =>response.json())
       .then(response => {
 
@@ -56,7 +56,7 @@ function VerEstadisticas (props){
   const obtenerPartidosGanados = async () =>{
  
     
-    await fetch(`http://localhost:8080/partidosGanados?idClub=${props.location.state.idClub}`)
+    await fetch(`https://futbol--back.herokuapp.com/partidosGanados?idClub=${props.location.state.idClub}`)
     .then(response =>response.json()) 
     .then(response => {
         console.log(response)
@@ -68,7 +68,7 @@ function VerEstadisticas (props){
   const obtenerPartidosPerdidos = async () =>{
  
     
-    await fetch(`http://localhost:8080/partidosPerdidos?idClub=${props.location.state.idClub}`)
+    await fetch(`https://futbol--back.herokuapp.com/partidosPerdidos?idClub=${props.location.state.idClub}`)
     .then(response =>response.json())   
     .then(response => {
         setPerididos(response)

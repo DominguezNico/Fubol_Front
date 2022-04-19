@@ -19,7 +19,7 @@ function Eliminar(props){
 
 
      const  obtenerJugadores =  async () =>{
-        await fetch(`http://localhost:8080/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
+        await fetch(`https://futbol--back.herokuapp.com/getJugadoresClub?idClub=${props.location.state.club.idClub}`)
          .then(response =>response.json())
          .then(response => {
   
@@ -57,7 +57,7 @@ function Eliminar(props){
     
           console.log(requestOptions)
     
-          fetch(`http://localhost:8080/quitarJugadorClub?idJugador=${buscarJugador}&idClub=${props.location.state.club.idClub}`, requestOptions )
+          fetch(`https://futbol--back.herokuapp.com/quitarJugadorClub?idJugador=${buscarJugador}&idClub=${props.location.state.club.idClub}`, requestOptions )
           .then( () => {
               console.log('Se deshabilito el jugador');
               alert("Se deshabilito correctamente");

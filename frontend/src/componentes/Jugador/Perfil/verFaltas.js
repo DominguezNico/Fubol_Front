@@ -13,7 +13,7 @@ class VerFaltas extends React.Component {
   
 
   componentDidMount(){
-    fetch(`http://localhost:8080/getFaltasJugador?idJugador=${this.state.usuario.id}`)
+    fetch(`https://futbol--back.herokuapp.com/getFaltasJugador?idJugador=${this.state.usuario.id}`)
     .then(response => response.json())
     .then(data => this.setState({ faltas: data, cargando:false}) , console.log(this.faltas))
     .catch(error => {

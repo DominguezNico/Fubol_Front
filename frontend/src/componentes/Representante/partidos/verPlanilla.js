@@ -12,7 +12,7 @@ function  VerPlanilla (props) {
   const [partidos,setPartidos]=useState([]);
 
   const getPartidosPendientes= async() => {
-    await fetch(`http://localhost:8080/getPartidosPendientesClub?idClub=${props.location.state.club.idClub}`)
+    await fetch(`https://futbol--back.herokuapp.com/getPartidosPendientesClub?idClub=${props.location.state.club.idClub}`)
     .then(response =>response.json())
     .then(response => {
 
@@ -42,7 +42,7 @@ function  VerPlanilla (props) {
 
       console.log(requestOptions)
 
-      fetch(`http://localhost:8080/validarPartido?idPartido=${idPart}&idRepresentante=${props.location.state.legajo}`, requestOptions )
+      fetch(`https://futbol--back.herokuapp.com/validarPartido?idPartido=${idPart}&idRepresentante=${props.location.state.legajo}`, requestOptions )
       .then( () => {
           console.log('Se agrego el responsable');
           alert("Se validaron los datos del partido")

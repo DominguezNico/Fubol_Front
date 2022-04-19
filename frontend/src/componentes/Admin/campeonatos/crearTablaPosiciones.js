@@ -29,7 +29,7 @@ const handleIdChange = (e) => {
 
 
   const  obtenerCampeonatos =  async () =>{
-      await fetch('http://localhost:8080/obtenerCampeonatos')
+      await fetch('https://futbol--back.herokuapp.com/obtenerCampeonatos')
        .then(response =>response.json())
        .then(response => {
  
@@ -67,7 +67,7 @@ const handleIdChange = (e) => {
 
       console.log(requestOptions)
 
-       fetch(`http://localhost:8080/iniciarTablaPosicionesCampeonato?idCampeonato=${buscarCampeonatos}`, requestOptions )
+       fetch(`https://futbol--back.herokuapp.com/iniciarTablaPosicionesCampeonato?idCampeonato=${buscarCampeonatos}`, requestOptions )
       .then( () => {
           console.log('Se creo la tabla');
           alert("Se creo correctamente");

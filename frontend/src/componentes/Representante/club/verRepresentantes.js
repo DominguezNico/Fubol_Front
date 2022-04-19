@@ -11,7 +11,7 @@ class  VerRepresentantes extends React.Component{
 
 
   componentDidMount(){
-    fetch(`http://localhost:8080/getResponsables`)
+    fetch(`https://futbol--back.herokuapp.com/getResponsables`)
     .then(response => response.json())
     .then(data => this.setState({ representantes: data, cargando:false}) , console.log(this.faltas))
     .catch(error => {
